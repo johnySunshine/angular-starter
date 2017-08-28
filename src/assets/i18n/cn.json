@@ -1,0 +1,24 @@
+{
+  "HELLO": "你好",
+  "HEADER": {
+    "SEARCH_PLACE_HOLDER": "搜索 V.Sir.com",
+    "SEARCH_EMPTY": "对不起，搜寻不到您所需要的结果......",
+    "SEARCH_NUMBER": "V.Sier 搜索的结果约",
+    "SEARCH_NUMBER_COUNT": "个",
+    "SEARCH_SHOW_MORE": "显示更多结果"
+  },
+  "FOOTER": {
+    "RIGHT_INFO": "2016-2017 Lookthings 版权所有",
+    "ALL_REVERSE": "苏ICP备16059814号",
+    "POWER_TITLE": "Power By Angular4"
+  },
+  "VOD": {
+    "TRAILERS_CONTENT": "预告片",
+    "GENRES": "类型",
+    "DURATIONS": "影片时长",
+    "COUNTRIES": "制片国家",
+    "ORIGINAL_TITLE": "影片原名",
+    "LANGUAGES": "语言",
+    "PERSON": "演职人员"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "HELLO": "你好 {{value}}",
+  "HEADER": {
+    "SEARCH_PLACE_HOLDER": "searching V.Sir.com",
+    "SEARCH_EMPTY": "sorry,empty of searching......",
+    "SEARCH_NUMBER": "V.Sier search for",
+    "SEARCH_NUMBER_COUNT": "counts",
+    "SEARCH_SHOW_MORE": "show more items"
+  },
+  "FOOTER": {
+    "RIGHT_INFO": "2016-2017 Lookthings all reverse",
+    "ALL_REVERSE": "苏ICP备16059814号",
+    "POWER_TITLE": "Power By Angular4"
+  },
+  "VOD": {
+    "TRAILERS_CONTENT": "Trailers",
+    "GENRES": "Genres",
+    "DURATIONS": "Durations",
+    "COUNTRIES": "Countries",
+    "ORIGINAL_TITLE": "Original Title",
+    "LANGUAGES": "Languages",
+    "PERSON": "Persons"
+  }
+}
