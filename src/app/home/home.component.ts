@@ -18,7 +18,7 @@ import { AppState } from '../app.service';
     /**
      * Our list of styles in our component. We may add more to compose many styles together.
      */
-    styleUrls: ['./home.component.css'],
+    styleUrls: ['./home.component.scss'],
     /**
      * Every Angular template is first compiled by the browser before Angular runs it's compiler.
      */
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     /**
      * TypeScript public modifiers
      */
-    constructor(public appState: AppState,) {
+    constructor(public appState: AppState) {
     }
 
     public ngOnInit() {
@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
 
     public submitState(value: string) {
         console.log('submitState', value);
-        this.appState.set('value', value);
         this.localState.value = '';
     }
 }
