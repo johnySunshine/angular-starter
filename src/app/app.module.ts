@@ -29,13 +29,15 @@ import { NoContentComponent } from './no-content';
 
 import '../styles/styles.scss';
 import { HomeModule } from './home/home.module';
-import { SessionService } from './coreSDK/session.service';
+import { SessionService } from './sdk/session.service';
+import { requestOptionsProvider } from './app.request';
 
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     AppState,
-    SessionService
+    SessionService,
+    requestOptionsProvider
 ];
 
 type StoreType = {

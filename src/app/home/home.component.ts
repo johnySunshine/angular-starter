@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
      * TypeScript public modifiers
      */
     constructor(public appState: AppState) {
+        this.appState.session.put('demo', {
+            name: 1
+        });
     }
 
     public ngOnInit() {
