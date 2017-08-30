@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routes';
-import {
-    TranslateModule,
-} from 'ng2-translate';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
     imports: [
+        ShareModule,
         HomeRoutingModule,
-        TranslateModule
     ],
-    exports: [],
     declarations: [HomeComponent],
     providers: [],
 })

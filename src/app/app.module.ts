@@ -31,6 +31,7 @@ import '../styles/styles.scss';
 import { HomeModule } from './home/home.module';
 import { SessionService } from './sdk/session.service';
 import { requestOptionsProvider } from './app.request';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -39,12 +40,6 @@ const APP_PROVIDERS = [
     SessionService,
     requestOptionsProvider
 ];
-
-type StoreType = {
-    state: InternalStateType,
-    restoreInputValues: () => void,
-    disposeOldHosts: () => void
-};
 
 export function createTranslateLoader(http: Http) {
     return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -63,10 +58,10 @@ export function createTranslateLoader(http: Http) {
      * Import Angular's modules.
      */
     imports: [
-        BrowserModule,
-        FormsModule,
         HttpModule,
         HomeModule,
+        BrowserModule,
+        BrowserAnimationsModule,
         RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
         // 配置语言包
         TranslateModule.forRoot({
