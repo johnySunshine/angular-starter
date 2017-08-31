@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
         this.appState.session.put('demo', {
             name: 1
         });
+        console.log(this.appState.platform.BLINK);
     }
 
     public ngOnInit() {

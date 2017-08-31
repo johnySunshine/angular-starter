@@ -6,7 +6,7 @@ import {
 import { AppState } from '../app.service';
 
 @Component({
-    selector: 'buttons',
+    selector: `button[s-button]`,
     styleUrls: ['./button.component.scss'],
     templateUrl: './button.component.html',
     encapsulation: ViewEncapsulation.None,

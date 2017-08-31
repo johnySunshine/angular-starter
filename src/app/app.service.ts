@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SessionService } from './sdk/session.service';
+import { SessionService, Platform } from './sdk';
 
 export type InternalStateType = {
     [key: string]: any
@@ -12,7 +12,12 @@ export class AppState {
         return this.sessionService;
     }
 
-    constructor(private sessionService: SessionService) {
+    public get platform() {
+        return this.platformService;
+    }
+
+    constructor(private sessionService: SessionService,
+                private platformService: Platform) {
 
     }
 }

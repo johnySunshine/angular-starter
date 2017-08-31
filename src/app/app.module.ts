@@ -29,7 +29,7 @@ import { NoContentComponent } from './no-content';
 
 import '../styles/styles.scss';
 import { HomeModule } from './home/home.module';
-import { SessionService } from './sdk/session.service';
+import { SessionService, Platform } from './sdk';
 import { requestOptionsProvider } from './app.request';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,6 +38,7 @@ const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
     AppState,
     SessionService,
+    Platform,
     requestOptionsProvider
 ];
 
