@@ -1,0 +1,7 @@
+@import "../sdk/styles/sdk_elevation";
+
+.header-wrapper {
+    height: 56px;
+    background: black;
+    @include elevation(6);
+}

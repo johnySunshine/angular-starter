@@ -32,6 +32,7 @@ import { HomeModule } from './home/home.module';
 import { SessionService, Platform } from './sdk';
 import { requestOptionsProvider } from './app.request';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderModule } from './header';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -60,6 +61,7 @@ export function createTranslateLoader(http: Http) {
      */
     imports: [
         HttpModule,
+        HeaderModule,
         HomeModule,
         BrowserModule,
         BrowserAnimationsModule,
