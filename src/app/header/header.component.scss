@@ -1,7 +1,70 @@
 @import "../sdk/styles/sdk_elevation";
+@import "../sdk/styles/sdk_color";
+@import "../sdk/styles/sdk_fonts";
+@import "../sdk/styles/sdk_varibles";
+
+$app-header-height: 56px;
+@mixin header {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 429px;
+    text-align: center;
+    height: 100%;
+    line-height: 60px;
+    float: left;
+}
 
 .header-wrapper {
-    height: 56px;
-    background: black;
+    height: $app-header-height;
+    background: rgba(map_get($GREY, 900), 0.8);
     @include elevation(6);
+    .logo-wrapper {
+        float: left;
+        position: relative;
+        top: 10px;
+        left: 128px;
+        cursor: pointer;
+        display: none;
+    }
+    .menus-wrapper {
+        width: 1360px;
+        height: 100%;
+        margin: 0 auto;
+        .menu-title {
+            @include header();
+            .menu-title-normal {
+                text-align: center;
+                height: 100%;
+                .menus-list {
+                    height: 100%;
+                    .menus-item {
+                        display: inline-block;
+                        width: 100px;
+                        height: $app-header-height;
+                        a {
+                            display: inline-block;
+                            @extend .mat-title;
+                            @include animation(color, $standard_curve, $normal_duration);
+                            color: map_get($GREY, 500);
+                            margin: 0;
+                            &:hover {
+                                color: map_get($GREY, 400);
+                            }
+                            &.active {
+                                font-weight: 700;
+                                color: map_get($GREY, 300);
+                            }
+                        }
+                    }
+                }
+            }
+            .menu-title-detail {
+                margin: 0;
+                @extend .mat-title;
+                color: map_get($GREY, 300);
+                line-height: $app-header-height;
+            }
+        }
+    }
 }

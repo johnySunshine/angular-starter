@@ -24,12 +24,12 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
+import { AppState } from './app.service';
 import { NoContentComponent } from './no-content';
 
 import '../styles/styles.scss';
 import { HomeModule } from './home/home.module';
-import { SessionService, Platform } from './sdk';
+import { SessionService, Platform, EPGService } from './sdk';
 import { requestOptionsProvider } from './app.request';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header';
@@ -40,6 +40,7 @@ const APP_PROVIDERS = [
     AppState,
     SessionService,
     Platform,
+    EPGService,
     requestOptionsProvider
 ];
 
@@ -65,7 +66,10 @@ export function createTranslateLoader(http: Http) {
         HomeModule,
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
+        RouterModule.forRoot(ROUTES, {
+            useHash: true,
+            preloadingStrategy: PreloadAllModules
+        }),
         // 配置语言包
         TranslateModule.forRoot({
             provide: TranslateLoader,

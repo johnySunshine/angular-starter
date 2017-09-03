@@ -28,3 +28,11 @@ $acceleration_curve: cubic-bezier(0.4, 0.0, 1, 1);
 尖锐曲线
  */
 $sharp_curve: cubic-bezier(0.4, 0.0, 0.6, 1);
+
+$normal_duration: 225ms;
+@mixin animation($selector,$curve,$durations) {
+    transition: $selector $curve $durations;
+    -moz-transition: $selector $curve $durations;
+    -webkit-transition: $selector $curve $durations;
+    -o-transition: $selector $curve $durations;
+}

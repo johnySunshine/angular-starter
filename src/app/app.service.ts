@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { SessionService, Platform } from './sdk';
-
-export type InternalStateType = {
-    [key: string]: any
-};
+import { SessionService, Platform, EPGService } from './sdk';
 
 @Injectable()
 export class AppState {
+
+    constructor(private sessionService: SessionService,
+                private platformService: Platform,
+                private epgService: EPGService) {
+
+    }
 
     public get session() {
         return this.sessionService;
@@ -16,8 +18,7 @@ export class AppState {
         return this.platformService;
     }
 
-    constructor(private sessionService: SessionService,
-                private platformService: Platform) {
-
+    public get iptv() {
+        return this.epgService;
     }
 }

@@ -2,12 +2,22 @@
     <div class="logo-wrapper">
     </div>
     <div class="menus-wrapper">
-        <div class="menu-title">
-            <div class="menu-title-normal">
+        <div class="menu-title" [ngSwitch]="menuTypes">
+            <div class="menu-title-normal" *ngSwitchCase="1">
                 <ul class="menus-list">
-                    <li class="menus-item"><a href=""></a></li>
+                    <li class="menus-item" *ngFor="let menu of mainMenus">
+                        <a href="" [routerLink]="[menu.menuUrl]" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{exact: true}">{{menu.menuTitle}}</a>
+                    </li>
                 </ul>
             </div>
+            <div class="menu-title-detail" *ngSwitchCase="2">{{menuDetail}}</div>
+            <div class="menu-title-dropDown" *ngSwitchCase="3">menu-title-dropDown</div>
+            <div class="menu-title-search" *ngSwitchCase="4">
+                menu-title-search
+            </div>
+        </div>
+        <div class="header-buttons">
         </div>
     </div>
 </div>

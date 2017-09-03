@@ -1,0 +1,75 @@
+{
+  "result": [
+    {
+      "id": 15,
+      "gmtModified": 1503762019000,
+      "menuTitle": "首页",
+      "menuSubId": 0,
+      "menuVisible": true,
+      "gmtCreate": 1498447171000,
+      "subMenuList": [],
+      "menuUrl": "home",
+      "menuTarget": "home"
+    },
+    {
+      "id": 16,
+      "gmtModified": 1503762057000,
+      "menuTitle": "直播",
+      "menuSubId": 0,
+      "menuVisible": true,
+      "gmtCreate": 1498447171000,
+      "subMenuList": [],
+      "menuUrl": "liveTV",
+      "menuTarget": "liveTV"
+    },
+    {
+      "id": 17,
+      "gmtModified": 1503762112000,
+      "menuTitle": "点播",
+      "menuSubId": 0,
+      "menuVisible": true,
+      "gmtCreate": 1498447171000,
+      "subMenuList": [
+        {
+          "id": 18,
+          "gmtModified": 1503762233000,
+          "menuTitle": "电影",
+          "menuSubId": 17,
+          "menuVisible": false,
+          "gmtCreate": 1498447171000,
+          "subMenuList": null,
+          "menuUrl": "film",
+          "menuTarget": "film"
+        },
+        {
+          "id": 20,
+          "gmtModified": 1503762268000,
+          "menuTitle": "电视剧",
+          "menuSubId": 17,
+          "menuVisible": false,
+          "gmtCreate": 1498447315000,
+          "subMenuList": null,
+          "menuUrl": "serise",
+          "menuTarget": "serise"
+        }
+      ],
+      "menuUrl": "vod",
+      "menuTarget": "vod"
+    },
+    {
+      "id": 21,
+      "gmtModified": 1503762315000,
+      "menuTitle": "新闻",
+      "menuSubId": 0,
+      "menuVisible": true,
+      "gmtCreate": 1503762315000,
+      "subMenuList": [],
+      "menuUrl": "news",
+      "menuTarget": "news"
+    }
+  ],
+  "title": "菜单列表",
+  "retCode": 807011,
+  "status": true,
+  "messages": "菜单查询成功"
+}
