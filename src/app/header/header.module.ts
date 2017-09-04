@@ -3,6 +3,7 @@ import { HeaderComponent } from './header.component';
 import { ShareModule } from '../share';
 import { RouterModule } from '@angular/router';
 import { HeaderService } from './header.service';
+import { HeaderMoreComponent } from './header-more';
 
 @NgModule({
     imports: [
@@ -10,7 +11,8 @@ import { HeaderService } from './header.service';
         RouterModule
     ],
     declarations: [
-        HeaderComponent
+        HeaderComponent,
+        HeaderMoreComponent
     ],
     exports: [
         HeaderComponent

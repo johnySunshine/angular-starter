@@ -16,7 +16,7 @@ import { HomeComponent } from './home.component';
                 // }
             },
             {
-                path: 'HOME',
+                path: 'home',
                 component: HomeComponent,
                 // resolve: {
                 //     comeSoon: ComeSoonResolver,

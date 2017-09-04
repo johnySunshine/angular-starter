@@ -22,7 +22,7 @@ import { AppState } from './app.service';
             z-index: 999;
             top: 0;
             width: 100%;
-            height: 60px;
+            height: 56px;
         }
 
         main {

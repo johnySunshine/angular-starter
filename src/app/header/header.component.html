@@ -14,7 +14,8 @@
             <div class="menu-title-detail" *ngSwitchCase="2">{{menuDetail}}</div>
             <div class="menu-title-dropDown" *ngSwitchCase="3">menu-title-dropDown</div>
             <div class="menu-title-search" *ngSwitchCase="4">
-                menu-title-search
+                <div class="header-title">{{menuDetail}}</div>
+                <div class="header-counter">( {{counts}} )</div>
             </div>
         </div>
         <div class="header-buttons">

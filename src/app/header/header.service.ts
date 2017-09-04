@@ -7,7 +7,7 @@ export class HeaderService {
     }
 
     public getMenus() {
-        return this.appService.iptv.getMenus()
+        return this.appService.IPTV.getMenus()
             .map((results) => results.result);
     }
 }

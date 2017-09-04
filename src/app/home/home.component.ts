@@ -4,6 +4,8 @@ import {
 } from '@angular/core';
 
 import { AppState } from '../app.service';
+import { MenusStatus } from '../header/model/menusStatus';
+import { MenuTypes } from '../header/model/menus.enum';
 
 @Component({
     /**
@@ -41,6 +43,11 @@ export class HomeComponent implements OnInit {
     }
 
     public ngOnInit() {
+        let menusStatus: MenusStatus = {
+            status: MenuTypes.normal,
+            menuData: '1'
+        };
+        this.appState.triggerEvent(menusStatus);
         console.log('hello `Home` component');
         /**
          * this.title.getData().subscribe(data => this.data = data);
