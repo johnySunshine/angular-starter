@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Menu } from '../model/menu';
 
 @Component({
     selector: 'header-more',
@@ -7,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderMoreComponent implements OnInit {
+
+    @Input()
+    public set menuList(menuList: Menu[]) {
+        this._menuList = menuList;
+    }
+
+    private _menuList: Menu[];
+
     constructor() {
     }
 

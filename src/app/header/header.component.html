@@ -6,7 +6,7 @@
             <div class="menu-title-normal" *ngSwitchCase="1">
                 <ul class="menus-list">
                     <li class="menus-item" *ngFor="let menu of mainMenus">
-                        <a href="" [routerLink]="[menu.menuUrl]" routerLinkActive="active"
+                        <a [routerLink]="[menu.menuUrl]" routerLinkActive="active"
                            [routerLinkActiveOptions]="{exact: true}">{{menu.menuTitle}}</a>
                     </li>
                 </ul>
@@ -19,6 +19,7 @@
             </div>
         </div>
         <div class="header-buttons">
+            <header-more [menuList]="mainMenus"></header-more>
         </div>
     </div>
 </div>

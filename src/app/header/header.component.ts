@@ -14,7 +14,7 @@ import { MenusStatus } from './model/menusStatus';
 
 export class HeaderComponent implements OnInit {
 
-    public mainMenus: Menu;
+    public mainMenus: Menu[];
 
     public menuTypes: MenuTypes;
 

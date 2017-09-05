@@ -8,7 +8,9 @@ import { ShareModule } from '../share/share.module';
         ShareModule,
         HomeRoutingModule,
     ],
-    declarations: [HomeComponent],
+    declarations: [
+        HomeComponent,
+    ],
     providers: [],
 })
 export class HomeModule {

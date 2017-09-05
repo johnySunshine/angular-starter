@@ -1,4 +1,8 @@
 <div class="header-more">
     <div class="more-button"></div>
-    <div class="header-menu-list"></div>
+    <div class="header-menu-list">
+        <div class="menu-parent-wrap" *ngFor="let menu of _menuList">
+            <div>{{menu.menuTitle}}</div>
+        </div>
+    </div>
 </div>
