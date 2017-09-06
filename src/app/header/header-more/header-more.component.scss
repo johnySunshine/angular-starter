@@ -1,0 +1,20 @@
+@import "../../sdk/styles/sdk_varibles";
+
+.header-more {
+    position: relative;
+    float: right;
+    right: 48px;
+    .more-button {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        .more-menus-icons {
+            background: url(images-url('navigation', 'ic_menu_white_24dp.png')) no-repeat center;
+            background-size: 100% 100%;
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+        }
+    }
+}

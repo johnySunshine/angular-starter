@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Menu } from '../model/menu';
 
 @Component({
     selector: 'header-more',
     templateUrl: 'header-more.component.html',
-    styleUrls: ['./header-more.component.scss']
+    styleUrls: ['./header-more.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class HeaderMoreComponent implements OnInit {

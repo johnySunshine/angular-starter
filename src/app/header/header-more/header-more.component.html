@@ -1,5 +1,7 @@
 <div class="header-more">
-    <div class="more-button"></div>
+    <div class="more-button" ripple [unbounded]="true" [centered]="true" [speedFactor]="0.8" >
+        <span class="more-menus-icons"></span>
+    </div>
     <div class="header-menu-list">
         <div class="menu-parent-wrap" *ngFor="let menu of _menuList">
             <div>{{menu.menuTitle}}</div>

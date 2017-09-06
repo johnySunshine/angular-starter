@@ -36,3 +36,14 @@ $normal_duration: 225ms;
     -webkit-transition: $selector $curve $durations;
     -o-transition: $selector $curve $durations;
 }
+
+@mixin user-select($value) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@function images-url($file-name,$icon-name) {
+    @return '/assets/img/'+$file-name+'/'+$icon-name;
+}

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, HostListener, Input, NgZone } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, NgZone } from '@angular/core';
 
 const FADE_IN_DURATIONS: number = 400;
 
@@ -27,9 +27,13 @@ export class RippleDirective {
     @Input('unbounded')
     public unbounded: boolean;
 
+    private _isMouseDown: boolean = false;
+
     private _documentRect?: ClientRect;
 
     private _containerElement: HTMLElement;
+
+    private _activeRipples = new Set();
 
     constructor(private elementRef: ElementRef,
                 private ngZone: NgZone) {
@@ -37,8 +41,17 @@ export class RippleDirective {
     }
 
     @HostListener('mousedown', ['$event'])
-    public onMousedown(evt: MouseEvent) {
+    public onMouseDown(evt: MouseEvent) {
+        this._isMouseDown = true;
         this.fadeInRipple(evt.pageX, evt.pageY);
+    }
+
+    @HostListener('mouseup')
+    public onMouseUp() {
+        this._isMouseDown = false;
+        this._activeRipples.forEach((ripple) => {
+            this.fadeOutRipple(ripple);
+        });
     }
 
     private fadeInRipple(pageX: number, pageY: number): void {
@@ -70,6 +83,7 @@ export class RippleDirective {
         this._containerElement.appendChild(ripple);
         this.enforceStyleRecalculation(ripple);
         ripple.style.transform = 'scale(1)';
+        this._activeRipples.add(ripple);
         this.runTimeoutOutsideZone(() => {
             this.fadeOutRipple(ripple);
         }, duration);
@@ -77,6 +91,9 @@ export class RippleDirective {
     }
 
     private fadeOutRipple(rippleRef: HTMLElement): void {
+        if (!this._activeRipples.delete(rippleRef)) {
+            return;
+        }
         let duration = FADE_IN_DURATIONS * (1 / (this.speedFactor || 1));
         rippleRef.style.transitionDuration = `${duration}ms`;
         rippleRef.style.opacity = '0';
