@@ -78,6 +78,8 @@ export class RippleDirective {
 
     private fadeOutRipple(rippleRef: HTMLElement): void {
         let duration = FADE_IN_DURATIONS * (1 / (this.speedFactor || 1));
+        rippleRef.style.transitionDuration = `${duration}ms`;
+        rippleRef.style.opacity = '0';
         this.runTimeoutOutsideZone(() => {
             rippleRef.parentNode!.removeChild(rippleRef);
         }, duration);
