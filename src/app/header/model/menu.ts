@@ -5,4 +5,5 @@ export interface Menu {
     menuTitle: string;
     menuUrl: string;
     menuVisible: boolean;
+    subMenuList: Menu[];
 }

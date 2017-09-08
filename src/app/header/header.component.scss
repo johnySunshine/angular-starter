@@ -40,7 +40,7 @@ $app-header-height: 56px;
                     height: 100%;
                     .menus-item {
                         display: inline-block;
-                        width: 100px;
+                        width: calc(100% / 4);
                         height: $app-header-height;
                         a {
                             display: inline-block;
@@ -72,8 +72,34 @@ $app-header-height: 56px;
 
             }
         }
+        .menu-subtitle {
+            @include header();
+            @extend .mat-h2;
+        }
         .header-buttons {
-
+            float: right;
+            height: 30px;
+            position: relative;
+            top: 15px;
+            .header-more-btn {
+                .btn-icon {
+                    display: inline-block;
+                    cursor: pointer;
+                    width: 30px;
+                    height: 30px;
+                    background: url(images-url('navigation', 'ic_menu_white_24dp.png')) no-repeat center;
+                    background-size: 100% 100%;
+                    @include animation(all, $standard_curve, $normal_duration);
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .btn-rotateY {
+                    @include transform(rotate(180deg));
+                    background: url(images-url('navigation', 'ic_close_white_24dp.png')) no-repeat center;
+                    background-size: 100% 100%;
+                }
+            }
         }
     }
 }

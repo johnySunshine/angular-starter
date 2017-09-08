@@ -1,5 +1,5 @@
 import {
-    Component, ElementRef, Input,
+    Component, ElementRef, HostBinding, Input,
     OnInit, ViewEncapsulation
 } from '@angular/core';
 
@@ -22,6 +22,8 @@ export class ButtonComponent implements OnInit {
     @Input()
     public isIconButton: boolean;
 
+    @HostBinding('class.button-ripple-round')
+    public roundButton: boolean;
     private ele: HTMLElement;
 
     constructor(private elementRef: ElementRef) {
@@ -29,8 +31,7 @@ export class ButtonComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        let spanEl = this.ele.children[0];
-        spanEl.classList.add('button-ripple-round');
+        this.roundButton = this.isIconButton;
     }
 
     private _iconButtonFunc(): void {

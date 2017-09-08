@@ -2,7 +2,7 @@
     <div class="logo-wrapper">
     </div>
     <div class="menus-wrapper">
-        <div class="menu-title" [ngSwitch]="menuTypes">
+        <div class="menu-title" [ngSwitch]="menuTypes" *ngIf="!isRotate">
             <div class="menu-title-normal" *ngSwitchCase="1">
                 <ul class="menus-list">
                     <li class="menus-item" *ngFor="let menu of mainMenus">
@@ -18,8 +18,14 @@
                 <div class="header-counter">( {{counts}} )</div>
             </div>
         </div>
+        <div class="menu-subtitle" *ngIf="isRotate" [@fadeMenu]="isRotate">{{appLogoTitle}}</div>
         <div class="header-buttons">
-            <header-more [menuList]="mainMenus"></header-more>
+            <div class="header-more-btn">
+                <i class="btn-icon" ripple [unbounded]="true" [centered]="true" [speedFactor]="0.5"
+                   [class.btn-rotateY]="isRotate"
+                   (click)="menuShowMore()"></i>
+            </div>
         </div>
+        <header-more [menuList]="mainMenus" *ngIf="isRotate" (isSubTitleEmitter)="subMoreTrigger($event)"></header-more>
     </div>
 </div>

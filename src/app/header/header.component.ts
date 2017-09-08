@@ -4,12 +4,15 @@ import { Menu } from './model/menu';
 import { MenuTypes } from './model/menus.enum';
 import { AppState } from '../app.service';
 import { MenusStatus } from './model/menusStatus';
+import { AppConfig } from '../sdk';
+import { fadeInSubMenu } from './header.animation';
 
 @Component({
     selector: 'app-header',
     templateUrl: 'header.component.html',
     styleUrls: ['./header.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    animations: [fadeInSubMenu]
 })
 
 export class HeaderComponent implements OnInit {
@@ -22,6 +25,10 @@ export class HeaderComponent implements OnInit {
 
     public counts: number;
 
+    public isRotate: boolean;
+
+    public appLogoTitle: string = AppConfig.logoTitle;
+
     constructor(private headerService: HeaderService, private appService: AppState) {
         this.menuTypes = MenuTypes.normal;
     }
@@ -31,7 +38,16 @@ export class HeaderComponent implements OnInit {
             this.mainMenus = menus;
         });
         this.menuDetail = '1';
+        this.isRotate = false;
         this.onChangeEvent();
+    }
+
+    public menuShowMore(): void {
+        this.isRotate = !this.isRotate;
+    }
+
+    public subMoreTrigger(event: boolean): void {
+        this.isRotate = event;
     }
 
     public onChangeEvent(): void {

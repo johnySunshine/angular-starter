@@ -1,10 +1,16 @@
 <div class="header-more">
-    <div class="more-button" ripple [unbounded]="true" [centered]="true" [speedFactor]="0.8" >
-        <span class="more-menus-icons"></span>
-    </div>
     <div class="header-menu-list">
-        <div class="menu-parent-wrap" *ngFor="let menu of _menuList">
-            <div>{{menu.menuTitle}}</div>
-        </div>
+        <ul class="menu-parent-wrap">
+            <li class="menu-main" *ngFor="let menu of _menuList">
+                <span class="main-title mat-title" ripple
+                      (click)="jumpAddress(menu.menuUrl)">{{menu.menuTitle}}</span>
+                <ul class="menu-sub">
+                    <li *ngFor="let subMenu of menu.subMenuList" class="submenu-title">
+                        <span class="sub-title mat-subheading-1" ripple (click)="jumpAddress(subMenu.menuUrl)">{{subMenu.menuTitle}}</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
+    <div class="header-more-curtain" (click)="showMore()"></div>
 </div>

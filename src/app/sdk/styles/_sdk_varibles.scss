@@ -30,6 +30,7 @@ $acceleration_curve: cubic-bezier(0.4, 0.0, 1, 1);
 $sharp_curve: cubic-bezier(0.4, 0.0, 0.6, 1);
 
 $normal_duration: 225ms;
+
 @mixin animation($selector,$curve,$durations) {
     transition: $selector $curve $durations;
     -moz-transition: $selector $curve $durations;
@@ -42,6 +43,14 @@ $normal_duration: 225ms;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+@mixin transform($value) {
+    -webkit-transform: $value;
+    -moz-transform: $value;
+    -o-transform: $value;
+    -ms-transform: $value;
+    transform: $value;
 }
 
 @function images-url($file-name,$icon-name) {

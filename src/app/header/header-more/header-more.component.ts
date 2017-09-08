@@ -1,5 +1,9 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    Component, EventEmitter,
+    HostBinding, Input, OnInit, Output, ViewEncapsulation
+} from '@angular/core';
 import { Menu } from '../model/menu';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'header-more',
@@ -8,18 +12,39 @@ import { Menu } from '../model/menu';
     encapsulation: ViewEncapsulation.None
 })
 
-export class HeaderMoreComponent implements OnInit {
+export class HeaderMoreComponent {
+    @HostBinding('style.display')
+    public elDisplay: string = 'block';
 
     @Input()
     public set menuList(menuList: Menu[]) {
         this._menuList = menuList;
     }
 
+    @Output()
+    public isSubTitleEmitter = new EventEmitter();
+
+    public subMenuStatus: boolean;
+
     private _menuList: Menu[];
 
-    constructor() {
+    constructor(private router: Router) {
+        this.subMenuStatus = false;
     }
 
-    public ngOnInit() {
+    public showMore(): void {
+        this.closeSubMenu();
+        this.isSubTitleEmitter.emit(this.subMenuStatus);
+    }
+
+    public jumpAddress(menuUrl: string): void {
+        this.router.navigate(['./' + menuUrl]);
+        this.closeSubMenu();
+        this.isSubTitleEmitter.emit(this.subMenuStatus);
+
+    }
+
+    private closeSubMenu(): void {
+        this.subMenuStatus = false;
     }
 }
