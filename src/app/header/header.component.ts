@@ -5,14 +5,14 @@ import { MenuTypes } from './model/menus.enum';
 import { AppState } from '../app.service';
 import { MenusStatus } from './model/menusStatus';
 import { AppConfig } from '../sdk';
-import { fadeInSubMenu } from './header.animation';
+import { fadeInSubMenu, slideSubMenu } from './header.animation';
 
 @Component({
     selector: 'app-header',
     templateUrl: 'header.component.html',
     styleUrls: ['./header.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    animations: [fadeInSubMenu]
+    animations: [fadeInSubMenu, slideSubMenu]
 })
 
 export class HeaderComponent implements OnInit {

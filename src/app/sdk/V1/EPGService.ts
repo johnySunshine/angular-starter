@@ -1,29 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Options } from './options';
+import { UrlDev, urlOptions } from './requestUrl';
 
 @Injectable()
 export class EPGService {
+    public isDev: boolean = true;
 
     constructor(private http: Http) {
     }
 
-    public catchError(error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
+    public sendRequest(requestName: string, options: Options) {
+        let reqURL = this.isDev ? UrlDev[requestName] : urlOptions[requestName];
+        if (options.Method === RequestMethod.Get) {
+            let reqUrl = reqURL + `/${options.Data}`;
+            if (!options.Data) {
+                reqUrl = reqURL;
+            }
+            return this.http.get(reqUrl).map((resp) => resp.json());
         }
-        console.error(errMsg);
-        return Observable.throw(errMsg);
+        if (options.Method === RequestMethod.Post) {
+            return this.http.post(reqURL, options.Data).map((resp) => resp.json());
+        }
     }
 
     public getMenus(): Observable<any> {
-        return this.http.get(`assets/mock-data/menusList.json`)
-            .map((resp) => resp.json());
+        const options: Options = {
+            Method: RequestMethod.Get
+        };
+        return this.sendRequest('MenuList', options);
+
     }
 
 }

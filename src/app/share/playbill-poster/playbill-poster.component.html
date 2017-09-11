@@ -1,0 +1,16 @@
+<div class="playbill-poster-container">
+    <div class="playbill-poster-images" (click)="detailMore(poster.id)" [ngStyle]="poster">
+        <div class="poster-default"></div>
+        <img src="" alt="" [attr.alt]="poster.posterTitle" [attr.src]="poster.posterUrl" class="poster-images">
+        <div class="poster-mask">
+            <div class="poster-genres mat-title" *ngIf="!!posterMask.genres">{{posterMask.genres}}</div>
+            <div class="poster-title mat-display-3" *ngIf="!!posterMask.title">{{posterMask.title}}</div>
+            <div class="poster-duration mat-h2" *ngIf="!!posterMask.duration">{{posterMask.duration}}</div>
+            <div class="poster-rating mat-h3" *ngIf="!!posterMask.rating">{{posterMask.rating}}</div>
+        </div>
+    </div>
+    <div class="text-container" *ngIf="isPosterTextContainer">
+        <div class="poster-title">{{poster.posterTitle}}</div>
+        <div class="poster-subtitle">{{poster.posterSubtitle}}</div>
+    </div>
+</div>

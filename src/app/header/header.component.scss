@@ -47,7 +47,8 @@ $app-header-height: 56px;
                             @extend .mat-title;
                             @include animation(color, $standard_curve, $normal_duration);
                             color: map_get($GREY, 500);
-                            margin: 0;
+                            margin: 12px 0 0 0;
+                            width: 100%;
                             &:hover {
                                 color: map_get($GREY, 400);
                             }

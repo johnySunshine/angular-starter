@@ -85,7 +85,9 @@ export class RippleDirective {
         ripple.style.transform = 'scale(1)';
         this._activeRipples.add(ripple);
         this.runTimeoutOutsideZone(() => {
-            this.fadeOutRipple(ripple);
+            if (!this._isMouseDown) {
+                this.fadeOutRipple(ripple);
+            }
         }, duration);
 
     }
@@ -95,10 +97,12 @@ export class RippleDirective {
             return;
         }
         let duration = FADE_IN_DURATIONS * (1 / (this.speedFactor || 1));
+
         rippleRef.style.transitionDuration = `${duration}ms`;
         rippleRef.style.opacity = '0';
+
         this.runTimeoutOutsideZone(() => {
-            rippleRef.parentNode!.removeChild(rippleRef);
+            rippleRef.parentNode.removeChild(rippleRef);
         }, duration);
     }
 

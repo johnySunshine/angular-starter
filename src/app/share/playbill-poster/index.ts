@@ -1,0 +1,1 @@
+export * from './playbill-poster.component';

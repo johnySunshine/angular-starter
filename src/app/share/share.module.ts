@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
 import { ButtonComponent } from './buttons/button.component';
 import { RippleDirective } from './ripple/ripple.directive';
+import { PlaybillPosterComponent } from './playbill-poster';
 
 @NgModule({
     imports: [
@@ -14,11 +15,13 @@ import { RippleDirective } from './ripple/ripple.directive';
         FormsModule,
         TranslateModule,
         ButtonComponent,
-        RippleDirective
+        RippleDirective,
+        PlaybillPosterComponent
     ],
     declarations: [
         ButtonComponent,
-        RippleDirective
+        RippleDirective,
+        PlaybillPosterComponent
     ]
 })
 export class ShareModule {

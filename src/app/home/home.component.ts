@@ -6,6 +6,7 @@ import {
 import { AppState } from '../app.service';
 import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
+import { Poster, PosterMask } from '../share/playbill-poster/model/poster';
 
 @Component({
     /**
@@ -32,6 +33,23 @@ export class HomeComponent implements OnInit {
      */
     public localState = {value: ''};
 
+    public poster: Poster = {
+        id: '1234',
+        posterUrl: 'http://img5.mtime.cn/mt/2017/07/13/103549.65637900_1280X720X2.jpg',
+        posterTitle: '敦刻尔克',
+        posterSubtitle: 'Dunkirk',
+        height: '662px',
+        width: '477px'
+
+    };
+    public posterMask: PosterMask = {
+        rating: 8.3,
+        genres: '剧情 / 战争',
+        duration: '20min',
+        // title: this.poster.posterTitle
+
+    };
+
     /**
      * TypeScript public modifiers
      */
@@ -39,7 +57,6 @@ export class HomeComponent implements OnInit {
         this.appState.session.put('demo', {
             name: 1
         });
-        console.log(this.appState.platform.BLINK);
     }
 
     public ngOnInit() {
@@ -48,14 +65,12 @@ export class HomeComponent implements OnInit {
             menuData: '1'
         };
         this.appState.triggerEvent(menusStatus);
-        console.log('hello `Home` component');
         /**
          * this.title.getData().subscribe(data => this.data = data);
          */
     }
 
     public submitState(value: string) {
-        console.log('submitState', value);
         this.localState.value = '';
     }
 }
