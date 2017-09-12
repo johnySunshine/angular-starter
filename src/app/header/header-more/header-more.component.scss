@@ -32,7 +32,7 @@
                     border-bottom: 1px solid rgba(map_get($GREY, 400), 1);
                     display: inline-block;
                     width: 90%;
-                    @include animation(background, $standard_curve, $normal_duration);
+                    @include animation(background, $standard_curve, $ENTERING);
                     &:hover {
                         background: rgba(map_get($GREY, 50), 0.1);
                     }
@@ -45,7 +45,7 @@
                         display: inline-block;
                         width: 100%;
                         margin: 0;
-                        @include animation(background, $standard_curve, $normal_duration);
+                        @include animation(background, $standard_curve, $ENTERING);
                         &:hover {
                             background: rgba(map_get($GREY, 50), 0.1);
                         }

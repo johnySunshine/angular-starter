@@ -31,6 +31,10 @@ $sharp_curve: cubic-bezier(0.4, 0.0, 0.6, 1);
 
 $normal_duration: 225ms;
 
+$COMPLEX: 375ms;
+$ENTERING: 225ms;
+$EXITING: 195ms;
+
 @mixin animation($selector,$curve,$durations) {
     transition: $selector $curve $durations;
     -moz-transition: $selector $curve $durations;
@@ -56,3 +60,4 @@ $normal_duration: 225ms;
 @function images-url($file-name,$icon-name) {
     @return '/assets/img/'+$file-name+'/'+$icon-name;
 }
+

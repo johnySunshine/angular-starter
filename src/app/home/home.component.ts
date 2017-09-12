@@ -35,17 +35,17 @@ export class HomeComponent implements OnInit {
 
     public poster: Poster = {
         id: '1234',
-        posterUrl: 'http://img5.mtime.cn/mt/2017/07/13/103549.65637900_1280X720X2.jpg',
-        posterTitle: '敦刻尔克',
-        posterSubtitle: 'Dunkirk',
-        height: '662px',
-        width: '477px'
+        posterUrl: 'https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2498371582.jpg',
+        posterTitle: '猩球崛起3：终极之战',
+        posterSubtitle: '劇場版 ソードアート・オンライン -オーディナル・スケール',
+        height: '277.9px',
+        width: '198.5px'
 
     };
     public posterMask: PosterMask = {
         rating: 8.3,
-        genres: '剧情 / 战争',
-        duration: '20min',
+        // genres: '剧情 / 战争',
+        // duration: '20min',
         // title: this.poster.posterTitle
 
     };

@@ -3,12 +3,12 @@ export interface Poster {
     height: string;
     id: string;
     posterUrl: string;
-    posterTitle: string;
-    posterSubtitle: string;
+    posterTitle?: string;
+    posterSubtitle?: string;
 }
 
 export interface PosterMask {
-    rating: number;
+    rating?: number;
     genres?: string;
     duration?: string;
     title?: string;
