@@ -53,6 +53,7 @@
                 bottom: 0;
                 @include calc;
                 padding-right: 16px;
+                margin: 0 0 9px;
             }
             .poster-title {
                 position: absolute;
@@ -61,6 +62,8 @@
                 bottom: 0;
                 padding-left: 16px;
                 @include calc;
+                white-space: nowrap;
+                -webkit-mask-image: -webkit-gradient(linear, 80% 100%, right 80%, from(map_get($GREY, 900)), to(transparent));
             }
             .poster-genres {
                 position: absolute;
@@ -83,6 +86,7 @@
                 bottom: 0;
                 @include calc;
                 padding-left: 16px;
+                margin: 0 0 9px;
             }
         }
     }

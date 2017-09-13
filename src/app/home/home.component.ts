@@ -7,6 +7,7 @@ import { AppState } from '../app.service';
 import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
 import { Poster, PosterMask } from '../share/playbill-poster/model/poster';
+import { SlideHeader } from "../share/slide-list/model/slide";
 
 @Component({
     /**
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
     public posterMask: PosterMask = {
         rating: 8.3,
         // genres: '剧情 / 战争',
-        // duration: '20min',
+        duration: '20min',
         // title: this.poster.posterTitle
 
     };

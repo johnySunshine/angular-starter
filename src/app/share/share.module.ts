@@ -5,6 +5,7 @@ import { TranslateModule } from 'ng2-translate';
 import { ButtonComponent } from './buttons/button.component';
 import { RippleDirective } from './ripple/ripple.directive';
 import { PlaybillPosterComponent } from './playbill-poster';
+import { SlideListModule } from './slide-list';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { PlaybillPosterComponent } from './playbill-poster';
         TranslateModule,
         ButtonComponent,
         RippleDirective,
-        PlaybillPosterComponent
+        PlaybillPosterComponent,
+        SlideListModule
     ],
     declarations: [
         ButtonComponent,
