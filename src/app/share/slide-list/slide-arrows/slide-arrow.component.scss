@@ -1,0 +1,36 @@
+@import "../../../sdk/styles/sdk_varibles";
+
+@mixin normal-arrows {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: .6;
+    border-radius:50% ;
+    @include animation(opacity, $standard_curve, $ENTERING);
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.slide-arrow-container {
+    width: 100%;
+    position: relative;
+    clear: both;
+    opacity: 0;
+    @include animation(opacity, $sharp_curve, $EXITING);
+    .arrow-left {
+        background: url(images-url('navigation', 'ic_chevron_left_white_48dp.png')) no-repeat center;
+        background-size: 100% 100%;
+        @include normal-arrows;
+        left: -40px;
+    }
+    .arrow-right {
+        background: url(images-url('navigation', 'ic_chevron_right_white_48dp.png')) no-repeat center;
+        background-size: 100% 100%;
+        @include normal-arrows;
+        right: -40px;
+        float: right;
+    }
+}

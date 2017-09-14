@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { SlideHeader } from '../model/slide';
 
 @Component({
@@ -6,8 +6,8 @@ import { SlideHeader } from '../model/slide';
     template: `
     <div class="slide-header-container">
         <div class="slide-content" (click)="clickShowMore(slideHeader.title)">
-            <div class="slide-header-title">{{slideHeader.title}}</div>
-            <div class="slide-header-more"></div>
+            <div class="slide-header-title mat-title">{{slideHeader.title}}</div>
+            <i class="slide-header-more"></i>
         </div>
     </div>
     `,

@@ -1,10 +1,11 @@
 export interface Poster {
-    width: string;
-    height: string;
     id: string;
     posterUrl: string;
+    width?: string;
+    height?: string;
     posterTitle?: string;
     posterSubtitle?: string;
+    posterMask?: PosterMask;
 }
 
 export interface PosterMask {

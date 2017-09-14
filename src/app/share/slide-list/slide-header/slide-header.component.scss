@@ -1,3 +1,28 @@
-.slide-header-container{
+@import "../../../sdk/styles/sdk_color";
+@import "../../../sdk/styles/sdk_fonts";
+@import "../../../sdk/styles/sdk_varibles";
+
+.slide-header-container {
     width: 100%;
+    .slide-content {
+        cursor: pointer;
+        display: inline-block;
+        @include animation(opacity, $standard_curve, $ENTERING);
+        &:hover {
+            opacity: .7;
+        }
+        .slide-header-title {
+            color: map_get($GREY, 300);
+            float: left;
+            margin: 0 0 9px;
+        }
+        .slide-header-more {
+            background: url(images-url('navigation', 'ic_chevron_right_grey600_48dp.png')) no-repeat center;
+            background-size: 100% 100%;
+            float: left;
+            margin: 0 0 9px;
+            width: 32px;
+            height: 32px;
+        }
+    }
 }

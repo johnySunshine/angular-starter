@@ -8,8 +8,7 @@ import { Poster, PosterMask } from './model/poster';
 @Component({
     selector: 'playbill-poster',
     templateUrl: './playbill-poster.component.html',
-    styleUrls: ['./playbill-poster.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    styleUrls: ['./playbill-poster.component.scss']
 })
 
 export class PlaybillPosterComponent implements OnInit, AfterViewInit {

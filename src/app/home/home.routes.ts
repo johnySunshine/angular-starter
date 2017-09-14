@@ -6,14 +6,11 @@ import { HomeComponent } from './home.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
+            // 首页重定向路由，去除原先空路由机制
             {
                 path: '',
-                component: HomeComponent,
-                // resolve: {
-                //     comeSoon: ComeSoonResolver,
-                //     filmShowTime: FilmShowTimeResolver,
-                //     theaterMovie: InTheaterMovieResolver
-                // }
+                redirectTo: '/home',
+                pathMatch: 'full'
             },
             {
                 path: 'home',

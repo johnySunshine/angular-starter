@@ -9,21 +9,18 @@ import { SlideListModule } from './slide-list';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        SlideListModule
     ],
     exports: [
         CommonModule,
         FormsModule,
         TranslateModule,
         ButtonComponent,
-        RippleDirective,
-        PlaybillPosterComponent,
         SlideListModule
     ],
     declarations: [
         ButtonComponent,
-        RippleDirective,
-        PlaybillPosterComponent
     ]
 })
 export class ShareModule {

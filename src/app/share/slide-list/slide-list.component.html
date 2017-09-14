@@ -1,3 +1,12 @@
 <div class="slide-list-container">
-    <slide-header [slideHeader]="slideHeader"></slide-header>
+    <slide-header [slideHeader]="showSlide.slideHeader"></slide-header>
+    <div class="slide-view">
+        <ul class="slides" [style.width.px]="slidesWidth">
+            <li class="slide-item" *ngFor="let playbillPoster of showSlide.playbillPosters">
+                <playbill-poster [posterMask]="playbillPoster.posterMask" [poster]="playbillPoster"
+                                 [adaptiveImages]="adaptiveImages" (posterClick)="showDetail($event)"></playbill-poster>
+            </li>
+        </ul>
+    </div>
+    <slide-arrows (movePoster)="moveIndex($event)"></slide-arrows>
 </div>

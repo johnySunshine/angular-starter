@@ -1,0 +1,27 @@
+@import "../../sdk/styles/sdk_varibles";
+
+.slide-list-container {
+    width: 100%;
+    margin-bottom: 44px;
+    position: relative;
+    &:hover {
+        .slide-arrow-container {
+            @include animation(opacity, $deceleration_curve, $ENTERING);
+            opacity: 1;
+        }
+    }
+
+    .slide-view {
+        overflow: hidden;
+        .slides {
+            .slide-item {
+                float: left;
+                margin-right: 15px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+}
