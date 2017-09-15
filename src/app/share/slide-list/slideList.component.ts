@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Slide, SlideHeader, SlideTypes } from './model/slide';
 import { SlideListService } from './slide-list.service';
 import * as _ from 'lodash';
 import { Poster } from '../playbill-poster/model/poster';
+import { SlideArrowsComponent } from './slide-arrows/slide-arrows.component';
 
 @Component({
     selector: 'slide-list',
@@ -24,6 +25,9 @@ export class SlideListComponent implements OnInit {
     public slidesWidth: number;
 
     public posterList: Poster[] = [];
+
+    @ViewChild(SlideArrowsComponent)
+    public slideArrows: SlideArrowsComponent;
 
     constructor(private slideService: SlideListService) {
 
@@ -52,7 +56,9 @@ export class SlideListComponent implements OnInit {
         });
         this.adaptiveImages = this.slideService.isAdaptiveImages();
         this.slidesWidth = this.slideService.slideViewWidth();
+        this.slideArrows.elTop = `${this.slideService.arrowsTop()}px`;
     }
+
 
     public moveIndex(moveIndex: number): void {
         console.log(moveIndex);

@@ -31,7 +31,6 @@ export class SlideArrowsComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.elTop = `${this.slideService.arrowsTop()}px`;
         console.log(this.elTop);
     }
 
