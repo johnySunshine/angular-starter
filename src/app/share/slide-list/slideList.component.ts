@@ -23,6 +23,8 @@ export class SlideListComponent implements OnInit {
 
     public slidesWidth: number;
 
+    public posterList: Poster[] = [];
+
     constructor(private slideService: SlideListService) {
 
     }
@@ -33,9 +35,20 @@ export class SlideListComponent implements OnInit {
             slideCount: posterCount,
             slideTypes: this.types
         };
-        _.each(this.showSlide.playbillPosters, (poster: Poster) => {
-            poster.width = `${this.slideService.calcEveryPosterWidth()}px`;
-            poster.height = `${this.slideService.calcEvertPosterHeight()}px`;
+
+        this.posterList = _.map(this.showSlide.playbillPosters, (poster: Poster) => {
+            let slidePoster: Poster = {
+                id: poster.id,
+                posterUrl: poster.posterUrl,
+                width: `${this.slideService.calcEveryPosterWidth()}px`,
+                height: `${this.slideService.calcEvertPosterHeight()}px`,
+                posterTitle: poster.posterTitle,
+                posterSubtitle: poster.posterSubtitle,
+                posterMask: {
+                    rating: poster.posterMask.rating
+                }
+            };
+            return slidePoster;
         });
         this.adaptiveImages = this.slideService.isAdaptiveImages();
         this.slidesWidth = this.slideService.slideViewWidth();

@@ -2,7 +2,7 @@
     <slide-header [slideHeader]="showSlide.slideHeader"></slide-header>
     <div class="slide-view">
         <ul class="slides" [style.width.px]="slidesWidth">
-            <li class="slide-item" *ngFor="let playbillPoster of showSlide.playbillPosters">
+            <li class="slide-item" *ngFor="let playbillPoster of posterList">
                 <playbill-poster [posterMask]="playbillPoster.posterMask" [poster]="playbillPoster"
                                  [adaptiveImages]="adaptiveImages" (posterClick)="showDetail($event)"></playbill-poster>
             </li>

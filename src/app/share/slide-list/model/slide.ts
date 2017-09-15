@@ -5,7 +5,7 @@ export interface SlideHeader {
 }
 
 export interface Slide {
-    slideHeader: SlideHeader;
+    slideHeader?: SlideHeader;
     playbillPosters?: Poster[];
 }
 
