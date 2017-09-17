@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
+import { ComeSoonResolver } from './home.resolver';
 
 @NgModule({
     imports: [
@@ -15,11 +16,11 @@ import { HomeComponent } from './home.component';
             {
                 path: 'home',
                 component: HomeComponent,
-                // resolve: {
-                //     comeSoon: ComeSoonResolver,
+                resolve: {
+                comeSoon: ComeSoonResolver,
                 //     filmShowTime: FilmShowTimeResolver,
                 //     theaterMovie: InTheaterMovieResolver
-                // }
+                }
             }
         ])],
     exports: [

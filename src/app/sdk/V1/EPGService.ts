@@ -14,9 +14,9 @@ export class EPGService {
     public sendRequest(requestName: string, options: Options) {
         let reqURL = this.isDev ? UrlDev[requestName] : urlOptions[requestName];
         if (options.Method === RequestMethod.Get) {
-            let reqUrl = reqURL + `/${options.Data}`;
-            if (!options.Data) {
-                reqUrl = reqURL;
+            let reqUrl = reqURL;
+            if (!this.isDev && options.Data) {
+                reqUrl = reqURL + `/${options.Data}`;
             }
             return this.http.get(reqUrl).map((resp) => resp.json());
         }
@@ -31,6 +31,13 @@ export class EPGService {
         };
         return this.sendRequest('MenuList', options);
 
+    }
+
+    public getComeSoon() {
+        const options: Options = {
+            Method: RequestMethod.Get
+        };
+        return this.sendRequest('ComeSoon', options);
     }
 
 }

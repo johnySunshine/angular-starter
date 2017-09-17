@@ -6,7 +6,7 @@
     position: relative;
     &:hover {
         .slide-arrow-container {
-            @include animation(opacity, $deceleration_curve, $ENTERING);
+            @include animation(opacity, $standard_curve, $ENTERING);
             opacity: 1;
         }
     }
@@ -14,6 +14,8 @@
     .slide-view {
         overflow: hidden;
         .slides {
+            position: relative;
+            @include animation(left, $standard_curve, $ENTERING);
             .slide-item {
                 float: left;
                 margin-right: 15px;

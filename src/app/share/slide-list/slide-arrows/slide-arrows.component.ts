@@ -5,8 +5,10 @@ import { SlideListService } from '../slide-list.service';
     selector: 'slide-arrows',
     template: `
         <div class="slide-arrow-container">
-            <i class="arrow-left" ripple [centered]="true" [speedFactor]="0.5" (click)="move(-1)"></i>
-            <i class="arrow-right" ripple [centered]="true" [speedFactor]="0.5" (click)="move(1)"></i>
+            <i class="arrow-left" ripple [centered]="true" [speedFactor]="0.5" (click)="move(-1)"
+               *ngIf="isShowLeft"></i>
+            <i class="arrow-right" ripple [centered]="true" [speedFactor]="0.5" (click)="move(1)"
+               *ngIf="isShowRight"></i>
         </div>
 
     `,
@@ -27,11 +29,11 @@ export class SlideArrowsComponent implements OnInit {
     @Output()
     public movePoster = new EventEmitter();
 
-    constructor(private slideService: SlideListService) {
-    }
+    public isShowLeft: boolean;
+
+    public isShowRight: boolean;
 
     public ngOnInit(): void {
-        console.log(this.elTop);
     }
 
     public move(moveIndex: number): void {

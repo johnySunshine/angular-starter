@@ -18,4 +18,5 @@ export enum SlideTypes {
 export interface SlideConfig {
     slideTypes: SlideTypes;
     slideCount: number;
+    slides: Poster[];
 }

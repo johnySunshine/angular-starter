@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routes';
 import { ShareModule } from '../share/share.module';
+import { ComeSoonResolver } from './home.resolver';
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import { ShareModule } from '../share/share.module';
     declarations: [
         HomeComponent,
     ],
-    providers: [],
+    providers: [ComeSoonResolver]
 })
 export class HomeModule {
 }

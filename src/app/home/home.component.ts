@@ -8,6 +8,7 @@ import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
 import { Poster, PosterMask } from '../share/playbill-poster/model/poster';
 import { Slide, SlideHeader, SlideTypes } from '../share/slide-list/model/slide';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     /**
@@ -57,73 +58,12 @@ export class HomeComponent implements OnInit {
 
     public posterTypes = SlideTypes.vertical;
     public posterTypes1 = SlideTypes.horizontal;
+    public posterTypes2 = SlideTypes.square;
 
-    public slides: Slide = {
-        slideHeader: {
-            title: '正在热映的影片',
-        },
-        playbillPosters: [
-            {
-                id: '1',
-                posterTitle: '测试',
-                posterSubtitle: '测试1',
-                posterUrl: 'https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2498371582.jpg',
-                posterMask: {
-                    rating: 8.3
-                }
-            },
-            {
-                id: '2',
-                posterTitle: '测试',
-                posterSubtitle: '测试1',
-                posterUrl: 'https://ngiss.t-online.de/iss?client=ngtv&ar=keep&x=477&y=662&src=http://programm-manager.telekom.de/media/gracenote/p13365032_v_v8_ak.jpg',
-                posterMask: {
-                    rating: 8.3
-                }
-            },
-            {
-                id: '1',
-                posterTitle: '测试',
-                posterSubtitle: '测试1',
-                posterUrl: 'https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2498371582.jpg',
-                posterMask: {
-                    rating: 8.3
-                }
-            },
-            {
-                id: '2',
-                posterTitle: '测试',
-                posterSubtitle: '测试1',
-                posterUrl: 'https://ngiss.t-online.de/iss?client=ngtv&ar=keep&x=477&y=662&src=http://programm-manager.telekom.de/media/gracenote/p13365032_v_v8_ak.jpg',
-                posterMask: {
-                    rating: 8.3
-                }
-            },
-            {
-                id: '1',
-                posterTitle: '测试',
-                posterSubtitle: '测试1',
-                posterUrl: 'https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2498371582.jpg',
-                posterMask: {
-                    rating: 8.3
-                }
-            },
-            {
-                id: '2',
-                posterTitle: '测试',
-                posterSubtitle: '测试1',
-                posterUrl: 'https://ngiss.t-online.de/iss?client=ngtv&ar=keep&x=477&y=662&src=http://programm-manager.telekom.de/media/gracenote/p13365032_v_v8_ak.jpg',
-                posterMask: {
-                    rating: 8.3
-                }
-            }
-        ]
-    };
+    public slides: Slide = {};
 
-    constructor(public appState: AppState) {
-        this.appState.session.put('demo', {
-            name: 1
-        });
+    constructor(public appState: AppState,
+                private route: ActivatedRoute) {
     }
 
     public ngOnInit() {
@@ -131,6 +71,11 @@ export class HomeComponent implements OnInit {
             status: MenuTypes.normal,
             menuData: '1'
         };
+        this.route.data.subscribe((homeData) => {
+            let {comeSoon} = homeData;
+            this.slides = comeSoon;
+        });
+
         this.appState.triggerEvent(menusStatus);
         /**
          * this.title.getData().subscribe(data => this.data = data);
