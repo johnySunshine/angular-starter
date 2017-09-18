@@ -84,11 +84,11 @@ export class RippleDirective {
         this.enforceStyleRecalculation(ripple);
         ripple.style.transform = 'scale(1)';
         this._activeRipples.add(ripple);
-        this.runTimeoutOutsideZone(() => {
-            if (!this._isMouseDown) {
-                this.fadeOutRipple(ripple);
-            }
-        }, duration);
+        // this.runTimeoutOutsideZone(() => {
+        //     if (!this._isMouseDown) {
+        //         this.fadeOutRipple(ripple);
+        //     }
+        // }, duration);
 
     }
 

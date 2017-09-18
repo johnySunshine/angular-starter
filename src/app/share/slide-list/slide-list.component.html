@@ -1,6 +1,6 @@
 <div class="slide-list-container">
     <slide-header [slideHeader]="showSlide.slideHeader" (posterHeaderShowMore)="showAll($event)"></slide-header>
-    <div class="slide-view">
+    <div class="slide-view" (mousedown)="slideMD($event)" (mousemove)="slideMM($event)" (mouseup)="slideMU($event)">
         <ul class="slides" [style.width.px]="slidesWidth" [style.left.px]="_offsetX">
             <li class="slide-item" *ngFor="let playbillPoster of posterList">
                 <playbill-poster [posterMask]="playbillPoster.posterMask" [poster]="playbillPoster"

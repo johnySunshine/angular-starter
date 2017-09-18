@@ -15,7 +15,7 @@
         overflow: hidden;
         .slides {
             position: relative;
-            @include animation(left, $standard_curve, $ENTERING);
+            //@include animation(left, $standard_curve, $ENTERING);
             .slide-item {
                 float: left;
                 margin-right: 15px;

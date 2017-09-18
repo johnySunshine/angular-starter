@@ -169,4 +169,42 @@ export class SlideListService {
         return posterViewWidth - screenWith - this._offsetX - posterLeft;
     }
 
+    public moveDirection(intOffsetX: number, moveOffsetX: number): boolean {
+        return moveOffsetX > intOffsetX;
+    }
+
+    public converseInt(defaultNumber: number): number {
+        return Number.parseInt(Math.abs(defaultNumber) + '', 10);
+    }
+
+    public isCanRightMove(count: number, types: SlideTypes): boolean {
+        return count > types;
+    }
+
+    /**
+     * 结束标记位
+     * @param {number} offsetX
+     * @param {SlideTypes} types
+     * @returns {number}
+     */
+    public endIndex(offsetX: number, types: SlideTypes): number {
+        let evePosWidth = this.calcEveryPosterWidth(types);
+        let indexFloat = offsetX / (evePosWidth + posterLeft);
+        return (evePosWidth + posterLeft) * Math.round(indexFloat);
+    }
+
+    /**
+     * 检查右边的箭头的显示状态
+     * @param {number} offsetX
+     * @param {SlideTypes} types
+     * @returns {boolean}
+     */
+    public isRightShownOneByOne(offsetX: number, types: SlideTypes): boolean {
+        let slidesOffsetX = this.slideViewWidth(types);
+        let everyPosterWidth = this.calcEveryPosterWidth(types);
+        let intOffsetX = Math.abs(offsetX);
+        let residueRight = slidesOffsetX - intOffsetX - screenWith - posterLeft * 2;
+        return Number.parseInt(residueRight + '', 10) > Number.parseInt(everyPosterWidth + '', 10);
+    }
+
 }
