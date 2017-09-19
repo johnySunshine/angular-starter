@@ -40,13 +40,13 @@ export class SlideListComponent implements OnInit {
     private _offsetX: number;
 
     private _initOffsetX: number;
-    private _mouseDownFlags: boolean;
+    private _startDrag: boolean;
     private _viewLeftX: number;
     private el: HTMLElement;
+    private _draged: boolean;
 
     constructor(private slideService: SlideListService, private elementRef: ElementRef) {
         this.el = elementRef.nativeElement;
-
     }
 
     public ngOnInit(): void {
@@ -63,11 +63,13 @@ export class SlideListComponent implements OnInit {
         this.slideArrows.elTop = `${this.slideService.arrowsTop()}px`;
         this._offsetX = 0;
         this.slideArrows.isShowRight = this.isShowArrows4Right(this.types);
-        let slidesEle = this.el.getElementsByClassName('slides')[0];
-        //todo :接下来解决动画问题
-        slidesEle.classList.add('animated');
+        this.addClass();
     }
 
+    /**
+     * 左右箭头的点击事件
+     * @param {number} moveIndex
+     */
     public moveIndex(moveIndex: number): void {
         this.slideService.offCount = this.showSlide.playbillPosters.length;
         this.slideService.offsetX = this._offsetX;
@@ -94,18 +96,30 @@ export class SlideListComponent implements OnInit {
         }
     }
 
-    public showDetail(movieId: number): void {
+    /**
+     * 每张海报的点击事件
+     * @param {number} movieId
+     */
+    public showMoreDetail(movieId: number): void {
         console.log(movieId);
     }
 
+    /**
+     * 展示全部
+     * @param {string} slideTitle
+     */
     public showAll(slideTitle: string): void {
         this.showAllMore.emit(slideTitle);
     }
 
+    /**
+     * 鼠标mousedown事件
+     * @param event
+     */
     public slideMD(event): void {
         this._initOffsetX = event.screenX;
         this._viewLeftX = this._offsetX;
-        this._mouseDownFlags = true;
+        this._startDrag = true;
     }
 
     /**
@@ -113,20 +127,20 @@ export class SlideListComponent implements OnInit {
      * @param event
      */
     public slideMM(event): void {
+        if (!this._startDrag) {
+            return;
+        }
         let moveOffsetX = event.screenX;
         let maxOffsetX: number = this.slideService.maxOffsetX(this.types);
         let intMaxOffsetX = this.slideService.converseInt(maxOffsetX);
         let isMoveLeftDirection = this.slideService.moveDirection(this._initOffsetX, moveOffsetX);
         let canRightMove = this.slideService.isCanRightMove(this.posterList.length, this.types);
-        let intOffsetX = this.slideService.converseInt(this._offsetX);
-        if (!this._mouseDownFlags) {
-            return;
-        }
+        this._draged = true;
+        this.removeClass();
         if (!isMoveLeftDirection) {
             if (-this._offsetX < intMaxOffsetX && canRightMove) {
                 this._offsetX = this._viewLeftX + moveOffsetX - this._initOffsetX;
             }
-            this.statusLeftArrows(intOffsetX < intMaxOffsetX);
         } else {
             if (this._offsetX < 0) {
                 this._offsetX = this._viewLeftX + moveOffsetX - this._initOffsetX;
@@ -135,8 +149,20 @@ export class SlideListComponent implements OnInit {
     }
 
     public slideMU(): void {
+        this._startDrag = false;
         this._offsetX = this.slideService.endIndex(this._offsetX, this.types);
-        this._mouseDownFlags = false;
+        this.addClass();
+        this.statusLeftArrows(this._offsetX < 0);
+        this.statusRightArrows(this.slideService.isRightShownOneByOne(this._offsetX, this.types));
+        this._draged = false;
+    }
+
+    public slideMouseOut() {
+        this._startDrag = false;
+        this._offsetX = this.slideService.endIndex(this._offsetX, this.types);
+        this.addClass();
+        this.statusLeftArrows(this._offsetX < 0);
+        this.statusRightArrows(this.slideService.isRightShownOneByOne(this._offsetX, this.types));
     }
 
     private _calcSafety(): boolean {
@@ -162,5 +188,15 @@ export class SlideListComponent implements OnInit {
 
     private statusRightArrows(isShown: boolean) {
         this.slideArrows.isShowRight = isShown;
+    }
+
+    private removeClass() {
+        let slidesEle = this.el.getElementsByClassName('slides')[0];
+        slidesEle.classList.remove('animated');
+    }
+
+    private addClass() {
+        let slidesEle = this.el.getElementsByClassName('slides')[0];
+        slidesEle.classList.add('animated');
     }
 }
