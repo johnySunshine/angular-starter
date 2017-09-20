@@ -30,38 +30,41 @@ export class SlideListComponent implements OnInit {
 
     public adaptiveImages: boolean = true;
 
-    public slidesWidth: number;
+    public slideViewsWidth: number;
 
     public posterList: Poster[] = [];
 
     @ViewChild(SlideArrowsComponent)
     public slideArrows: SlideArrowsComponent;
+    // 海报容器的位置
+    public slideLocationX: number;
+    // 海报容器初始化位置
+    public LocationXByMouseDown: number;
+    // 是否可以通过鼠标拖拽
+    public isCanDragWithMouse: boolean;
+    // 通过鼠标 mousedown 构建的初始位置
+    public initLocationXByMouseDown: number;
 
-    private _offsetX: number;
+    public element: HTMLElement;
 
-    private _initOffsetX: number;
-    private _startDrag: boolean;
-    private _viewLeftX: number;
-    private el: HTMLElement;
-    private _draged: boolean;
-
-    constructor(private slideService: SlideListService, private elementRef: ElementRef) {
-        this.el = elementRef.nativeElement;
+    constructor(private slideService: SlideListService,
+                private elementRef: ElementRef) {
+        this.element = elementRef.nativeElement;
     }
 
     public ngOnInit(): void {
-        let posterCount: number = this.showSlide.playbillPosters.length;
+        let slidesService = this.slideService;
         this.slideService._config = {
-            slideCount: posterCount,
+            slideCount: this.showSlide.playbillPosters.length,
             slideTypes: this.types,
             slides: this.showSlide.playbillPosters
         };
 
-        this.posterList = this.slideService.conversePosterData();
-        this.adaptiveImages = this.slideService.isAdaptiveImages();
-        this.slidesWidth = this.slideService.slideViewWidth();
-        this.slideArrows.elTop = `${this.slideService.arrowsTop()}px`;
-        this._offsetX = 0;
+        this.posterList = slidesService.conversePosterData();
+        this.adaptiveImages = slidesService.isAdaptiveImages();
+        this.slideViewsWidth = slidesService.slideViewsWidth();
+        this.slideArrows.elTop = `${slidesService.arrowsTop()}px`;
+        this.slideLocationX = 0;
         this.slideArrows.isShowRight = this.isShowArrows4Right(this.types);
         this.addClass();
     }
@@ -72,23 +75,23 @@ export class SlideListComponent implements OnInit {
      */
     public moveIndex(moveIndex: number): void {
         this.slideService.offCount = this.showSlide.playbillPosters.length;
-        this.slideService.offsetX = this._offsetX;
+        this.slideService.offsetX = this.slideLocationX;
         this.slideService.multipleMove = this.multipleMove;
 
         let maxOffsetX: number = this.slideService.maxOffsetX(this.types);
 
-        let intOffsetX = this.slideService.converseInt(this._offsetX);
+        let intOffsetX = this.slideService.converseInt(this.slideLocationX);
         let intMaxOffsetX = this.slideService.converseInt(maxOffsetX);
 
         if (moveIndex === 1 && intOffsetX < intMaxOffsetX) {
-            this._offsetX += this.slideService.moveOffsetX(moveIndex, this.types, this.multipleMove);
+            this.slideLocationX += this.slideService.moveOffsetX(moveIndex, this.types, this.multipleMove);
             this.statusLeftArrows(true);
-            this.statusRightArrows(this.slideService.isRightShownOneByOne(this._offsetX, this.types));
+            this.statusRightArrows(this.slideService.isRightShownOneByOne(this.slideLocationX, this.types));
         }
         if (moveIndex === -1) {
             this.statusRightArrows(true);
-            if (this._offsetX < 0 && this._calcSafety()) {
-                this._offsetX += this.slideService.moveOffsetX(moveIndex, this.types, this.multipleMove);
+            if (this.slideLocationX < 0 && this._calcSafety()) {
+                this.slideLocationX += this.slideService.moveOffsetX(moveIndex, this.types, this.multipleMove);
             }
             if (!this._calcSafety()) {
                 this.statusLeftArrows(false);
@@ -116,59 +119,57 @@ export class SlideListComponent implements OnInit {
      * 鼠标mousedown事件
      * @param event
      */
-    public slideMD(event): void {
-        this._initOffsetX = event.screenX;
-        this._viewLeftX = this._offsetX;
-        this._startDrag = true;
+    public onMouseDown(event): void {
+        this.LocationXByMouseDown = event.screenX;
+        this.initLocationXByMouseDown = this.slideLocationX;
+        this.isCanDragWithMouse = true;
     }
 
     /**
      * 移动事件
      * @param event
      */
-    public slideMM(event): void {
-        if (!this._startDrag) {
+    public onMouseMove(event): void {
+        if (!this.isCanDragWithMouse) {
             return;
         }
         let moveOffsetX = event.screenX;
         let maxOffsetX: number = this.slideService.maxOffsetX(this.types);
         let intMaxOffsetX = this.slideService.converseInt(maxOffsetX);
-        let isMoveLeftDirection = this.slideService.moveDirection(this._initOffsetX, moveOffsetX);
+        let isMoveLeftDirection = this.slideService.moveDirection(this.LocationXByMouseDown, moveOffsetX);
         let canRightMove = this.slideService.isCanRightMove(this.posterList.length, this.types);
-        this._draged = true;
         this.removeClass();
         if (!isMoveLeftDirection) {
-            if (-this._offsetX < intMaxOffsetX && canRightMove) {
-                this._offsetX = this._viewLeftX + moveOffsetX - this._initOffsetX;
+            if (-this.slideLocationX < intMaxOffsetX && canRightMove) {
+                this.slideLocationX = this.initLocationXByMouseDown + moveOffsetX - this.LocationXByMouseDown;
             }
         } else {
-            if (this._offsetX < 0) {
-                this._offsetX = this._viewLeftX + moveOffsetX - this._initOffsetX;
+            if (this.slideLocationX < 0) {
+                this.slideLocationX = this.initLocationXByMouseDown + moveOffsetX - this.LocationXByMouseDown;
             }
         }
     }
 
-    public slideMU(): void {
-        this._startDrag = false;
-        this._offsetX = this.slideService.endIndex(this._offsetX, this.types);
+    public onMouseUp(): void {
+        this.isCanDragWithMouse = false;
+        this.slideLocationX = this.slideService.endIndex(this.slideLocationX, this.types);
         this.addClass();
-        this.statusLeftArrows(this._offsetX < 0);
-        this.statusRightArrows(this.slideService.isRightShownOneByOne(this._offsetX, this.types));
-        this._draged = false;
+        this.statusLeftArrows(this.slideLocationX < 0);
+        this.statusRightArrows(this.slideService.isRightShownOneByOne(this.slideLocationX, this.types));
     }
 
-    public slideMouseOut() {
-        this._startDrag = false;
-        this._offsetX = this.slideService.endIndex(this._offsetX, this.types);
+    public onMouseOut() {
+        this.isCanDragWithMouse = false;
+        this.slideLocationX = this.slideService.endIndex(this.slideLocationX, this.types);
         this.addClass();
-        this.statusLeftArrows(this._offsetX < 0);
-        this.statusRightArrows(this.slideService.isRightShownOneByOne(this._offsetX, this.types));
+        this.statusLeftArrows(this.slideLocationX < 0);
+        this.statusRightArrows(this.slideService.isRightShownOneByOne(this.slideLocationX, this.types));
     }
 
     private _calcSafety(): boolean {
-        let everyPosterWidth = this.slideService.calcEveryPosterWidth(this.types);
-        let intOffsetX = this.slideService.converseInt(this._offsetX);
-        return everyPosterWidth < intOffsetX;
+        let pictureWidth = this.slideService.calcEveryPosterWidth(this.types);
+        let intOffsetX = this.slideService.converseInt(this.slideLocationX);
+        return pictureWidth < intOffsetX;
     }
 
     private isShowArrows4Right(types: SlideTypes): boolean {
@@ -191,12 +192,12 @@ export class SlideListComponent implements OnInit {
     }
 
     private removeClass() {
-        let slidesEle = this.el.getElementsByClassName('slides')[0];
+        let slidesEle = this.element.getElementsByClassName('slides')[0];
         slidesEle.classList.remove('animated');
     }
 
     private addClass() {
-        let slidesEle = this.el.getElementsByClassName('slides')[0];
+        let slidesEle = this.element.getElementsByClassName('slides')[0];
         slidesEle.classList.add('animated');
     }
 }

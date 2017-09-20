@@ -2,7 +2,8 @@
     <div class="playbill-poster-images" [ngStyle]="poster" [attr.title]="poster.posterTitle">
         <div class="poster-default"></div>
         <img src="" alt="" [attr.src]="poster.posterUrl" class="poster-images"
-             [ngClass]="{'adaptive-images':adaptiveImages}">
+             [ngClass]="{'adaptive-images':adaptiveImages}" onerror="this.style.opacity=0"
+             onload="this.style.opacity=1">
         <div class="poster-mask">
             <div class="poster-genres mat-title" *ngIf="!!posterMask.genres">{{posterMask.genres}}</div>
             <div class="poster-title mat-display-3" *ngIf="!!posterMask.title">{{posterMask.title}}</div>

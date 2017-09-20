@@ -4,7 +4,7 @@ import { Menu } from './model/menu';
 import { MenuTypes } from './model/menus.enum';
 import { AppState } from '../app.service';
 import { MenusStatus } from './model/menusStatus';
-import { AppConfig } from '../sdk';
+import { DEFAULT_APP_CONFIG } from '../sdk';
 import { fadeInSubMenu, slideSubMenu } from './header.animation';
 
 @Component({
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
     public isRotate: boolean;
 
-    public appLogoTitle: string = AppConfig.logoTitle;
+    public appLogoTitle: string = DEFAULT_APP_CONFIG.LOGIN_SUBTITLE;
 
     constructor(private headerService: HeaderService, private appService: AppState) {
         this.menuTypes = MenuTypes.normal;

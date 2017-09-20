@@ -15,9 +15,11 @@
         overflow: hidden;
         .slides {
             position: relative;
+            float: left;
             .slide-item {
                 float: left;
                 margin-right: 15px;
+                position: relative;
                 &:last-child {
                     margin-right: 0;
                 }

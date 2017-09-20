@@ -1,5 +1,7 @@
-export class AppConfig {
-
-    public static logoTitle: string = '子菜单';
-
-}
+/**
+ * 默认配置
+ * @type {{LOGIN_SUBTITLE: string}}
+ */
+export const DEFAULT_APP_CONFIG = {
+    LOGIN_SUBTITLE: '子菜单'
+};

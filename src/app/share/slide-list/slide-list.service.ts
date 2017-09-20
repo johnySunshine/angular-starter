@@ -103,7 +103,7 @@ export class SlideListService {
      * 海报容器的展示宽度
      * @returns {number}
      */
-    public slideViewWidth(slideTypes?: SlideTypes): number {
+    public slideViewsWidth(slideTypes?: SlideTypes): number {
         return (this.calcEveryPosterWidth(slideTypes) + posterLeft) * (this._configSlideCount + 1);
     }
 
@@ -200,7 +200,7 @@ export class SlideListService {
      * @returns {boolean}
      */
     public isRightShownOneByOne(offsetX: number, types: SlideTypes): boolean {
-        let slidesOffsetX = this.slideViewWidth(types);
+        let slidesOffsetX = this.slideViewsWidth(types);
         let everyPosterWidth = this.calcEveryPosterWidth(types);
         let intOffsetX = Math.abs(offsetX);
         let residueRight = slidesOffsetX - intOffsetX - screenWith - posterLeft * 2;
