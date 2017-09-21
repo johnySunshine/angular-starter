@@ -1,0 +1,67 @@
+@import "../../styles/sdk/sdk_color";
+
+$offset: 187;
+$duration: 1.4s;
+@keyframes colors {
+    0% {
+        stroke: map_get($INDIGO, 600);
+    }
+    25% {
+        stroke: map_get($RED, 600);
+    }
+    50% {
+        stroke: map_get($YELLOW, 600);
+    }
+    75% {
+        stroke: map_get($GREY, 600);
+    }
+    100% {
+        stroke: map_get($INDIGO, 600);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: $offset;
+    }
+    50% {
+        stroke-dashoffset: $offset/4;
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: $offset;
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes rotato {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+.spinner-container {
+    position: fixed;
+    width: 74px;
+    height: 74px;
+    border: 1px solid transparent;
+    top: 50%;
+    left: 50%;
+    z-index: 99999;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    .spinner-loading {
+        animation: rotato $duration linear infinite;
+        .path {
+            stroke-dasharray: $offset;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            animation: dash $duration ease-in-out infinite,
+            colors ($duration*4) ease-in-out infinite;
+        }
+
+    }
+}

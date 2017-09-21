@@ -33,6 +33,8 @@ import { SessionService, Platform, EPGService } from './sdk';
 import { requestOptionsProvider } from './app.request';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerService } from './spinner/spinner.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -41,7 +43,8 @@ const APP_PROVIDERS = [
     SessionService,
     Platform,
     EPGService,
-    requestOptionsProvider
+    requestOptionsProvider,
+    SpinnerService
 ];
 
 export function createTranslateLoader(http: Http) {
@@ -56,6 +59,7 @@ export function createTranslateLoader(http: Http) {
     declarations: [
         AppComponent,
         NoContentComponent,
+        SpinnerComponent
     ],
     /**
      * Import Angular's modules.

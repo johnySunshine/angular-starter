@@ -3,12 +3,14 @@ import { Http, RequestMethod, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Options } from './options';
 import { UrlDev, urlOptions } from './requestUrl';
+import { SpinnerService } from '../../spinner/spinner.service';
 
 @Injectable()
 export class EPGService {
     public isDev: boolean = true;
 
-    constructor(private http: Http) {
+    constructor(private http: Http,
+                private spinnerService: SpinnerService) {
     }
 
     public sendRequest(requestName: string, options: Options) {
@@ -18,7 +20,11 @@ export class EPGService {
             if (!this.isDev && options.Data) {
                 reqUrl = reqURL + `/${options.Data}`;
             }
-            return this.http.get(reqUrl).map((resp) => resp.json());
+            this.spinnerService.showSpinner();
+            return this.http.get(reqUrl).map((resp) => {
+                this.spinnerService.hideSpinner();
+                return resp.json();
+            });
         }
         if (options.Method === RequestMethod.Post) {
             return this.http.post(reqURL, options.Data).map((resp) => resp.json());

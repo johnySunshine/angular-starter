@@ -14,7 +14,7 @@
         position: relative;
         left: 0;
         min-height: 230px;
-        background: rgba(map_get($GREY, 900), 0.8);
+        background: rgba(map_get($GREY, A100), 0.8);
         @include elevation(6);
         .menu-parent-wrap {
             height: 100%;
