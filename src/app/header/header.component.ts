@@ -4,8 +4,8 @@ import { Menu } from './model/menu';
 import { MenuTypes } from './model/menus.enum';
 import { AppState } from '../app.service';
 import { MenusStatus } from './model/menusStatus';
-import { DEFAULT_APP_CONFIG } from '../sdk';
 import { fadeInSubMenu, slideSubMenu } from './header.animation';
+import { DEFAULT_APP_CONFIG } from '../config';
 
 @Component({
     selector: 'app-header',

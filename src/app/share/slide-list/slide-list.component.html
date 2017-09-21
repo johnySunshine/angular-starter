@@ -1,13 +1,14 @@
 <div class="slide-list-container">
-    <slide-header [slideHeader]="showSlide.slideHeader" (posterHeaderShowMore)="showAll($event)"></slide-header>
+    <slide-header [slideHeader]="showSlide.slideHeader" (posterHeaderShowMore)="headerMore($event)"></slide-header>
     <div class="slide-view">
-        <ul class="slides" [style.width.px]="slideViewsWidth" [style.left.px]="slideLocationX" (mousedown)="onMouseDown($event)"
-            (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp()"
+        <ul class="slides" [style.width.px]="slideViewsWidth" [style.left.px]="slideLocationX"
+            (mousedown)="onMouseDown($event)"
+            (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp($event)"
             (mouseout)="onMouseOut()">
             <li class="slide-item" *ngFor="let poster of posterList">
                 <playbill-poster [posterMask]="poster.posterMask" [poster]="poster"
                                  [adaptiveImages]="adaptiveImages"
-                                 (posterClick)="showMoreDetail($event)"></playbill-poster>
+                                 (onPosterClick)="showMoreDetail($event)"></playbill-poster>
             </li>
         </ul>
     </div>

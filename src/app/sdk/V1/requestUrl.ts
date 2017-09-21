@@ -1,8 +1,11 @@
+import { DEFAULT_APP_CONFIG } from '../../config';
+
+const httpServicesUrls = DEFAULT_APP_CONFIG.HTTP_SERVICES_URL;
 export const urlOptions = {
-    MenuList: `/V1/Menus/list`,
-    ComeSoon: `/V1`
+    MenuList: httpServicesUrls + `/V1/Menus/list`,
+    ComeSoon: httpServicesUrls + `/V1/DouBan/movie/comeSoon`
 };
 export const UrlDev = {
-    MenuList: `/assets/mock-data/menusList.json`,
+    MenuList: httpServicesUrls + `/V1/Menus/list`,
     ComeSoon: `/assets/mock-data/comeSoon.json`
 };

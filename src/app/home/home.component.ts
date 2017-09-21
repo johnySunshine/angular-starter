@@ -85,4 +85,12 @@ export class HomeComponent implements OnInit {
     public submitState(value: string) {
         this.localState.value = '';
     }
+
+    public headerMore1(a) {
+        console.log(a);
+    }
+
+    public posterMore(a) {
+        console.log(a);
+    }
 }

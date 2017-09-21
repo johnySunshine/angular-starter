@@ -26,7 +26,10 @@ export class SlideListComponent implements OnInit {
     public multipleMove: number = 1;
 
     @Output()
-    public showAllMore = new EventEmitter();
+    public onShowMore = new EventEmitter();
+
+    @Output()
+    public onPoster: EventEmitter<number> = new EventEmitter();
 
     public adaptiveImages: boolean = true;
 
@@ -45,17 +48,25 @@ export class SlideListComponent implements OnInit {
     // 通过鼠标 mousedown 构建的初始位置
     public initLocationXByMouseDown: number;
 
-    public element: HTMLElement;
+    public eleRef: HTMLElement;
+
+    public slidesRef: any;
+
+    public posterCounts: number;
 
     constructor(private slideService: SlideListService,
                 private elementRef: ElementRef) {
-        this.element = elementRef.nativeElement;
+        this.eleRef = elementRef.nativeElement;
+
     }
 
     public ngOnInit(): void {
         let slidesService = this.slideService;
+        this.slidesRef = this.eleRef.getElementsByClassName('slides')[0];
+
+        this.posterCounts = this.showSlide.playbillPosters.length;
         this.slideService._config = {
-            slideCount: this.showSlide.playbillPosters.length,
+            slideCount: this.posterCounts,
             slideTypes: this.types,
             slides: this.showSlide.playbillPosters
         };
@@ -66,7 +77,7 @@ export class SlideListComponent implements OnInit {
         this.slideArrows.elTop = `${slidesService.arrowsTop()}px`;
         this.slideLocationX = 0;
         this.slideArrows.isShowRight = this.isShowArrows4Right(this.types);
-        this.addClass();
+        this._addSlidesClass();
     }
 
     /**
@@ -74,7 +85,7 @@ export class SlideListComponent implements OnInit {
      * @param {number} moveIndex
      */
     public moveIndex(moveIndex: number): void {
-        this.slideService.offCount = this.showSlide.playbillPosters.length;
+        this.slideService.offCount = this.posterCounts;
         this.slideService.offsetX = this.slideLocationX;
         this.slideService.multipleMove = this.multipleMove;
 
@@ -103,16 +114,19 @@ export class SlideListComponent implements OnInit {
      * 每张海报的点击事件
      * @param {number} movieId
      */
-    public showMoreDetail(movieId: number): void {
-        console.log(movieId);
+    public showMoreDetail(mouseEvent): void {
+        if (mouseEvent.screenX === this.LocationXByMouseDown) {
+            this.onPoster.emit(mouseEvent.posterId);
+        }
+
     }
 
     /**
      * 展示全部
      * @param {string} slideTitle
      */
-    public showAll(slideTitle: string): void {
-        this.showAllMore.emit(slideTitle);
+    public headerMore(slideTitle: string): void {
+        this.onShowMore.emit(slideTitle);
     }
 
     /**
@@ -138,7 +152,7 @@ export class SlideListComponent implements OnInit {
         let intMaxOffsetX = this.slideService.converseInt(maxOffsetX);
         let isMoveLeftDirection = this.slideService.moveDirection(this.LocationXByMouseDown, moveOffsetX);
         let canRightMove = this.slideService.isCanRightMove(this.posterList.length, this.types);
-        this.removeClass();
+        this._removeSlidesClass();
         if (!isMoveLeftDirection) {
             if (-this.slideLocationX < intMaxOffsetX && canRightMove) {
                 this.slideLocationX = this.initLocationXByMouseDown + moveOffsetX - this.LocationXByMouseDown;
@@ -151,19 +165,19 @@ export class SlideListComponent implements OnInit {
     }
 
     public onMouseUp(): void {
-        this.isCanDragWithMouse = false;
-        this.slideLocationX = this.slideService.endIndex(this.slideLocationX, this.types);
-        this.addClass();
-        this.statusLeftArrows(this.slideLocationX < 0);
-        this.statusRightArrows(this.slideService.isRightShownOneByOne(this.slideLocationX, this.types));
+        this.posterLocationX4Ending();
     }
 
     public onMouseOut() {
-        this.isCanDragWithMouse = false;
-        this.slideLocationX = this.slideService.endIndex(this.slideLocationX, this.types);
-        this.addClass();
+        this.posterLocationX4Ending();
+    }
+
+    public posterLocationX4Ending() {
+        this.slideLocationX = this.slideService.posterLocationXByMouseup(this.slideLocationX, this.types);
+        this._addSlidesClass();
         this.statusLeftArrows(this.slideLocationX < 0);
         this.statusRightArrows(this.slideService.isRightShownOneByOne(this.slideLocationX, this.types));
+        this.isCanDragWithMouse = false;
     }
 
     private _calcSafety(): boolean {
@@ -173,7 +187,7 @@ export class SlideListComponent implements OnInit {
     }
 
     private isShowArrows4Right(types: SlideTypes): boolean {
-        let posterCount: number = this.showSlide.playbillPosters.length;
+        let posterCount: number = this.posterCounts;
         if (types === SlideTypes.horizontal) {
             return posterCount > 4;
         }
@@ -191,13 +205,11 @@ export class SlideListComponent implements OnInit {
         this.slideArrows.isShowRight = isShown;
     }
 
-    private removeClass() {
-        let slidesEle = this.element.getElementsByClassName('slides')[0];
-        slidesEle.classList.remove('animated');
+    private _addSlidesClass() {
+        this.slidesRef.classList.add('animated');
     }
 
-    private addClass() {
-        let slidesEle = this.element.getElementsByClassName('slides')[0];
-        slidesEle.classList.add('animated');
+    private _removeSlidesClass() {
+        this.slidesRef.classList.remove('animated');
     }
 }

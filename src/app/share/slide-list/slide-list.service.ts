@@ -187,7 +187,7 @@ export class SlideListService {
      * @param {SlideTypes} types
      * @returns {number}
      */
-    public endIndex(offsetX: number, types: SlideTypes): number {
+    public posterLocationXByMouseup(offsetX: number, types: SlideTypes): number {
         let evePosWidth = this.calcEveryPosterWidth(types);
         let indexFloat = offsetX / (evePosWidth + posterLeft);
         return (evePosWidth + posterLeft) * Math.round(indexFloat);

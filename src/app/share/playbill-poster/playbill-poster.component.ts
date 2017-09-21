@@ -26,7 +26,7 @@ export class PlaybillPosterComponent implements OnInit, AfterViewInit {
     public adaptiveImages: boolean = true;
 
     @Output()
-    public posterClick = new EventEmitter();
+    public onPosterClick = new EventEmitter();
 
     public isPosterTextContainer: boolean = false;
 
@@ -44,8 +44,9 @@ export class PlaybillPosterComponent implements OnInit, AfterViewInit {
     public ngAfterViewInit(): void {
     }
 
-    public detailMore(posterId: string): void {
-        this.posterClick.emit(posterId);
+    public detailMore($clickEvent, posterId: string): void {
+        $clickEvent.posterId = posterId;
+        this.onPosterClick.emit($clickEvent);
     }
 
 }

@@ -1,4 +1,4 @@
-<div class="playbill-poster-container" (click)="detailMore(poster.id)">
+<div class="playbill-poster-container" (click)="detailMore($event,poster.id)">
     <div class="playbill-poster-images" [ngStyle]="poster" [attr.title]="poster.posterTitle">
         <div class="poster-default"></div>
         <img src="" alt="" [attr.src]="poster.posterUrl" class="poster-images"

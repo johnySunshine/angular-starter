@@ -4,4 +4,4 @@
 
 <slide-list [showSlide]="slides" [types]="posterTypes" [multipleMove]="6"></slide-list>
 
-<slide-list [showSlide]="slides" [types]="posterTypes2" [multipleMove]="4"></slide-list>
+<slide-list [showSlide]="slides" [types]="posterTypes2" [multipleMove]="4" (onShowMore)="headerMore1($event)" (onPoster)="posterMore($event)"></slide-list>
