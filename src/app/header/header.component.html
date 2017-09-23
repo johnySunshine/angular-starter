@@ -6,7 +6,7 @@
             <div class="menu-title-normal" *ngSwitchCase="1">
                 <ul class="menus-list">
                     <li class="menus-item" *ngFor="let menu of mainMenus">
-                        <a ripple [routerLink]="[menu.menuUrl]" routerLinkActive="active"
+                        <a md-button [routerLink]="[menu.menuUrl]" routerLinkActive="active"
                            [routerLinkActiveOptions]="{exact: true}">{{menu.menuTitle}}</a>
                     </li>
                 </ul>
@@ -26,7 +26,7 @@
                    (click)="menuShowMore()"></i>
             </div>
         </div>
-        <header-more [menuList]="mainMenus" *ngIf="isRotate" (isSubTitleEmitter)="subMoreTrigger($event)"
+        <header-more [menuList]="subMainMenu" *ngIf="isRotate" (isSubTitleEmitter)="subMoreTrigger($event)"
                      [@slideMenu]="isRotate"></header-more>
     </div>
 </div>

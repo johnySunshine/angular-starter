@@ -6,6 +6,7 @@ import { AppState } from '../app.service';
 import { MenusStatus } from './model/menusStatus';
 import { fadeInSubMenu, slideSubMenu } from './header.animation';
 import { DEFAULT_APP_CONFIG } from '../config';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-header',
@@ -27,6 +28,8 @@ export class HeaderComponent implements OnInit {
 
     public isRotate: boolean;
 
+    public subMainMenu: Menu[];
+
     public appLogoTitle: string = DEFAULT_APP_CONFIG.LOGIN_SUBTITLE;
 
     constructor(private headerService: HeaderService, private appService: AppState) {
@@ -35,7 +38,10 @@ export class HeaderComponent implements OnInit {
 
     public ngOnInit(): void {
         this.headerService.getMenus().subscribe((menus) => {
-            this.mainMenus = menus;
+            this.mainMenus = _.filter(menus, (menu: Menu) => {
+                return menu.menuVisible === true;
+            });
+            this.subMainMenu = menus;
         });
         this.menuDetail = '1';
         this.isRotate = false;

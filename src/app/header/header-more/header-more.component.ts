@@ -26,7 +26,7 @@ export class HeaderMoreComponent {
 
     public subMenuStatus: boolean;
 
-    private _menuList: Menu[];
+    public _menuList: Menu[];
 
     constructor(private router: Router) {
         this.subMenuStatus = false;

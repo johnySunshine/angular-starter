@@ -6,6 +6,6 @@ export const urlOptions = {
     ComeSoon: httpServicesUrls + `/V1/DouBan/movie/comeSoon`
 };
 export const UrlDev = {
-    MenuList: httpServicesUrls + `/V1/Menus/list`,
+    MenuList: `/assets/mock-data/menusList.json`,
     ComeSoon: `/assets/mock-data/comeSoon.json`
 };

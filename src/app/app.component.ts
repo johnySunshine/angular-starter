@@ -37,6 +37,7 @@ import { AppState } from './app.service';
 
         footer {
             position: relative;
+            width:100%;
         }
         `
     ],

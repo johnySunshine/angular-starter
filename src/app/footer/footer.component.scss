@@ -1,0 +1,12 @@
+@import "../../styles/sdk/sdk_color";
+
+.footer-container {
+
+    width: 100%;
+    background: map_get($GREY, A100);
+    .footer-wrap {
+        width: 1360px;
+        margin: 0 auto;
+        height: 364px;
+    }
+}
