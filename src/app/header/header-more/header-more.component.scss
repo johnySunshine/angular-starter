@@ -3,6 +3,10 @@
 @import "../../sdk/styles/sdk_fonts";
 @import "../../sdk/styles/sdk_elevation";
 
+:host {
+    display: block;
+}
+
 .header-more {
     position: fixed;
     top: 56px;

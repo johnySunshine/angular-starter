@@ -44,12 +44,21 @@ module.exports = {
          * <link> tags for a Web App Manifest
          */
         {rel: 'manifest', href: '/assets/manifest.json'},
+        /**
+         * <link> tags for Web App font Family
+         */
         {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'},
-        {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans'}
+        {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans'},
+        /**
+         * link> tags for Web App font Icons
+         */
+        {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'}
     ],
     meta: [
-        {name: 'msapplication-TileColor', content: '#00bcd4'},
+        {name: 'msapplication-TileColor', content: '#212121'},
         {name: 'msapplication-TileImage', content: '/assets/icon/ms-icon-144x144.png', '=content': true},
-        {name: 'theme-color', content: '#00bcd4'}
+        {name: 'theme-color', content: '#212121'},
+        {name: 'keywords', content: '视频，资讯，点播'},
+        {name: 'description', content: '提供最新影讯网站'}
     ]
 };

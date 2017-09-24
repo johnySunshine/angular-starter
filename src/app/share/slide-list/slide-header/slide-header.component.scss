@@ -17,8 +17,8 @@
             margin: 0 0 9px;
         }
         .slide-header-more {
-            background: url(images-url('navigation', 'ic_chevron_right_grey600_48dp.png')) no-repeat center;
-            background-size: 100% 100%;
+            position: relative;
+            top: 2px;
             float: left;
             margin: 0 0 9px;
             width: 32px;

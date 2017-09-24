@@ -2,26 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
-import { ButtonComponent } from './buttons/button.component';
-import { RippleDirective } from './ripple/ripple.directive';
-import { PlaybillPosterComponent } from './playbill-poster';
 import { SlideListModule } from './slide-list';
+import { MdButtonModule } from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
-        SlideListModule
+        SlideListModule,
+        MdButtonModule
     ],
     exports: [
         CommonModule,
         FormsModule,
         TranslateModule,
-        ButtonComponent,
-        SlideListModule
+        SlideListModule,
+        MdButtonModule
     ],
-    declarations: [
-        ButtonComponent,
-    ]
+    declarations: []
 })
 export class ShareModule {
 }

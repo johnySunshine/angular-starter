@@ -5,23 +5,24 @@ import { SlideListService } from './slide-list.service';
 import { CommonModule } from '@angular/common';
 import { PlaybillPosterComponent } from '../playbill-poster';
 import { SlideArrowsComponent } from './slide-arrows/slide-arrows.component';
-import { RippleDirective } from '../ripple/ripple.directive';
+import { MdButtonModule, MdRippleModule } from '@angular/material';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        MdButtonModule,
+        MdRippleModule
     ],
     declarations: [
         SlideHeaderComponent,
         SlideListComponent,
         PlaybillPosterComponent,
         SlideArrowsComponent,
-        RippleDirective,
     ],
     exports: [
         SlideListComponent,
         PlaybillPosterComponent,
-        RippleDirective,
+        MdRippleModule
     ],
     providers: [
         SlideListService

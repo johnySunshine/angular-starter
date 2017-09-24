@@ -1,12 +1,79 @@
 @import "../../styles/sdk/sdk_color";
 
 .footer-container {
-
     width: 100%;
+    border-top: 1px solid map_get($GREY, 800);
     background: map_get($GREY, A100);
     .footer-wrap {
-        width: 1360px;
+        min-width: 1360px;
         margin: 0 auto;
         height: 364px;
+        .footer-main {
+            max-width: 1360px;
+            margin: 0 auto;
+            border-bottom: 1px solid map_get($GREY, 800);
+            padding: 32px 0;
+            height: 264px;
+            .footerMain-primary {
+                width: 66%;
+                float: left;
+                height: 100%;
+                border-right: 1px solid map_get($GREY, 800);
+            }
+            .footerMain-secondary {
+                width: 32%;
+                float: left;
+                height: 100%;
+                padding-left: 16px;
+                .footerMain-title {
+                    color: map_get($YELLOW, 500);
+                    letter-spacing: 5px;
+                }
+                .footerMain-list {
+                    .secondary-items {
+                        float: left;
+                        width: 50%;
+                        padding: 4px 0;
+                        .item-content {
+                            width: 100%;
+                            cursor: pointer;
+                            .item-icons {
+                                width: 24px;
+                                height: 24px;
+                                margin-right: 5px;
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
+                            .item-text {
+                                display: inline-block;
+                                margin: 0;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        .footer-utility {
+            max-width: 1360px;
+            margin: 0 auto;
+            .footer-utility-list {
+                position: relative;
+                top: 5px;
+                color: rgba(map_get($GREY, 50), .32);
+                .footerUtility-listItem {
+                    float: left;
+                    padding-left: 10px;
+                    &:nth-child(3) {
+                        float: right;
+                        padding-right: 10px;
+                    }
+                    &:nth-child(4) {
+                        float: right;
+
+                    }
+                }
+            }
+        }
     }
 }

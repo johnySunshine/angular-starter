@@ -1,6 +1,25 @@
 <div class="footer-container">
     <div class="footer-wrap">
-        <div class="footer-main"></div>
-        <div class="footer-utility"></div>
+        <div class="footer-main">
+            <div class="footerMain-primary"></div>
+            <div class="footerMain-secondary">
+                <div class="footerMain-title mat-h4">{{'FOOTER.MORE_LINK' | translate}}</div>
+                <ul class="footerMain-list">
+                    <li class="secondary-items" *ngFor="let moreLink of moreLinks">
+                        <span md-button class="item-content" (click)="showMoreLink(moreLink.linkUrl)">
+                            <img class="item-icons" [attr.src]="moreLink.iconUrl">
+                            <span class="item-text mat-h5">{{moreLink.linkText}}</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-utility">
+            <ul class="footer-utility-list">
+                <li class="footerUtility-listItem" *ngFor="let listItem of UtilityList">
+                    <span class="mat-h5">{{listItem}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

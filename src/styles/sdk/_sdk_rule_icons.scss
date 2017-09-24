@@ -1,0 +1,32 @@
+@import "sdk_color";
+/* Rules for sizing the icon. */
+.material-icons {
+    &.md-18 {
+        font-size: 18px;
+    }
+    &.md-24 {
+        font-size: 24px;
+    }
+    &.md-30 {
+        font-size: 30px;
+    }
+    &.md-36 {
+        font-size: 36px;
+    }
+    &.md-48 {
+        font-size: 48px;
+    }
+    &.md-dark {
+        color: rgba(map_get($GREY, A100), 0.54);
+    }
+    &.md-dark.md-inactive {
+        color: rgba(map_get($GREY, A100), 0.26);
+    }
+    &.md-light {
+        color: rgba(map_get($GREY, 50), 1);
+    }
+    &.md-light.md-inactive {
+        color: rgba(map_get($GREY, 50), 0.3);
+    }
+
+}

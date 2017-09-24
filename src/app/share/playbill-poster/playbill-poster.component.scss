@@ -21,11 +21,19 @@
         .poster-default {
             width: 100%;
             height: 100%;
-            background: url(images-url('av', 'ic_movie_grey600_48dp.png')) no-repeat center map_get($GREY, A100);
-            position: absolute;
             top: 0;
             left: 0;
             z-index: -1;
+            position: absolute;
+            background-color: map_get($GREY, A100);
+            .poster-icons {
+                font-size: 70px;
+                top: 50%;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: -1;
+            }
         }
         .poster-images {
             opacity: 0;

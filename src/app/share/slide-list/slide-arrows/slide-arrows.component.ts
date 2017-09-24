@@ -1,15 +1,19 @@
 import { Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/core';
-import { SlideListService } from '../slide-list.service';
 
 @Component({
     selector: 'slide-arrows',
     template: `
         <div class="slide-arrow-container">
-            <i class="arrow-left" ripple [centered]="true" [speedFactor]="0.5" (click)="move(-1)"
-               *ngIf="isShowLeft"></i>
-            <i class="arrow-right" ripple [centered]="true" [speedFactor]="0.5" (click)="move(1)"
-               *ngIf="isShowRight"></i>
+            <a class="arrow-left" md-icon-button aria-hidden="true" (click)="move(-1)"
+               *ngIf="isShowLeft">
+                <i class="material-icons md-36 md-light">chevron_left</i>
+            </a>
+            <a class="arrow-right" md-icon-button aria-hidden="true" (click)="move(1)"
+               *ngIf="isShowRight">
+                <i class="material-icons md-36 md-light">chevron_right</i>
+            </a>
         </div>
+
 
     `,
     styleUrls: ['./slide-arrow.component.scss']

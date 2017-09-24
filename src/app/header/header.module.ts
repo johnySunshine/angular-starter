@@ -4,13 +4,11 @@ import { ShareModule } from '../share';
 import { RouterModule } from '@angular/router';
 import { HeaderService } from './header.service';
 import { HeaderMoreComponent } from './header-more';
-import { MdButtonModule } from '@angular/material';
 
 @NgModule({
     imports: [
         ShareModule,
         RouterModule,
-        MdButtonModule
     ],
     declarations: [
         HeaderComponent,

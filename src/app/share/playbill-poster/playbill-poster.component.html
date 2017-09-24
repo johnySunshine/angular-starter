@@ -1,6 +1,8 @@
 <div class="playbill-poster-container" (click)="detailMore($event,poster.id)">
     <div class="playbill-poster-images" [ngStyle]="poster" [attr.title]="poster.posterTitle">
-        <div class="poster-default"></div>
+        <div class="poster-default">
+            <i class="poster-icons md-48 material-icons">movie</i>
+        </div>
         <img src="" alt="" [attr.src]="poster.posterUrl" class="poster-images"
              [ngClass]="{'adaptive-images':adaptiveImages}" onerror="this.style.opacity=0"
              onload="this.style.opacity=1">

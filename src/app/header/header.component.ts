@@ -32,6 +32,8 @@ export class HeaderComponent implements OnInit {
 
     public appLogoTitle: string = DEFAULT_APP_CONFIG.LOGIN_SUBTITLE;
 
+    public menuButtonStatus: string = 'menu';
+
     constructor(private headerService: HeaderService, private appService: AppState) {
         this.menuTypes = MenuTypes.normal;
     }
@@ -50,10 +52,12 @@ export class HeaderComponent implements OnInit {
 
     public menuShowMore(): void {
         this.isRotate = !this.isRotate;
+        this.menuIconChange();
     }
 
     public subMoreTrigger(event: boolean): void {
         this.isRotate = event;
+        this.menuIconChange();
     }
 
     public onChangeEvent(): void {
@@ -76,5 +80,9 @@ export class HeaderComponent implements OnInit {
                     break;
             }
         });
+    }
+
+    public menuIconChange() {
+        this.menuButtonStatus = this.isRotate ? 'close' : 'menu';
     }
 }

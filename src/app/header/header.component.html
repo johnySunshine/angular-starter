@@ -21,9 +21,9 @@
         <div class="menu-subtitle" *ngIf="isRotate" [@fadeMenu]="isRotate">{{appLogoTitle}}</div>
         <div class="header-buttons">
             <div class="header-more-btn">
-                <i class="btn-icon" ripple [unbounded]="true" [centered]="true" [speedFactor]="0.5"
-                   [class.btn-rotateY]="isRotate"
-                   (click)="menuShowMore()"></i>
+                <a class="btn-icon" md-icon-button aria-hidden="true" [class.btn-rotateY]="isRotate" (click)="menuShowMore()">
+                    <i class="material-icons md-30 md-light">{{menuButtonStatus}}</i>
+                </a>
             </div>
         </div>
         <header-more [menuList]="subMainMenu" *ngIf="isRotate" (isSubTitleEmitter)="subMoreTrigger($event)"

@@ -4,12 +4,13 @@ import { SlideHeader } from '../model/slide';
 @Component({
     selector: 'slide-header',
     template: `
-    <div class="slide-header-container">
-        <div class="slide-content" (click)="clickShowMore(slideHeader.title)">
-            <div class="slide-header-title mat-title">{{slideHeader.title}}</div>
-            <i class="slide-header-more"></i>
+        <div class="slide-header-container">
+            <div class="slide-content" (click)="clickShowMore(slideHeader.title)">
+                <div class="slide-header-title mat-title">{{slideHeader.title}}
+                </div>
+                <i class="slide-header-more material-icons md-30 md-light">chevron_right</i>
+            </div>
         </div>
-    </div>
     `,
     styleUrls: ['./slide-header.component.scss']
 })

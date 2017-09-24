@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderMoreComponent {
-    @HostBinding('style.display')
-    public elDisplay: string = 'block';
 
     @Input()
     public set menuList(menuList: Menu[]) {

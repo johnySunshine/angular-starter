@@ -35,8 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
-import { FooterComponent } from './footer/footer.component';
 import { MdProgressSpinnerModule } from '@angular/material';
+import { FooterModule } from './footer';
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
@@ -60,8 +60,7 @@ export function createTranslateLoader(http: Http) {
     declarations: [
         AppComponent,
         NoContentComponent,
-        SpinnerComponent,
-        FooterComponent
+        SpinnerComponent
     ],
     /**
      * Import Angular's modules.
@@ -69,6 +68,7 @@ export function createTranslateLoader(http: Http) {
     imports: [
         HttpModule,
         HeaderModule,
+        FooterModule,
         HomeModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -95,6 +95,9 @@ export function createTranslateLoader(http: Http) {
 export class AppModule {
 
     constructor(public appRef: ApplicationRef,
-                public appState: AppState) {
+                public appState: AppState,
+                public translateService: TranslateService) {
+        translateService.setDefaultLang('en');
+        translateService.use('cn');
     }
 }
