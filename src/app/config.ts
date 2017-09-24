@@ -17,6 +17,6 @@ export const DEFAULT_APP_CONFIG = {
      * B 表示功能更新，出现新功能时增加B
      * C 表示小修改，如修复bug，只要有修改就增加C
      */
-    CURRENT_VERSION: `01.00.00`
+    CURRENT_VERSION: `01.01.01`
 
 };

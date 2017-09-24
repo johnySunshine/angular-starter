@@ -8,7 +8,9 @@
     "SEARCH_SHOW_MORE": "显示更多结果"
   },
   "FOOTER": {
-    "MORE_LINK": "其他链接"
+    "MORE_LINK": "其他链接",
+    "MORE_DESC_TITLE": "本站介绍",
+    "MORE_DESC": "'LOOKTHINGS' 用来浏览最新视频资讯，从中你可以了解电影的最新讯息，推荐电影，推荐电视剧；你可以观看最新的预告片，电视节目单的最新预告；你想了解，都在这儿！"
   },
   "VOD": {
     "TRAILERS_CONTENT": "预告片",

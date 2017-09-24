@@ -1,4 +1,5 @@
-@import "../../styles/sdk/sdk_color";
+@import "../sdk/styles/sdk_color";
+@import "../sdk/styles/sdk_varibles";
 
 .footer-container {
     width: 100%;
@@ -19,6 +20,14 @@
                 float: left;
                 height: 100%;
                 border-right: 1px solid map_get($GREY, 800);
+                .footerPrimary-title {
+                    color: map_get($YELLOW, 500);
+                    letter-spacing: 5px;
+                }
+                .footerPrimary-desc {
+                    line-height: 30px;
+                    padding-right: 32px;
+                }
             }
             .footerMain-secondary {
                 width: 32%;
@@ -34,6 +43,10 @@
                         float: left;
                         width: 50%;
                         padding: 4px 0;
+                        @include animation(opacity, $ENTERING, $standard_curve);
+                        &:hover {
+                            opacity: 0.7;
+                        }
                         .item-content {
                             width: 100%;
                             cursor: pointer;
