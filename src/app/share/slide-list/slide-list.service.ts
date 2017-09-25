@@ -3,7 +3,7 @@ import { SlideConfig, SlideTypes } from './model/slide';
 import { Poster } from '../playbill-poster/model/poster';
 import * as _ from 'lodash';
 
-const screenWith: number = 1360;
+const screenWith: number = 1284;
 const posterLeft: number = 15;
 const verProportion = 7 / 5;
 const horProportion = 9 / 16;
@@ -89,13 +89,13 @@ export class SlideListService {
      */
     public arrowsTop(): number {
         if (this._configTypes === SlideTypes.vertical) {
-            return 176;
+            return 167;
         }
         if (this._configTypes === SlideTypes.horizontal) {
-            return 118.5;
+            return 109.5;
         }
         if (this._configTypes === SlideTypes.square) {
-            return 118.5;
+            return 109.5;
         }
     }
 

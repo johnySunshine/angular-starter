@@ -2,15 +2,14 @@
 @import "../sdk/styles/sdk_varibles";
 
 .footer-container {
-    width: 100%;
+    min-width: 1284px;
     border-top: 1px solid map_get($GREY, 800);
     background: map_get($GREY, A100);
     .footer-wrap {
-        min-width: 1360px;
+
         margin: 0 auto;
         height: 250px;
         .footer-main {
-            max-width: 1360px;
             margin: 0 auto;
             border-bottom: 1px solid map_get($GREY, 800);
             padding: 32px 0;

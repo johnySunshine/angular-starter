@@ -1,0 +1,23 @@
+:host {
+    display: block;
+    header {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        width: 100%;
+        height: 56px;
+    }
+    main {
+        min-height: 720px;
+        width: 1284px;
+        margin: 60px auto 0;
+        padding: 0 48px;
+        display: block;
+        position: relative;
+    }
+
+    footer {
+        bottom: 0;
+        width: 100%;
+    }
+}
