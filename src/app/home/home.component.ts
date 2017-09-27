@@ -34,24 +34,6 @@ export class HomeComponent implements OnInit {
      * Set our default values
      */
     public localState = {value: ''};
-
-    public poster: Poster = {
-        id: '1234',
-        posterUrl: 'https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2498371582.jpg',
-        posterTitle: '猩球崛起3：终极之战',
-        posterSubtitle: '劇場版 ソードアート・オンライン -オーディナル・スケール',
-        height: '277.9px',
-        width: '198.5px'
-
-    };
-    public posterMask: PosterMask = {
-        rating: 8.3,
-        // genres: '剧情 / 战争',
-        duration: '20min',
-        // title: this.poster.posterTitle
-
-    };
-
     /**
      * TypeScript public modifiers
      */
@@ -63,7 +45,8 @@ export class HomeComponent implements OnInit {
     public slides: Slide = {};
 
     constructor(public appState: AppState,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private router: Router) {
     }
 
     public ngOnInit() {
@@ -91,6 +74,7 @@ export class HomeComponent implements OnInit {
     }
 
     public posterMore(a) {
+        this.router.navigate(['./vod', a]);
         console.log(a);
     }
 }

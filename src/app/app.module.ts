@@ -37,6 +37,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { MdProgressSpinnerModule } from '@angular/material';
 import { FooterModule } from './footer';
+import { VodModule } from './vod';
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
@@ -70,6 +71,7 @@ export function createTranslateLoader(http: Http) {
         HeaderModule,
         FooterModule,
         HomeModule,
+        VodModule,
         BrowserModule,
         BrowserAnimationsModule,
         MdProgressSpinnerModule,
