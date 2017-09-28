@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
     }
 
     public ngOnInit() {
+        document.documentElement.scrollTop = 0;
         let menusStatus: MenusStatus = {
             status: MenuTypes.normal,
             menuData: '1'
