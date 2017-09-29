@@ -7,7 +7,7 @@ import { SpinnerService } from '../../spinner/spinner.service';
 
 @Injectable()
 export class EPGService {
-    public isDev: boolean = true;
+    public isDev: boolean = ENV === 'development';
 
     constructor(private http: Http,
                 private spinnerService: SpinnerService) {
@@ -44,6 +44,14 @@ export class EPGService {
             Method: RequestMethod.Get
         };
         return this.sendRequest('ComeSoon', options);
+    }
+
+    public getVODDetailById(subjectId: number) {
+        const options: Options = {
+            Method: RequestMethod.Get,
+            Data: subjectId
+        };
+        return this.sendRequest('VODDetail', options);
     }
 
 }

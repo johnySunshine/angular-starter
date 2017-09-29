@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppState } from '../../app.service';
+import { MenuTypes } from '../../header';
 
 @Component({
     selector: 'vod-detail-component',
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class VodDetailComponent implements OnInit {
-    constructor() {
+    constructor(private appService: AppState) {
     }
 
     public ngOnInit() {
         document.documentElement.scrollTop = 0;
+        this.appService.triggerMenusEvent({
+            status: MenuTypes.detail,
+            menuData: {
+                menuTitle: '11'
+            }
+        });
     }
 }

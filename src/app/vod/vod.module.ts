@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { VodRoutesModule } from './vod.routes';
 import { VODComponent } from './vod.component';
 import { VodDetailModule } from './vod-detail';
+import { VODDetail } from './vod.resolver';
 
 @NgModule({
     imports: [
@@ -9,7 +10,7 @@ import { VodDetailModule } from './vod-detail';
         VodRoutesModule,
     ],
     declarations: [VODComponent],
-    providers: [],
+    providers: [VODDetail],
 })
 export class VodModule {
 }

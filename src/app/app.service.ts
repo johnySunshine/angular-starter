@@ -30,7 +30,7 @@ export class AppState {
      * 触发事件
      * @param {MenusStatus} astronaut
      */
-    public triggerEvent(astronaut: any) {
+    public triggerMenusEvent(astronaut: any) {
         this.triggerSubject.next(astronaut);
     }
 
@@ -38,7 +38,7 @@ export class AppState {
      * 监听事件
      * @returns {Observable<any>}
      */
-    public onEvent() {
+    public onMenusEvent() {
         return this.onChangeMenus;
     }
 }

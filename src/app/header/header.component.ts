@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
     }
 
     public onChangeEvent(): void {
-        this.appService.onEvent().subscribe((notification: MenusStatus) => {
+        this.appService.onMenusEvent().subscribe((notification: MenusStatus) => {
             let {status, menuData} = notification;
             this.menuTypes = status;
             switch (status) {

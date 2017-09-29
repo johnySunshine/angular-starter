@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
             this.slides = comeSoon;
         });
 
-        this.appState.triggerEvent(menusStatus);
+        this.appState.triggerMenusEvent(menusStatus);
         /**
          * this.title.getData().subscribe(data => this.data = data);
          */
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
     }
 
     public posterMore(a) {
-        this.router.navigate(['./vod', a]);
+        this.router.navigate(['vod', 'vodHome', a], a);
         console.log(a);
     }
 }
