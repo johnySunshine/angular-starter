@@ -9,7 +9,9 @@ import { VODDetail } from './vod.resolver';
         VodDetailModule,
         VodRoutesModule,
     ],
-    declarations: [VODComponent],
+    declarations: [
+        VODComponent,
+    ],
     providers: [VODDetail],
 })
 export class VodModule {

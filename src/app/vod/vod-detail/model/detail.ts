@@ -8,6 +8,13 @@ export interface Detail {
     subTitle: string;
     longDescription: string;
     ratings: number;
+
+    originalTitle?: string;
+    year?: string;
+    genres?: string;
+    land?: string;
+    languages?: string;
+
     persons?: Slide;
     stills?: Slide;
     recommend?: Slide;
