@@ -3,22 +3,28 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
 import { SlideListModule } from './slide-list';
-import { MdButtonModule } from '@angular/material';
+import { MdButtonModule, MdIconModule } from '@angular/material';
+import { MoreTextComponent } from './more-text';
 
 @NgModule({
     imports: [
         CommonModule,
         SlideListModule,
-        MdButtonModule
+        MdButtonModule,
+        MdIconModule
     ],
     exports: [
         CommonModule,
         FormsModule,
         TranslateModule,
         SlideListModule,
-        MdButtonModule
+        MdButtonModule,
+        MoreTextComponent,
+        MdIconModule
     ],
-    declarations: []
+    declarations: [
+        MoreTextComponent
+    ]
 })
 export class ShareModule {
 }

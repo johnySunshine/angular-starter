@@ -1,3 +1,49 @@
-.rating-component {
+@import "../../../sdk/styles/sdk_pre_custom";
 
+.rating-component {
+    .rating-number-wrap {
+        width: 152px;
+        display: inline-block;
+        .rating-list {
+            display: inline-block;
+            width: 150px;
+            .rating-item {
+                float: left;
+                .start-icons {
+                    color: map_get($YELLOW, 500);
+                    width: 24px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .rating-sources {
+        display: inline-block;
+        height: 32px;
+        .rating-number {
+            float: left;
+            height: 100%;
+            line-height: 32px;
+            color: map_get($GREY, 50);
+        }
+        .rating-icons {
+            float: left;
+            width: 24px;
+            height: 100%;
+            display: inline-block;
+            background: url(images-url('vod-detail', 'douBan_icons.svg')) no-repeat center;
+            background-size: 100% 100%;
+
+        }
+        .for-mTime-icons {
+            background: url(images-url('vod-detail', 'CN_mtime.com.svg')) no-repeat center;
+            background-size: 100% 100%;
+        }
+        .rating-count {
+            float: left;
+            height: 100%;
+            line-height: 32px;
+            margin-right: 20px;
+        }
+    }
 }

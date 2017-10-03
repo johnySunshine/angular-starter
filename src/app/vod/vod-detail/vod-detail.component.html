@@ -1,12 +1,20 @@
 <div class="vod-detail-component">
     <div class="detail-top-content">
         <div class="top-left">
-            <playbill-poster [poster]="detailInfo.poster" [adaptiveImages]="true"></playbill-poster>
+            <div class="poster-wrap">
+                <playbill-poster [poster]="detailInfo.poster" [adaptiveImages]="true"></playbill-poster>
+            </div>
         </div>
         <div class="top-right">
-            <div class="detail-title">{{detailInfo.title}}</div>
-            <div class="detail-subtitle">{{detailInfo.subTitle}}</div>
-            <rating></rating>
+            <div class="detail-title mat-display-1">{{detailInfo.title}}</div>
+            <div class="detail-subtitle mat-subheading-2">{{detailInfo.subTitle}}</div>
+            <rating [ScoringNumber]="10" [ratingNumber]="detailInfo.ratings"
+                    [ratingSourceNumber]="detailInfo.ratingCount" [isFromMtime]="false"></rating>
+            <div class="long-description">
+                <more-text [lineHeight]="26" [showLine]="4">
+                    {{detailInfo.longDescription}}
+                </more-text>
+            </div>
         </div>
     </div>
 </div>

@@ -28,7 +28,8 @@ export class VODDetail implements Resolve<any> {
                     title: subjects.title,
                     subTitle: subjects.countries.toString(),
                     longDescription: subjects.summary,
-                    ratings: subjects.rating.average
+                    ratings: subjects.rating.average,
+                    ratingCount: subjects.ratings_count
                 };
                 return detailOptions;
             });

@@ -1,9 +1,24 @@
+@import "../../sdk/styles/sdk_pre_custom";
+
 .vod-detail-component {
     .detail-top-content {
+        margin-top: 60px;
+        float: left;
+        width: 100%;
         .top-left {
+            width: 45%;
+            float: left;
+            .poster-wrap {
+                margin-left: 125px;
+            }
         }
         .top-right {
-
+            width: 55%;
+            float: left;
+            .detail-title {
+                color: map_get($GREY, 50);
+                margin: 0;
+            }
         }
     }
 }

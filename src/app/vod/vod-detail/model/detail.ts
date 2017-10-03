@@ -8,6 +8,7 @@ export interface Detail {
     subTitle: string;
     longDescription: string;
     ratings: number;
+    ratingCount?: number;
 
     originalTitle?: string;
     year?: string;

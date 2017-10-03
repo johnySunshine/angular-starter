@@ -4,11 +4,11 @@ import { Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/c
     selector: 'slide-arrows',
     template: `
         <div class="slide-arrow-container">
-            <a class="arrow-left" md-icon-button aria-hidden="true" (click)="move(-1)"
+            <a class="arrow-left" md-icon-button (click)="move(-1)"
                *ngIf="isShowLeft">
                 <i class="material-icons md-36 md-light">chevron_left</i>
             </a>
-            <a class="arrow-right" md-icon-button aria-hidden="true" (click)="move(1)"
+            <a class="arrow-right" md-icon-button (click)="move(1)"
                *ngIf="isShowRight">
                 <i class="material-icons md-36 md-light">chevron_right</i>
             </a>
