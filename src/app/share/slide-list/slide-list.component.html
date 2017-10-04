@@ -8,7 +8,7 @@
             <li class="slide-item" *ngFor="let poster of posterList">
                 <playbill-poster [posterMask]="poster.posterMask" [poster]="poster"
                                  [adaptiveImages]="adaptiveImages"
-                                 (onPosterClick)="showMoreDetail($event)"></playbill-poster>
+                                 (onPosterClick)="showMoreDetail($event)" [posterTypes]="posterTypes"></playbill-poster>
             </li>
         </ul>
     </div>

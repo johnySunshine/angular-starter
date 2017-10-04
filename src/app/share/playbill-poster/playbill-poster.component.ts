@@ -1,7 +1,6 @@
 import {
     AfterViewInit,
-    Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, OnInit, Output, SimpleChanges,
-    ViewEncapsulation
+    Component, ElementRef, EventEmitter, Input, OnInit, Output
 } from '@angular/core';
 import { Poster, PosterMask } from './model/poster';
 
@@ -13,9 +12,6 @@ import { Poster, PosterMask } from './model/poster';
 
 export class PlaybillPosterComponent implements OnInit, AfterViewInit {
 
-    @HostBinding('style.display')
-    public elDisplay: string = 'inline-block';
-
     @Input()
     public poster: Poster;
 
@@ -24,6 +20,9 @@ export class PlaybillPosterComponent implements OnInit, AfterViewInit {
 
     @Input()
     public adaptiveImages: boolean = true;
+
+    @Input()
+    public posterTypes: string = 'movie';
 
     @Output()
     public onPosterClick = new EventEmitter();

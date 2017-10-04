@@ -25,6 +25,9 @@ export class SlideListComponent implements OnInit {
     @Input()
     public multipleMove: number = 1;
 
+    @Input()
+    public posterTypes: string = 'movie';
+
     @Output()
     public onShowMore = new EventEmitter();
 
@@ -165,10 +168,12 @@ export class SlideListComponent implements OnInit {
     }
 
     public onMouseUp(): void {
+        this.slideService._configSlideCount = this.posterCounts;
         this.posterLocationX4Ending();
     }
 
     public onMouseOut() {
+        this.slideService._configSlideCount = this.posterCounts;
         this.posterLocationX4Ending();
     }
 

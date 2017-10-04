@@ -5,7 +5,9 @@
     "SEARCH_EMPTY": "对不起，搜寻不到您所需要的结果......",
     "SEARCH_NUMBER": "V.Sier 搜索的结果约",
     "SEARCH_NUMBER_COUNT": "个",
-    "SEARCH_SHOW_MORE": "显示更多结果"
+    "SEARCH_SHOW_MORE": "显示更多结果",
+    "SHOW_MORE": "显示更多菜单",
+    "SHOW_CANCEL": "关闭子菜单"
   },
   "FOOTER": {
     "MORE_LINK": "其他链接",
@@ -22,7 +24,15 @@
     "PERSON": "演职人员"
   },
   "VOD-DETAIL": {
-    "RATINGS": "评论人数"
+    "RATINGS": "评论人数",
+    "SHOW_MORE_TEXT": "显示更多",
+    "GENRES": "类别",
+    "DURATIONS": "时长",
+    "ORIGINAL_TITLE": "影片原名",
+    "LANGUAGES": "影片语言",
+    "LAND": "影片出产地",
+    "ADD-FAVORITE": "添加收藏",
+    "PLAY_VIDEO": "播放影片"
   },
   "COPYRIGHT": "©2016-2017 Lookthings 版权所有 苏ICP备16059814号",
   "ABOUT": "关于 lookthings",

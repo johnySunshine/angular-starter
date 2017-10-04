@@ -21,14 +21,8 @@ import { Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/c
 
 export class SlideArrowsComponent implements OnInit {
 
-    @HostBinding('style.position')
-    public elPosition: string = 'absolute';
-
     @HostBinding('style.top')
     public elTop: string = '0';
-
-    @HostBinding('style.width')
-    public elWidth: string = '100%';
 
     @Output()
     public movePoster = new EventEmitter();

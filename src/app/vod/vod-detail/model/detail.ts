@@ -15,6 +15,7 @@ export interface Detail {
     genres?: string;
     land?: string;
     languages?: string;
+    durations?: string;
 
     persons?: Slide;
     stills?: Slide;

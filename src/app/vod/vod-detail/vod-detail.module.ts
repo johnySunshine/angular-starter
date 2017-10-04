@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { VodDetailComponent } from './vod-detail.component';
 import { ShareModule } from '../../share';
 import { RatingComponent } from './rating';
+import { ShortInfoComponent } from './short-info';
 
 @NgModule({
     imports: [
@@ -10,7 +11,8 @@ import { RatingComponent } from './rating';
     ],
     declarations: [
         VodDetailComponent,
-        RatingComponent
+        RatingComponent,
+        ShortInfoComponent
     ],
     providers: [],
 })

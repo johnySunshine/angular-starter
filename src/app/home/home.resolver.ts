@@ -28,7 +28,7 @@ export class ComeSoonResolver implements Resolve<any> {
                     };
                 });
                 comeSoon.slideHeader = {
-                    title: '最近上印'
+                    title: '最近上映'
                 };
                 return comeSoon;
             });

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
 import { SlideListModule } from './slide-list';
-import { MdButtonModule, MdIconModule } from '@angular/material';
+import { MdButtonModule, MdIconModule, MdTooltipModule } from '@angular/material';
 import { MoreTextComponent } from './more-text';
 
 @NgModule({
@@ -11,7 +11,8 @@ import { MoreTextComponent } from './more-text';
         CommonModule,
         SlideListModule,
         MdButtonModule,
-        MdIconModule
+        MdIconModule,
+        MdTooltipModule
     ],
     exports: [
         CommonModule,
@@ -20,7 +21,8 @@ import { MoreTextComponent } from './more-text';
         SlideListModule,
         MdButtonModule,
         MoreTextComponent,
-        MdIconModule
+        MdIconModule,
+        MdTooltipModule
     ],
     declarations: [
         MoreTextComponent

@@ -16,7 +16,8 @@ import {
             <ng-content></ng-content>
         </div>
         <div class="more-text-button">
-            <a class="button-a material-icons md-light" md-icon-button (click)="showMore()"
+            <a class="button-a material-icons md-light" md-icon-button
+               (click)="showMore()"
                [class.button-transform]="!defaultSwitch">
                 <md-icon>expand_more</md-icon>
             </a>

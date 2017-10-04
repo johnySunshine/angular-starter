@@ -1,20 +1,52 @@
 <div class="vod-detail-component">
+    <div class="vod-bg-wrap">
+        <div class="vod-bg-main">
+            <img src="" alt="" [attr.src]="detailInfo.poster.posterUrl" class="vod-bg-wrap-img">
+            <div class="vod-bg-mask"></div>
+        </div>
+    </div>
     <div class="detail-top-content">
         <div class="top-left">
             <div class="poster-wrap">
                 <playbill-poster [poster]="detailInfo.poster" [adaptiveImages]="true"></playbill-poster>
             </div>
         </div>
-        <div class="top-right">
-            <div class="detail-title mat-display-1">{{detailInfo.title}}</div>
-            <div class="detail-subtitle mat-subheading-2">{{detailInfo.subTitle}}</div>
+        <div class="top-middle-information">
             <rating [ScoringNumber]="10" [ratingNumber]="detailInfo.ratings"
                     [ratingSourceNumber]="detailInfo.ratingCount" [isFromMtime]="false"></rating>
+            <button md-fab color=""  [mdTooltip]="'VOD-DETAIL.ADD-FAVORITE'|translate"
+                    [mdTooltipShowDelay]="500">
+                <md-icon class="md-24" aria-label="Example icon-button with a heart icon">favorite_border</md-icon>
+            </button>
+            <button md-fab color="'#001100'">
+                <md-icon class="md-24" aria-label="Example icon-button with a heart icon">favorite</md-icon>
+            </button>
+            <button md-fab color="'#001100'">
+                <md-icon class="md-24" aria-label="Example icon-button with a heart icon">view_list</md-icon>
+            </button>
+            <button md-fab color="'#001100'" [mdTooltip]="'VOD-DETAIL.PLAY_VIDEO'|translate"
+                    [mdTooltipShowDelay]="500">
+                <md-icon class="md-24" aria-label="Example icon-button with a heart icon">play_arrow</md-icon>
+            </button>
+            <short-info [shortInfos]="shortInfo"></short-info>
+        </div>
+        <div class="top-right">
+            <div class="detail-title mat-display-1">{{detailInfo.title}}</div>
+            <div class="detail-subtitle mat-subheading-2">{{detailInfo.subTitle}} {{detailInfo.year}}</div>
+
             <div class="long-description">
-                <more-text [lineHeight]="26" [showLine]="4">
+                <more-text [lineHeight]="26" [showLine]="3">
                     {{detailInfo.longDescription}}
                 </more-text>
             </div>
+
         </div>
     </div>
+    <div class="detail-bottom-content">
+        <slide-list [showSlide]="detailInfo.persons" [types]="personTypes" [multipleMove]="6"
+                    [posterTypes]="'person'"></slide-list>
+        <slide-list [showSlide]="detailInfo.stills" [types]="types" [multipleMove]="7"
+                    [posterTypes]="'image'"></slide-list>
+    </div>
+
 </div>

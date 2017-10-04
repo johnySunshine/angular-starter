@@ -14,11 +14,19 @@
     }
 }
 
+:host {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0;
+}
+
 .slide-arrow-container {
     width: 100%;
     position: relative;
     clear: both;
     opacity: 0;
+    height: 0;
     @include animation(opacity, $sharp_curve, $EXITING);
     .arrow-left {
         @include normal-arrows;

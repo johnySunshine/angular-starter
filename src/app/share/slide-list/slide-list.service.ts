@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SlideConfig, SlideTypes } from './model/slide';
-import { Poster } from '../playbill-poster/model/poster';
+import { Poster, PosterMask } from '../playbill-poster/model/poster';
 import * as _ from 'lodash';
 
 const screenWith: number = 1284;
@@ -11,9 +11,9 @@ const horProportion = 9 / 16;
 @Injectable()
 export class SlideListService {
 
-    private _configTypes: SlideTypes;
+    public _configSlideCount: number;
 
-    private _configSlideCount: number;
+    private _configTypes: SlideTypes;
 
     private _viewPosterWidth: number;
 
@@ -113,17 +113,17 @@ export class SlideListService {
      */
     public conversePosterData(): any {
         return _.map(this._slides, (poster: Poster) => {
-            return {
+            let mask: PosterMask = poster.posterMask;
+            let posterItem: Poster = {
                 id: poster.id,
                 posterUrl: poster.posterUrl,
                 width: `${this.calcEveryPosterWidth()}px`,
                 height: `${this.calcEvertPosterHeight()}px`,
                 posterTitle: poster.posterTitle,
                 posterSubtitle: poster.posterSubtitle,
-                posterMask: {
-                    rating: poster.posterMask.rating
-                }
+                posterMask: mask
             };
+            return posterItem;
         });
     }
 

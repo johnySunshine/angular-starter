@@ -1,0 +1,21 @@
+@import "~@angular/material/_theming";
+
+:host{
+    margin-top: 66px;
+    display: block;
+    position: relative;
+}
+.vod-short-info {
+    .info-table {
+        .info-item {
+            .info-title {
+                display: inline-block;
+                width: 200px;
+                margin: 0;
+            }
+            .info-values {
+                color: map_get($mat-grey, A200);
+            }
+        }
+    }
+}
