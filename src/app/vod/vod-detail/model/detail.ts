@@ -3,6 +3,7 @@ import { Slide } from '../../../share/slide-list/model/slide';
 
 // 可能还需要补充属性
 export interface Detail {
+    id: number;
     poster: Poster;
     title: string;
     subTitle: string;
@@ -16,6 +17,8 @@ export interface Detail {
     land?: string;
     languages?: string;
     durations?: string;
+    sourceData?: string;
+    bgPicture?: string;
 
     persons?: Slide;
     stills?: Slide;

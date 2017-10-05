@@ -4,6 +4,7 @@ import { VodDetailComponent } from './vod-detail.component';
 import { ShareModule } from '../../share';
 import { RatingComponent } from './rating';
 import { ShortInfoComponent } from './short-info';
+import { MoreStillsComponent } from './show-more-stills';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { ShortInfoComponent } from './short-info';
     declarations: [
         VodDetailComponent,
         RatingComponent,
-        ShortInfoComponent
+        ShortInfoComponent,
+        MoreStillsComponent
     ],
     providers: [],
 })

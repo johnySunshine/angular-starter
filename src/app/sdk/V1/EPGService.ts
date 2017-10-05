@@ -54,4 +54,12 @@ export class EPGService {
         return this.sendRequest('VODDetail', options);
     }
 
+    public getVODPhotosById(subjectId: number) {
+        const options: Options = {
+            Method: RequestMethod.Get,
+            Data: subjectId
+        };
+        return this.sendRequest('VodPhotos', options);
+    }
+
 }

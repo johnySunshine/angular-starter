@@ -33,7 +33,7 @@ export class SlideListComponent implements OnInit {
 
     @Output()
     public onPoster: EventEmitter<number> = new EventEmitter();
-
+    @Input()
     public adaptiveImages: boolean = true;
 
     public slideViewsWidth: number;
@@ -75,7 +75,6 @@ export class SlideListComponent implements OnInit {
         };
 
         this.posterList = slidesService.conversePosterData();
-        this.adaptiveImages = slidesService.isAdaptiveImages();
         this.slideViewsWidth = slidesService.slideViewsWidth();
         this.slideArrows.elTop = `${slidesService.arrowsTop()}px`;
         this.slideLocationX = 0;

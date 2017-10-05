@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../../app.service';
 import { MenuTypes } from '../../header';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Detail } from './model/detail';
 import { ShortInfo } from './model/shortInfo';
-import { SlideTypes } from '../../share/slide-list/model/slide';
+import { Slide, SlideTypes } from '../../share/slide-list/model/slide';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'vod-detail-component',
@@ -16,11 +17,17 @@ export class VodDetailComponent implements OnInit {
 
     public detailInfo: Detail;
 
+    public stillsPhoto: Slide;
+
     public shortInfo: ShortInfo[];
 
     public types = SlideTypes.square;
 
     public personTypes = SlideTypes.vertical;
+
+    public isFromMtime: boolean;
+
+    public vodSource: string;
 
     constructor(private appService: AppState,
                 private route: ActivatedRoute,
@@ -29,13 +36,17 @@ export class VodDetailComponent implements OnInit {
 
     public ngOnInit() {
         document.documentElement.scrollTop = 0;
+        this.isFromMtime = false;
         this.onLoadData();
+
     }
 
     public onLoadData(): void {
         this.route.data.subscribe((resp) => {
             let {VODDetail} = resp;
+            this.stillsPhoto = VODDetail.stills;
             this.detailInfo = VODDetail;
+            this.isFromMtime = VODDetail.sourceData === 'mtime';
             this.shortInfo = [{
                 infoTitle: 'VOD-DETAIL.GENRES',
                 infoValue: VODDetail.genres
@@ -60,5 +71,13 @@ export class VodDetailComponent implements OnInit {
                 }
             });
         });
+        this.route.params.subscribe((params: Params) => {
+            let {fromSource} = params;
+            this.vodSource = fromSource;
+        });
+    }
+
+    public showAllStills(): void {
+        this.router.navigate(['vod', this.vodSource, this.detailInfo.id.toString(), 'stills']);
     }
 }
