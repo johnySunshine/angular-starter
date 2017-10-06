@@ -2,6 +2,7 @@ import { Poster } from '../../playbill-poster';
 
 export interface SlideHeader {
     title: string;
+    counts?: number;
 }
 
 export interface Slide {

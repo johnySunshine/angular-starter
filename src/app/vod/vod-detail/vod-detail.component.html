@@ -31,7 +31,7 @@
             <short-info [shortInfos]="shortInfo"></short-info>
         </div>
         <div class="top-right">
-            <div class="detail-title mat-display-1">{{detailInfo.title}}</div>
+            <div class="detail-title mat-display-1" [attr.title]="detailInfo.title">{{detailInfo.title}}</div>
             <div class="detail-subtitle mat-subheading-2">{{detailInfo.subTitle}} {{detailInfo.year}}</div>
 
             <div class="long-description">

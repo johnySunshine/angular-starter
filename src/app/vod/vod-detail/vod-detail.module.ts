@@ -5,10 +5,12 @@ import { ShareModule } from '../../share';
 import { RatingComponent } from './rating';
 import { ShortInfoComponent } from './short-info';
 import { MoreStillsComponent } from './show-more-stills';
+import { MatButtonToggleModule } from '@angular/material';
 
 @NgModule({
     imports: [
-        ShareModule
+        ShareModule,
+        MatButtonToggleModule
     ],
     declarations: [
         VodDetailComponent,

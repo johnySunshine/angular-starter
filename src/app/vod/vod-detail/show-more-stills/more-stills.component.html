@@ -1,3 +1,24 @@
 <div class="stills-component">
-    stills-component
+    <h1>{{'VOD-DETAIL.PICTURE_NAME'| translate}}</h1>
+    <section class="stills-navigation-section">
+        <md-button-toggle-group name="pies" (change)="chooseType($event)" [vertical]="isVertical"
+                                [value]="imageTypeValue">
+            <md-button-toggle *ngFor="let imageType of imageTypes" [value]="imageType.type">
+                {{imageType.typeName}}
+            </md-button-toggle>
+        </md-button-toggle-group>
+    </section>
+    <div class="still-wrap"
+         infinite-scroll
+         [infiniteScrollDistance]="1"
+         [infiniteScrollThrottle]="300"
+         (scrolled)="onScroll()">
+        <div class="stills-container">
+            <ul class="stills-ul">
+                <li class="still" *ngFor="let images of initImageShow">
+                    <img src="" alt="" [attr.src]="images.image">
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

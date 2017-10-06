@@ -5,6 +5,7 @@ import { TranslateModule } from 'ng2-translate';
 import { SlideListModule } from './slide-list';
 import { MdButtonModule, MdIconModule, MdTooltipModule } from '@angular/material';
 import { MoreTextComponent } from './more-text';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { MoreTextComponent } from './more-text';
         SlideListModule,
         MdButtonModule,
         MdIconModule,
-        MdTooltipModule
+        MdTooltipModule,
+        InfiniteScrollModule
     ],
     exports: [
         CommonModule,
@@ -22,7 +24,8 @@ import { MoreTextComponent } from './more-text';
         MdButtonModule,
         MoreTextComponent,
         MdIconModule,
-        MdTooltipModule
+        MdTooltipModule,
+        InfiniteScrollModule
     ],
     declarations: [
         MoreTextComponent

@@ -8,6 +8,7 @@ import { SlideHeader } from '../model/slide';
             <div class="slide-content" (click)="clickShowMore(slideHeader.title)">
                 <div class="slide-header-title mat-title">{{slideHeader.title}}
                 </div>
+                <div class="slide-header-count mat-title" *ngIf="slideHeader.counts">({{slideHeader.counts}})</div>
                 <i class="slide-header-more material-icons md-30 md-light">chevron_right</i>
             </div>
         </div>

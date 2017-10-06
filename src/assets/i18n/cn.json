@@ -32,7 +32,8 @@
     "LANGUAGES": "影片语言",
     "LAND": "影片出产地",
     "ADD-FAVORITE": "添加收藏",
-    "PLAY_VIDEO": "播放影片"
+    "PLAY_VIDEO": "播放影片",
+    "PICTURE_NAME": "影片海报"
   },
   "COPYRIGHT": "©2016-2017 Lookthings 版权所有 苏ICP备16059814号",
   "ABOUT": "关于 lookthings",

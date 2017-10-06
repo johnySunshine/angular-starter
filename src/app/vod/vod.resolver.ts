@@ -96,7 +96,7 @@ export class VODDetail implements Resolve<any> {
         return this.appService.IPTV.getVODDetailById(Number.parseInt(subjectsId, 10))
             .map((subject) => {
                 let {data: {basic}} = subject;
-                let {stageImg: {list}} = basic;
+                let {stageImg: {list, count}} = basic;
                 let persons: Slide = {
                     slideHeader: {
                         title: '演职人员'
@@ -104,7 +104,7 @@ export class VODDetail implements Resolve<any> {
                     playbillPosters: _.map(basic.actors, (item: any) => {
                         return {
                             id: item.actorId,
-                            posterUrl: item.img,
+                            posterUrl: this.setPersonImageSize(item.img, '201X282'),
                             posterTitle: item.name,
                             posterSubtitle: item.roleName
                         };
@@ -112,12 +112,13 @@ export class VODDetail implements Resolve<any> {
                 };
                 let stills: Slide = {
                     slideHeader: {
-                        title: '影片剧照'
+                        title: '影片图片',
+                        counts: count
                     },
                     playbillPosters: _.map(list, (item: any) => {
                         return {
                             id: item.imgId,
-                            posterUrl: item.imgUrl,
+                            posterUrl: this.setPersonImageSize(item.imgUrl, '170X170'),
                         };
                     })
                 };
@@ -147,6 +148,12 @@ export class VODDetail implements Resolve<any> {
                 };
                 return detailOptions;
             });
+    }
+
+    public setPersonImageSize(imgURL: string, imgSize: string): string {
+        let urlList = imgURL.split('_');
+        let Suffix = urlList[1].split('.')[1];
+        return urlList[0] + '_' + imgSize + '.' + Suffix;
     }
 }
 
