@@ -41,4 +41,16 @@ export class AppState {
     public onMenusEvent() {
         return this.onChangeMenus;
     }
+
+    /**
+     * 设置图片的尺寸的URL
+     * @param {string} imgURL
+     * @param {string} imgSize
+     * @returns {string}
+     */
+    public setImageSize4MTime(imgURL: string, imgSize: string): string {
+        let urlList = imgURL.split('_');
+        let Suffix = urlList[1].split('.')[1];
+        return urlList[0] + '_' + imgSize + '.' + Suffix;
+    }
 }

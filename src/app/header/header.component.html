@@ -14,8 +14,8 @@
             <div class="menu-title-detail" *ngSwitchCase="2">{{menuDetail}}</div>
             <div class="menu-title-dropDown" *ngSwitchCase="3">menu-title-dropDown</div>
             <div class="menu-title-search" *ngSwitchCase="4">
-                <div class="header-title">{{menuDetail}}</div>
-                <div class="header-counter">( {{counts}} )</div>
+                <div class="header-title mat-title">{{menuDetail | translate}}</div>
+                <div class="header-counter mat-title">( {{counts}} )</div>
             </div>
         </div>
         <div class="menu-subtitle" *ngIf="isRotate" [@fadeMenu]="isRotate">{{appLogoTitle}}</div>

@@ -74,15 +74,6 @@ export class SlideListService {
             return this.calcEveryPosterWidth();
         }
     }
-
-    /**
-     * 是否自适应
-     * @returns {boolean}
-     */
-    public isAdaptiveImages(): boolean {
-        return this._configTypes === 6;
-    }
-
     /**
      * 两边的箭头的高度
      * @returns {number}

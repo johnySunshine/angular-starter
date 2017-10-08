@@ -6,6 +6,7 @@ import { RatingComponent } from './rating';
 import { ShortInfoComponent } from './short-info';
 import { MoreStillsComponent } from './show-more-stills';
 import { MatButtonToggleModule } from '@angular/material';
+import { ShowImageDialogComponent } from './show-image-dialog/show-image-dialog';
 
 @NgModule({
     imports: [
@@ -16,9 +17,13 @@ import { MatButtonToggleModule } from '@angular/material';
         VodDetailComponent,
         RatingComponent,
         ShortInfoComponent,
-        MoreStillsComponent
+        MoreStillsComponent,
+        ShowImageDialogComponent
     ],
     providers: [],
+    entryComponents: [
+        ShowImageDialogComponent
+    ]
 })
 export class VodDetailModule {
 }

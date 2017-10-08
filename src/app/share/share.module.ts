@@ -29,7 +29,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ],
     declarations: [
         MoreTextComponent
-    ]
+    ],
 })
 export class ShareModule {
 }

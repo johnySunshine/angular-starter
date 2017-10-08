@@ -73,8 +73,8 @@ export class HeaderComponent implements OnInit {
                 case  MenuTypes.dropDown:
                     break;
                 case MenuTypes.search:
-                    this.counts = 20;
-                    this.menuDetail = '搜索';
+                    this.counts = menuData.counts;
+                    this.menuDetail = menuData.menuTitle;
                     break;
                 default:
                     break;

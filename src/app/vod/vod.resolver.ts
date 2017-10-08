@@ -8,6 +8,7 @@ import { Detail } from './vod-detail/model/detail';
 import { Slide } from '../share/slide-list/model/slide';
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { Poster } from "../share/playbill-poster/model/poster";
 
 /**
  * 用于影片详情的数据封装
@@ -104,7 +105,7 @@ export class VODDetail implements Resolve<any> {
                     playbillPosters: _.map(basic.actors, (item: any) => {
                         return {
                             id: item.actorId,
-                            posterUrl: this.setPersonImageSize(item.img, '201X282'),
+                            posterUrl: this.appService.setImageSize4MTime(item.img, '201X282'),
                             posterTitle: item.name,
                             posterSubtitle: item.roleName
                         };
@@ -118,7 +119,7 @@ export class VODDetail implements Resolve<any> {
                     playbillPosters: _.map(list, (item: any) => {
                         return {
                             id: item.imgId,
-                            posterUrl: this.setPersonImageSize(item.imgUrl, '170X170'),
+                            posterUrl: this.appService.setImageSize4MTime(item.imgUrl, '170X170'),
                         };
                     })
                 };
@@ -149,12 +150,6 @@ export class VODDetail implements Resolve<any> {
                 return detailOptions;
             });
     }
-
-    public setPersonImageSize(imgURL: string, imgSize: string): string {
-        let urlList = imgURL.split('_');
-        let Suffix = urlList[1].split('.')[1];
-        return urlList[0] + '_' + imgSize + '.' + Suffix;
-    }
 }
 
 @Injectable()
@@ -166,9 +161,24 @@ export class VODStills implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         let {id} = route.params;
         let detailResolve: Observable<any>;
+        let viewPosterWidth = 1284 - (15 * (7 - 1));
         detailResolve = this.appService.IPTV.getVODPhotosById(id)
             .map((data) => {
-                return data;
+                let {imageTypes, images} = data;
+                images = _.map(images, (item: any) => {
+                    let stillPoster: Poster = {
+                        id: item.id,
+                        posterUrl: this.appService.setImageSize4MTime(item.image, '170X170'),
+                        width: `${viewPosterWidth / 7}px`,
+                        height: `${viewPosterWidth / 7}px`,
+                        type: item.type
+                    };
+                    return stillPoster;
+                });
+                return {
+                    imageTypes,
+                    images
+                };
             });
         return detailResolve;
     }

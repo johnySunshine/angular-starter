@@ -70,6 +70,13 @@ $app-header-height: 56px;
 
             }
             .menu-title-search {
+                .header-title {
+                    color: map_get($GREY, 300);
+                    display: inline-block;
+                }
+                .header-counter {
+                    display: inline-block;
+                }
 
             }
         }

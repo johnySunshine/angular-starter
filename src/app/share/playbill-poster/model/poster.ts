@@ -6,6 +6,7 @@ export interface Poster {
     posterTitle?: string;
     posterSubtitle?: string;
     posterMask?: PosterMask;
+    type?: number;
 }
 
 export interface PosterMask {
