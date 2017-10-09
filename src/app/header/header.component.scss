@@ -99,7 +99,7 @@ $app-header-height: 56px;
                     }
                 }
                 .btn-rotateY {
-                    @include transform(rotate(180deg));
+                    @include transform(rotate(90deg));
                 }
             }
         }

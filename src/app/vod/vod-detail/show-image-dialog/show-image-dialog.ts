@@ -1,16 +1,31 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MD_DIALOG_DATA } from '@angular/material';
+import * as _ from 'lodash';
+import { AppState } from '../../../app.service';
+import { Poster } from '../../../share/playbill-poster/model/poster';
 
 @Component({
     selector: 'show-more-dialog',
-    templateUrl: 'show-more-dialog.html'
+    templateUrl: 'show-image-dialog.html',
+    styleUrls: ['show-image-dialog.scss']
 })
 
 export class ShowImageDialogComponent implements OnInit {
-    constructor(@Inject(MD_DIALOG_DATA) public data: any) {
-         console.log(data);
+    public imageDetail: Poster;
+    public chosenImageURL: string;
+
+    constructor(@Inject(MD_DIALOG_DATA) public data: any,
+                public appService: AppState) {
     }
 
     public ngOnInit(): void {
+        let {posterId, stillPosterList} = this.data;
+        let curImage: Poster = _.find(stillPosterList, (resp: any) => resp.id === posterId);
+        this.imageDetail = {
+            id: curImage.id,
+            posterUrl: this.appService.setImageSize4MTime(curImage.posterUrl, '1000X1000'),
+            height: '600px',
+            width: '600px'
+        };
     }
 }

@@ -1,0 +1,10 @@
+<h2 md-dialog-title>{{'VOD-DETAIL.IMAGE_MORE'|translate}}</h2>
+<div class="dialog-content">
+    <playbill-poster [poster]="imageDetail" [adaptiveImages]="false"></playbill-poster>
+</div>
+
+<md-dialog-actions>
+    <a md-icon-button [attr.href]="imageDetail.posterUrl" download="imageDetail.jpg">
+        <md-icon class="md-24">file_download</md-icon>
+    </a>
+</md-dialog-actions>

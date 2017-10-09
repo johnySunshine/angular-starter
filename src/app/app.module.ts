@@ -35,7 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
-import { MdProgressSpinnerModule, MatDialogModule } from '@angular/material';
+import { MdProgressSpinnerModule } from '@angular/material';
 import { FooterModule } from './footer';
 import { VodModule } from './vod';
 import { ShowImageDialogComponent } from './dialog/show-images-dialog/show-image-dialog';
@@ -71,7 +71,6 @@ export function createTranslateLoader(http: Http) {
         HttpModule,
         HeaderModule,
         FooterModule,
-        MatDialogModule,
         HomeModule,
         VodModule,
         BrowserModule,

@@ -29,7 +29,7 @@ export class MoreStillsComponent implements OnInit {
 
     public config: MdDialogConfig = {
         disableClose: false,
-        hasBackdrop: true
+        hasBackdrop: true,
     };
 
     constructor(private route: ActivatedRoute,
@@ -58,9 +58,7 @@ export class MoreStillsComponent implements OnInit {
 
     public chooseType($event) {
         let {value} = $event;
-        this.stillPosterList = _.filter(this.imagesSource, (isource) => {
-            return isource.type === value;
-        });
+        this.stillPosterList = _.filter(this.imagesSource, (isource) => isource.type === value);
         if (value === -1) {
             this.stillPosterList = this.imagesSource;
         }
@@ -70,9 +68,9 @@ export class MoreStillsComponent implements OnInit {
     public showPicture($event) {
         let {posterId} = $event;
         this.config.data = {
-            posterId
+            posterId,
+            stillPosterList: this.stillPosterList
         };
         this.dialog.open(ShowImageDialogComponent, this.config);
-        console.log(posterId);
     }
 }

@@ -6,6 +6,8 @@ import { Detail } from './model/detail';
 import { ShortInfo } from './model/shortInfo';
 import { Slide, SlideTypes } from '../../share/slide-list/model/slide';
 import 'rxjs/add/operator/switchMap';
+import { MdDialog, MdDialogConfig } from '@angular/material';
+import { ShowImageDialogComponent } from './show-image-dialog/show-image-dialog';
 
 @Component({
     selector: 'vod-detail-component',
@@ -31,7 +33,8 @@ export class VodDetailComponent implements OnInit {
 
     constructor(private appService: AppState,
                 private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                public dialog: MdDialog) {
     }
 
     public ngOnInit() {
@@ -79,5 +82,15 @@ export class VodDetailComponent implements OnInit {
 
     public showAllStills(): void {
         this.router.navigate(['vod', this.vodSource, this.detailInfo.id.toString(), 'stills']);
+    }
+
+    public showImage(posterId): void {
+        let config: MdDialogConfig = {
+            data: {
+                posterId,
+                stillPosterList: this.stillsPhoto.playbillPosters
+            }
+        };
+        this.dialog.open(ShowImageDialogComponent, config);
     }
 }

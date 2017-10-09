@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
 import { SlideListModule } from './slide-list';
-import { MdButtonModule, MdIconModule, MdTooltipModule } from '@angular/material';
+import { MdButtonModule, MdIconModule, MdTooltipModule, MatDialogModule, } from '@angular/material';
 import { MoreTextComponent } from './more-text';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SlimScrollModule } from 'ng2-slimscroll';
 
 @NgModule({
     imports: [
@@ -14,7 +15,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
         MdButtonModule,
         MdIconModule,
         MdTooltipModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        MatDialogModule,
+        SlimScrollModule
     ],
     exports: [
         CommonModule,
@@ -25,7 +28,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
         MoreTextComponent,
         MdIconModule,
         MdTooltipModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        MatDialogModule,
+        SlimScrollModule
     ],
     declarations: [
         MoreTextComponent

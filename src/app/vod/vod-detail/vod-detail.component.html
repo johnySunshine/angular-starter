@@ -46,7 +46,7 @@
         <slide-list [showSlide]="detailInfo.persons" [types]="personTypes" [multipleMove]="6"
                     [posterTypes]="'person'" [adaptiveImages]="true"></slide-list>
         <slide-list [showSlide]="stillsPhoto" [types]="types" [multipleMove]="7"
-                    [posterTypes]="'image'" [adaptiveImages]="true" (onShowMore)="showAllStills()"></slide-list>
+                    [posterTypes]="'image'" [adaptiveImages]="true" (onShowMore)="showAllStills()" (onPoster)="showImage($event)"></slide-list>
     </div>
 
 </div>
