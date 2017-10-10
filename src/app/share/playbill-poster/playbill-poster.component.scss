@@ -1,7 +1,7 @@
 @import "../../sdk/styles/sdk_varibles";
 @import "../../sdk/styles/sdk_fonts";
-@import "../../sdk/styles/sdk_elevation";
 @import "../../sdk/styles/sdk_color";
+@import '~@angular/material/theming';
 
 :host {
     display: inline-block;
@@ -20,7 +20,7 @@
         border-radius: 4px;
         &:hover {
             @include animation(box-shadow, $standard_curve, $ENTERING);
-            @include elevation(10);
+            @include mat-elevation(10);
         }
         .poster-default {
             width: 100%;

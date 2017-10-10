@@ -1,7 +1,7 @@
-@import "../sdk/styles/sdk_elevation";
 @import "../sdk/styles/sdk_color";
 @import "../sdk/styles/sdk_fonts";
 @import "../sdk/styles/sdk_varibles";
+@import '~@angular/material/theming';
 
 $app-header-height: 56px;
 @mixin header {
@@ -18,7 +18,7 @@ $app-header-height: 56px;
 .header-wrapper {
     height: $app-header-height;
     background: rgba(map_get($GREY, A100), 0.8);
-    @include elevation(6);
+    @include mat-elevation(6);
     .logo-wrapper {
         float: left;
         position: relative;

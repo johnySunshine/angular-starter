@@ -68,6 +68,7 @@ export function createTranslateLoader(http: Http) {
      * Import Angular's modules.
      */
     imports: [
+        FormsModule,
         HttpModule,
         HeaderModule,
         FooterModule,

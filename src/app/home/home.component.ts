@@ -1,14 +1,14 @@
 import {
-    Component,
+    Component, HostBinding,
     OnInit
 } from '@angular/core';
 
 import { AppState } from '../app.service';
 import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
-import { Poster, PosterMask } from '../share/playbill-poster/model/poster';
 import { Slide, SlideHeader, SlideTypes } from '../share/slide-list/model/slide';
 import { ActivatedRoute, Router } from '@angular/router';
+import { slideInDownAnimation } from '../sdk/animated/routeAnimation.animated';
 
 @Component({
     /**
