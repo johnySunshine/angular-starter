@@ -31,6 +31,10 @@ export class EPGService {
         }
     }
 
+    public _sendRequest(reqName: string) {
+
+    }
+
     public getMenus(): Observable<any> {
         const options: Options = {
             Method: RequestMethod.Get

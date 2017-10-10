@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-
 import { FooterComponent } from './footer.component';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../share/share.module';
+import { TopButtonComponent } from './top-button';
 
 @NgModule({
     imports: [
@@ -13,7 +13,8 @@ import { ShareModule } from '../share/share.module';
         FooterComponent
     ],
     declarations: [
-        FooterComponent
+        FooterComponent,
+        TopButtonComponent
     ],
 })
 export class FooterModule {
