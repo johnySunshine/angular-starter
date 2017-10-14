@@ -7,7 +7,7 @@ import { MdButtonModule, MdIconModule, MdTooltipModule, MatDialogModule } from '
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SlimScrollModule } from 'ng2-slimscroll';
 import { UnsliderComponent } from './unslider';
-import { UiTextComponent, UiPosterComponent } from '../sdk';
+import { UiPosterModule, UiTextModule, UiSlidingPosterModule } from '../sdk';
 
 // material design 第三插件的模块
 const mdModule = [
@@ -22,9 +22,10 @@ const otherModule = [
     SlimScrollModule
 ];
 
-const uiComponent = [
-    UiTextComponent,
-    UiPosterComponent,
+const uiModule = [
+    UiPosterModule,
+    UiTextModule,
+    UiSlidingPosterModule
 ];
 
 /**
@@ -35,7 +36,8 @@ const uiComponent = [
         CommonModule,
         SlideListModule,
         ...otherModule,
-        ...mdModule
+        ...mdModule,
+        ...uiModule
     ],
     exports: [
         CommonModule,
@@ -43,13 +45,12 @@ const uiComponent = [
         TranslateModule,
         SlideListModule,
         UnsliderComponent,
-        ...uiComponent,
         ...otherModule,
-        ...mdModule
+        ...mdModule,
+        ...uiModule
     ],
     declarations: [
         UnsliderComponent,
-        ...uiComponent,
     ]
 })
 export class ShareModule {
