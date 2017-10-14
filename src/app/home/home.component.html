@@ -1,15 +1,18 @@
 <!--<playbill-poster [poster]="poster" [posterMask]="posterMask" [adaptiveImages]="false"></playbill-poster>-->
 
-<slide-list [showSlide]="slides" [types]="posterTypes1" [multipleMove]="2"></slide-list>
+<!--<slide-list [showSlide]="slides" [types]="posterTypes1" [multipleMove]="2"></slide-list>-->
 
-<slide-list [showSlide]="slides" [types]="posterTypes" [multipleMove]="6"></slide-list>
+<!--<slide-list [showSlide]="slides" [types]="posterTypes" [multipleMove]="6"></slide-list>-->
 
-<slide-list [showSlide]="slides" [types]="posterTypes2" [multipleMove]="4" (onShowMore)="headerMore1($event)"
-            (onPoster)="posterMore($event)"></slide-list>
+<!--<slide-list [showSlide]="slides" [types]="posterTypes2" [multipleMove]="4" (onShowMore)="headerMore1($event)"-->
+<!--(onPoster)="posterMore($event)"></slide-list>-->
 
-<button md-button>click me</button>
-<i class="material-icons md-36">face</i>
-1.1x_zq1.0--test1
-1.1x_zq1.0--test2
-1.1x_zq1.0--test3
+<!--<button md-button>click me</button>-->
+<!--<i class="material-icons md-36">face</i>-->
+<!--1.1x_zq1.0&#45;&#45;test1-->
+<!--1.1x_zq1.0&#45;&#45;test2-->
+<!--1.1x_zq1.0&#45;&#45;test3-->
+<ui-poster [uiPoster]="uiPoster" [width]="419" [height]="300" [isAdaptive]="true" (onPoster)="showPoster($event)"></ui-poster>
+
+
 

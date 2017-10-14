@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
 import { SlideListModule } from './slide-list';
 import { MdButtonModule, MdIconModule, MdTooltipModule, MatDialogModule } from '@angular/material';
-import { MoreTextComponent } from './more-text';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SlimScrollModule } from 'ng2-slimscroll';
+import { UnsliderComponent } from './unslider';
+import { UiTextComponent, UiPosterComponent } from '../sdk';
 
 // material design 第三插件的模块
 const mdModule = [
@@ -19,6 +20,11 @@ const mdModule = [
 const otherModule = [
     InfiniteScrollModule,
     SlimScrollModule
+];
+
+const uiComponent = [
+    UiTextComponent,
+    UiPosterComponent,
 ];
 
 /**
@@ -36,12 +42,14 @@ const otherModule = [
         FormsModule,
         TranslateModule,
         SlideListModule,
-        MoreTextComponent,
+        UnsliderComponent,
+        ...uiComponent,
         ...otherModule,
         ...mdModule
     ],
     declarations: [
-        MoreTextComponent
+        UnsliderComponent,
+        ...uiComponent,
     ]
 })
 export class ShareModule {

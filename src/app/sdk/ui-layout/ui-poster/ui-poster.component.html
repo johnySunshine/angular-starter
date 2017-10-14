@@ -1,0 +1,38 @@
+<div class="ui-poster-component" (click)="posterMore($event,uiPoster.id)">
+    <div class="poster-image-wrap" [ngStyle]="uiStyle">
+        <div class="poster-default-image">
+            <i class="poster-icons material-icons">{{uiPoster.defaultPictureName}}</i>
+        </div>
+        <div class="poster-main-image">
+            <img class="main-image" src="" alt="" [src]="uiPoster.url" [alt]="uiPoster.title"
+                 onerror="this.style.opacity=0"
+                 onload="this.style.opacity=1" [ngClass]="{'img-adapter':isAdaptive}">
+        </div>
+        <div class="poster-mask-image" *ngIf="uiPoster.mask">
+            <div class="mask-title2 mat-title" *ngIf="uiPoster.mask.title2">
+                {{uiPoster.mask.title2}}
+            </div>
+            <div class="mask-title1 mat-display-3" *ngIf="uiPoster.mask.title1" [title]="uiPoster.mask.title1">
+                {{uiPoster.mask.title1}}
+            </div>
+            <div class="mask-title3 mat-h2" *ngIf="uiPoster.mask.title3">
+                {{uiPoster.mask.title3}}
+            </div>
+            <div class="mask-title4 mat-h2" *ngIf="uiPoster.mask.title4">
+                {{uiPoster.mask.title4}}
+            </div>
+            <div class="poster-spinner-wrap" *ngIf="uiPoster.mask.isShowPercent">
+                <div class="spinner-background"></div>
+                <div class="spinner-percent" [ngStyle]="{width:uiPoster.mask.spinnerPercent}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="poster-title-wrap" [style.width]="uiStyle.width" *ngIf="isShowPosterTitleWrap">
+        <div class="poster-title mat-h2" [title]="uiPoster.title">
+            {{uiPoster.title}}
+        </div>
+        <div class="poster-subtitle mat-h3" [title]="uiPoster.subTitle">
+            {{uiPoster.subTitle}}
+        </div>
+    </div>
+</div>

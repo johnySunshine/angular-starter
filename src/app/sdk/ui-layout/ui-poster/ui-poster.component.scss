@@ -1,0 +1,152 @@
+@import '~@angular/material/theming';
+@import "../../styles/sdk_pre_custom";
+
+:host {
+    display: inline-block;
+}
+
+@mixin text-more-shadow {
+    -webkit-mask-image: -webkit-gradient(linear, 80% 100%, right 80%, from(map_get($GREY, 900)), to(transparent));
+}
+
+.ui-poster-component {
+    .poster-image-wrap {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            @include animation(box-shadow, $standard_curve, $ENTERING);
+            @include mat-elevation(10);
+        }
+        .poster-default-image {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            position: absolute;
+            background-color: map_get($GREY, A100);
+            .poster-icons {
+                top: 50%;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: -1;
+                font-size: 70px;
+            }
+        }
+        .poster-main-image {
+            width: 100%;
+            height: 100%;
+            .main-image {
+                width: 100%;
+                opacity: 0;
+                @include animation(opacity, $standard_curve, $ENTERING);
+            }
+            .img-adapter {
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                @include animation(opacity, $standard_curve, $ENTERING);
+            }
+        }
+        .poster-mask-image {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(to top, rgba(map_get($GREY, A100), .8), transparent 50%);
+            color: map_get($GREY, 300);
+            .mask-title1 {
+                width: calc(100% - 16px);
+                position: absolute;
+                word-wrap: break-word;
+                text-transform: uppercase;
+                bottom: 0;
+                padding-left: 16px;
+                white-space: nowrap;
+                @include text-more-shadow;
+            }
+            .mask-title2 {
+                position: absolute;
+                padding-left: 16px;
+                bottom: 0;
+                margin-bottom: 137px;
+                width: calc(100% - 16px);
+                &:after {
+                    width: 20px;
+                    height: 2px;
+                    position: absolute;
+                    top: 32px;
+                    left: 20px;
+                    content: "";
+                    background: map_get($GREY, 300);
+                }
+            }
+            .mask-title3 {
+                position: absolute;
+                bottom: 0;
+                padding-left: 16px;
+                margin: 0 0 9px;
+                width: calc(100% - 16px);
+            }
+            .mask-title4 {
+                position: absolute;
+                text-align: right;
+                bottom: 0;
+                width: calc(100% - 16px);
+                padding-right: 16px;
+                margin: 0 0 9px;
+                color: map_get($YELLOW, 500);
+            }
+            .poster-spinner-wrap {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                height: 6px;
+                .spinner-background {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    z-index: -1;
+                    top: 0;
+                    left: 0;
+                    background-color: rgba(map_get($GREY, A100), 0.6);
+                }
+                .spinner-percent {
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    z-index: 1;
+                    background-color: map_get($YELLOW, 500);
+                    @include animation(width, $standard_curve, $COMPLEX);
+                }
+            }
+
+        }
+
+    }
+    .poster-title-wrap {
+        cursor: pointer;
+        .poster-title {
+            top: 10px;
+            color: map_get($GREY, 300);
+            margin: 10px 0 0 0;
+            white-space: nowrap;
+            @include text-more-shadow;
+            @include animation(color, $standard_curve, $ENTERING);
+            &:hover {
+                color: map_get($GREY, 500);
+            }
+        }
+        .poster-subtitle {
+            position: relative;
+            white-space: nowrap;
+            margin: 0;
+            @include text-more-shadow;
+        }
+    }
+}

@@ -1,32 +1,12 @@
-/**
- * Created by Fantasy on 2017/5/5.
- */
-import {
-    AfterViewInit,
-    Component,
-    ElementRef,
-    Input,
-    OnInit
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'more-text',
-    template: `
-        <div class="more-text-wrap mat-body-strong">
-            <ng-content></ng-content>
-        </div>
-        <div class="more-text-button">
-            <a class="button-a material-icons md-light" md-icon-button
-               (click)="showMore()"
-               [class.button-transform]="!defaultSwitch">
-                <md-icon>expand_more</md-icon>
-            </a>
-        </div>
-    `,
-    styleUrls: ['./more-text.component.scss'],
+    selector: 'ui-text',
+    templateUrl: 'ui-text.component.html',
+    styleUrls: ['./ui-text.component.scss']
 })
-export class MoreTextComponent implements OnInit, AfterViewInit {
 
+export class UiTextComponent implements OnInit, AfterViewInit {
     @Input()
     public showLine: number = 0;
 
@@ -78,7 +58,7 @@ export class MoreTextComponent implements OnInit, AfterViewInit {
      */
     public moreButtonStatus() {
         let isShowButton = this.showTextHeight() <= this.currentTextHeight();
-        let buttonEle = <HTMLElement> this._el.querySelector('.more-text-button');
+        let buttonEle = <HTMLElement> this._el.querySelector('.ui-text-button');
         buttonEle.style.display = isShowButton ? 'inline-block' : 'none';
     }
 
