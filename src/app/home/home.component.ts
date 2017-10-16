@@ -9,7 +9,9 @@ import { MenuTypes } from '../header/model/menus.enum';
 import { Slide, SlideHeader, SlideTypes } from '../share/slide-list/model/slide';
 import { ActivatedRoute, Router } from '@angular/router';
 import { slideInDownAnimation } from '../sdk/animated/routeAnimation.animated';
-import { Poster } from "../sdk/ui-layout/ui-poster/model/ui-poster";
+import { Poster } from '../sdk/ui-layout/ui-poster/model/ui-poster';
+import { Sliding } from '../sdk/ui-layout/ui-sliding-poster/model/sliding';
+import * as _ from 'lodash';
 
 @Component({
     /**
@@ -47,6 +49,13 @@ export class HomeComponent implements OnInit {
 
     public uiPoster: Poster;
 
+    public uiSliding: Sliding;
+    public uiSliding1: Sliding;
+
+    public types: SlideTypes = SlideTypes.horizontal;
+
+    public isAdaptive = true;
+
     constructor(public appState: AppState,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -76,6 +85,35 @@ export class HomeComponent implements OnInit {
                     isShowPercent: true,
                     spinnerPercent: `78%`
                 }
+            };
+            let {playbillPosters} = comeSoon;
+            let posterList = _.map(playbillPosters, (poster: any) => {
+                return {
+                    id: poster.id,
+                    url: poster.posterUrl,
+                    defaultPictureName: 'movie',
+                    title: poster.posterTitle,
+                    subTitle: poster.posterSubtitle,
+                    mask: {
+                        title4: poster.posterMask.rating,
+                        isShowPercent: true,
+                        spinnerPercent: `78%`
+                    }
+                };
+            });
+            this.uiSliding = {
+                topHeader: {
+                    title: 'Lorem ipsum dolor',
+                    count: 123
+                },
+                posterList
+            };
+            this.uiSliding1 = {
+                topHeader: {
+                    title: 'Lorem ipsum dolor',
+                    count: 200
+                },
+                posterList
             };
             // let initCount = 1;
             // setInterval(() => {

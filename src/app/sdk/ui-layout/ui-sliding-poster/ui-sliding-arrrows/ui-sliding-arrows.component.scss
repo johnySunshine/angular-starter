@@ -1,0 +1,46 @@
+@import "../../../styles/sdk_pre_custom";
+
+@mixin normal-arrows {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: .6;
+    border-radius: 50%;
+    @include animation(opacity, $standard_curve, $ENTERING);
+    &:hover {
+        opacity: 1;
+    }
+}
+
+:host {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0;
+}
+
+.ui-sliding-arrows-component {
+    width: 100%;
+    position: relative;
+    clear: both;
+    opacity: 0;
+    height: 0;
+    @include animation(opacity, $sharp_curve, $EXITING);
+    .sliding-arrow-left {
+        @include normal-arrows;
+        left: -40px;
+        &:hover {
+            opacity: .8;
+        }
+    }
+    .sliding-arrow-right {
+        @include normal-arrows;
+        right: -40px;
+        float: right;
+        &:hover {
+            opacity: .8;
+        }
+    }
+}

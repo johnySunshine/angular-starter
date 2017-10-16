@@ -21,7 +21,7 @@ export class UiPosterComponent implements OnInit {
     public uiPoster: Poster;
 
     @Output()
-    public onPoster = new EventEmitter();
+    public onPoster = new EventEmitter<any>();
 
     public uiStyle: any;
 

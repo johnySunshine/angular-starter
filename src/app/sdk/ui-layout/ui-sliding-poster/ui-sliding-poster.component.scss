@@ -1,3 +1,31 @@
-.ui-sliding-poster-component {
+@import "../../../sdk/styles/sdk_pre_custom";
 
+.ui-sliding-poster-component {
+    width: 100%;
+    margin-bottom: 44px;
+    position: relative;
+    &:hover {
+        /deep/ .ui-sliding-arrows-component {
+            @include animation(opacity, $standard_curve, $ENTERING);
+            opacity: 1;
+        }
+    }
+    .sliding-wrap {
+        overflow: hidden;
+        .sliding-views {
+            position: relative;
+            float: left;
+            .sliding-item {
+                float: left;
+                margin-right: 15px;
+                position: relative;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        .smooth-move {
+            @include animation(transform, $standard_curve, $ENTERING);
+        }
+    }
 }
