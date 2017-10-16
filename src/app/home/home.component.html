@@ -12,10 +12,11 @@
 <!--1.1x_zq1.0&#45;&#45;test1-->
 <!--1.1x_zq1.0&#45;&#45;test2-->
 <!--1.1x_zq1.0&#45;&#45;test3-->
-<ui-sliding-poster [sliding]="uiSliding1" [slidingType]="types" (onTopHeader)="showPoster($event)"></ui-sliding-poster>
+<ui-sliding-poster [sliding]="uiSliding1" [slidingType]="types" (onTopHeader)="showPoster($event)" (onSliding)="posterMore($event)"></ui-sliding-poster>
 
 <ui-sliding-poster [sliding]="uiSliding" [slidingType]="posterTypes" (onTopHeader)="showPoster($event)"
                    [isAdaptive]="isAdaptive"></ui-sliding-poster>
+
 
 
 

@@ -1,6 +1,6 @@
 <div class="ui-sliding-arrows-component">
-    <a md-icon-button class="sliding-arrow-left" (click)="arrowsMove(-1)"><i
-            class="material-icons md-36 md-light">chevron_left</i></a>
-    <a md-icon-button class="sliding-arrow-right" (click)="arrowsMove(1)">
+    <a md-icon-button class="sliding-arrow-left" (click)="arrowsMove(-1)" *ngIf="isShowLeftArrow">
+        <i class="material-icons md-36 md-light">chevron_left</i></a>
+    <a md-icon-button class="sliding-arrow-right" (click)="arrowsMove(1)" *ngIf="isShowRightArrow">
         <i class="material-icons md-36 md-light">chevron_right</i></a>
 </div>

@@ -24,7 +24,7 @@
                 }
             }
         }
-        .smooth-move {
+        .smooth {
             @include animation(transform, $standard_curve, $ENTERING);
         }
     }

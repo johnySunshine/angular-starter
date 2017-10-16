@@ -13,10 +13,16 @@ export class UiSlidingArrowsComponent implements OnInit {
     @Output()
     public onMove = new EventEmitter<number>();
 
+    public isShowLeftArrow: boolean;
+
+    public isShowRightArrow: boolean;
+
     constructor() {
     }
 
     public ngOnInit(): void {
+        this.isShowLeftArrow = false;
+        this.isShowRightArrow = false;
     }
 
     public arrowsMove(moveIndex: number) {

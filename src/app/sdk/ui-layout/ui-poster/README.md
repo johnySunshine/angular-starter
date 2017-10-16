@@ -9,7 +9,7 @@
   首先进行导入操作
 
   ```typescript
-  import { UiPosterComponent } from '../sdk';
+  import { UiPosterModule } from '../sdk';
   ```
 
   在页面中使用`ui-poster`标签
