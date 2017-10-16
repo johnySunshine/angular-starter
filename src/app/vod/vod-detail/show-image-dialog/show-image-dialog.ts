@@ -19,8 +19,8 @@ export class ShowImageDialogComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        let {posterId, stillPosterList} = this.data;
-        let curImage: Poster = _.find(stillPosterList, (resp: any) => resp.id === posterId);
+        let {posterId, posterList} = this.data;
+        let curImage: Poster = _.find(posterList, (resp: any) => resp.id === posterId);
         this.imageDetail = {
             id: curImage.id,
             posterUrl: this.appService.setImageSize4MTime(curImage.posterUrl, '1000X1000'),

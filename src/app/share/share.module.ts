@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate';
-import { SlideListModule } from './slide-list';
 import { MdButtonModule, MdIconModule, MdTooltipModule, MatDialogModule } from '@angular/material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SlimScrollModule } from 'ng2-slimscroll';
-import { UnsliderComponent } from './unslider';
 import { UiPosterModule, UiTextModule, UiSlidingPosterModule } from '../sdk';
+import { PlaybillPosterComponent } from "./playbill-poster/playbill-poster.component";
 
 // material design 第三插件的模块
 const mdModule = [
@@ -34,7 +33,6 @@ const uiModule = [
 @NgModule({
     imports: [
         CommonModule,
-        SlideListModule,
         ...otherModule,
         ...mdModule,
         ...uiModule
@@ -43,14 +41,13 @@ const uiModule = [
         CommonModule,
         FormsModule,
         TranslateModule,
-        SlideListModule,
-        UnsliderComponent,
         ...otherModule,
         ...mdModule,
-        ...uiModule
+        ...uiModule,
+        PlaybillPosterComponent
     ],
     declarations: [
-        UnsliderComponent,
+        PlaybillPosterComponent
     ]
 })
 export class ShareModule {

@@ -4,10 +4,11 @@ import { MenuTypes } from '../../header';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Detail } from './model/detail';
 import { ShortInfo } from './model/shortInfo';
-import { Slide, SlideTypes } from '../../share/slide-list/model/slide';
 import 'rxjs/add/operator/switchMap';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 import { ShowImageDialogComponent } from './show-image-dialog/show-image-dialog';
+import { Sliding } from '../../sdk';
+import { SlidingTypes } from '../../sdk';
 
 @Component({
     selector: 'vod-detail-component',
@@ -19,13 +20,13 @@ export class VodDetailComponent implements OnInit {
 
     public detailInfo: Detail;
 
-    public stillsPhoto: Slide;
+    public stillsPhoto: Sliding;
 
     public shortInfo: ShortInfo[];
 
-    public types = SlideTypes.square;
+    public types = SlidingTypes.square;
 
-    public personTypes = SlideTypes.vertical;
+    public personTypes = SlidingTypes.vertical;
 
     public isFromMtime: boolean;
 
@@ -88,7 +89,7 @@ export class VodDetailComponent implements OnInit {
         let config: MdDialogConfig = {
             data: {
                 posterId,
-                stillPosterList: this.stillsPhoto.playbillPosters
+                stillPosterList: this.stillsPhoto.posterList
             }
         };
         this.dialog.open(ShowImageDialogComponent, config);

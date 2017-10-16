@@ -6,11 +6,10 @@ import {
 import { AppState } from '../app.service';
 import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
-import { Slide, SlideHeader, SlideTypes } from '../share/slide-list/model/slide';
 import { ActivatedRoute, Router } from '@angular/router';
 import { slideInDownAnimation } from '../sdk/animated/routeAnimation.animated';
 import { Poster } from '../sdk/ui-layout/ui-poster/model/ui-poster';
-import { Sliding } from '../sdk/ui-layout/ui-sliding-poster/model/sliding';
+import { Sliding, SlidingTypes } from '../sdk';
 import * as _ from 'lodash';
 
 @Component({
@@ -41,18 +40,14 @@ export class HomeComponent implements OnInit {
      * TypeScript public modifiers
      */
 
-    public posterTypes = SlideTypes.vertical;
-    public posterTypes1 = SlideTypes.horizontal;
-    public posterTypes2 = SlideTypes.square;
-
-    public slides: Slide = {};
+    public posterTypes = SlidingTypes.vertical;
+    public posterTypes1 = SlidingTypes.horizontal;
+    public posterTypes2 = SlidingTypes.square;
 
     public uiPoster: Poster;
 
     public uiSliding: Sliding;
     public uiSliding1: Sliding;
-
-    public types: SlideTypes = SlideTypes.horizontal;
 
     public isAdaptive = true;
 
@@ -70,7 +65,6 @@ export class HomeComponent implements OnInit {
         this.route.data.subscribe((homeData) => {
             let {comeSoon} = homeData;
             console.log(comeSoon);
-            this.slides = comeSoon;
             this.uiPoster = {
                 url: comeSoon.playbillPosters[0].posterUrl,
                 id: comeSoon.playbillPosters[0].id,

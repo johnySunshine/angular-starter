@@ -5,10 +5,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 import { Detail } from './vod-detail/model/detail';
-import { Slide } from '../share/slide-list/model/slide';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { Poster } from "../share/playbill-poster/model/poster";
+import { Poster } from '../share/playbill-poster/model/poster';
+import { Sliding } from '../sdk';
 
 /**
  * 用于影片详情的数据封装
@@ -28,7 +28,7 @@ export class VODDetail implements Resolve<any> {
         return detailResolve;
     }
 
-    public getVODDetailById4Douban(subjectsId: string) {
+    /*public getVODDetailById4Douban(subjectsId: string) {
         return this.appService.IPTV.getVODDetailById(Number.parseInt(subjectsId, 10))
             .map((subjects) => {
                 let {photos, casts, directors} = subjects;
@@ -59,12 +59,6 @@ export class VODDetail implements Resolve<any> {
                         posterSubtitle: item.name_en
                     };
                 });
-                let persons: Slide = {
-                    slideHeader: {
-                        title: '演职人员'
-                    },
-                    playbillPosters: [...director, ...cast]
-                };
                 let detailOptions: Detail = {
                     poster: {
                         id: subjects.id,
@@ -85,41 +79,45 @@ export class VODDetail implements Resolve<any> {
                     languages: subjects.languages.toString(),
                     land: subjects.countries.toString(),
                     stills,
-                    persons,
                     sourceData: 'DouBan',
                     bgPicture: subjects.images.large
                 };
                 return detailOptions;
             });
-    }
+    }*/
 
     public getVODDetailById4MTime(subjectsId: string) {
         return this.appService.IPTV.getVODDetailById(Number.parseInt(subjectsId, 10))
             .map((subject) => {
                 let {data: {basic}} = subject;
                 let {stageImg: {list, count}} = basic;
-                let persons: Slide = {
-                    slideHeader: {
-                        title: '演职人员'
+                let casts: Sliding = {
+                    topHeader: {
+                        title: '演职人员',
+                        count: basic.actors.length
                     },
-                    playbillPosters: _.map(basic.actors, (item: any) => {
+                    posterList: _.map(basic.actors, (item: any) => {
                         return {
                             id: item.actorId,
-                            posterUrl: this.appService.setImageSize4MTime(item.img, '201X282'),
-                            posterTitle: item.name,
-                            posterSubtitle: item.roleName
+                            url: this.appService.setImageSize4MTime(item.img, '201X282'),
+                            title: item.name,
+                            subtitle: item.roleName,
+                            defaultPictureName: 'person',
+                            mask: {}
                         };
                     })
                 };
-                let stills: Slide = {
-                    slideHeader: {
+                let stills: Sliding = {
+                    topHeader: {
                         title: '影片图片',
-                        counts: count
+                        count
                     },
-                    playbillPosters: _.map(list, (item: any) => {
+                    posterList: _.map(list, (item: any) => {
                         return {
                             id: item.imgId,
-                            posterUrl: this.appService.setImageSize4MTime(item.imgUrl, '170X170'),
+                            url: this.appService.setImageSize4MTime(item.imgUrl, '170X170'),
+                            defaultPictureName: 'image',
+                            mask: {}
                         };
                     })
                 };
@@ -142,8 +140,8 @@ export class VODDetail implements Resolve<any> {
                     originalTitle: basic.nameEn,
                     languages: '英语',
                     land: basic.releaseArea,
-                    persons,
                     stills,
+                    casts,
                     bgPicture: list[0].imgUrl,
                     sourceData: 'mtime'
                 };

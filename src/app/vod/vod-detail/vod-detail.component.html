@@ -43,11 +43,10 @@
         </div>
     </div>
     <div class="detail-bottom-content">
-        <slide-list [showSlide]="detailInfo.persons" [types]="personTypes" [multipleMove]="6"
-                    [posterTypes]="'person'" [adaptiveImages]="true"></slide-list>
-        <slide-list [showSlide]="stillsPhoto" [types]="types" [multipleMove]="7"
-                    [posterTypes]="'image'" [adaptiveImages]="true" (onShowMore)="showAllStills()"
-                    (onPoster)="showImage($event)"></slide-list>
+        <ui-sliding-poster [isAdaptive]="true" [slidingType]="personTypes"
+                           [sliding]="detailInfo.casts"></ui-sliding-poster>
+        <ui-sliding-poster [isAdaptive]="true" [slidingType]="7" [sliding]="stillsPhoto" (onTopHeader)="showAllStills()"
+                           (onSliding)="showImage($event)"></ui-sliding-poster>
     </div>
 
 </div>
