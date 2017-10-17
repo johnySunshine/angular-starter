@@ -7,10 +7,9 @@ import { AppState } from '../app.service';
 import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
 import { ActivatedRoute, Router } from '@angular/router';
-import { slideInDownAnimation } from '../sdk/animated/routeAnimation.animated';
 import { Sliding, SlidingTypes } from '../sdk';
 import * as _ from 'lodash';
-import { Poster } from '../sdk';
+import { Poster, Carousel } from '../sdk';
 
 @Component({
     /**
@@ -49,6 +48,8 @@ export class HomeComponent implements OnInit {
 
     public isAdaptive = true;
 
+    public carousels: Carousel[];
+
     constructor(public appState: AppState,
                 private route: ActivatedRoute,
                 private router: Router) {
@@ -61,10 +62,21 @@ export class HomeComponent implements OnInit {
             menuData: '1'
         };
         this.route.data.subscribe((homeData) => {
-            let {comeSoon} = homeData;
-            console.log(comeSoon);
+            let {comeSoon, comeSoon: {posterList}} = homeData;
+            console.log(posterList);
             this.uiSliding = comeSoon;
             this.uiSliding1 = comeSoon;
+            this.carousels = _.map(posterList, (item: any) => {
+                return {
+                    id: item.id,
+                    url: item.url,
+                    title: item.title,
+                    subTitle: item.subTitle,
+                    buttonText: 'buttonText',
+                    longDescription: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, esse et facilis 
+                    'fuga fugiat inventore ipsa ipsam, iusto libero minus nam obcaecati quas reiciendis sit, sunt totam veniam! Laborum, omnis!`
+                };
+            });
         });
 
         this.appState.triggerMenusEvent(menusStatus);

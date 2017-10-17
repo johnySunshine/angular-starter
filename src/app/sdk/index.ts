@@ -7,3 +7,5 @@ export * from './ui-layout/ui-text/ui-text.module';
 export * from './ui-layout/ui-sliding-poster/ui-sliding-poster.module';
 export * from './ui-layout/ui-sliding-poster/model/sliding';
 export * from './ui-layout/ui-poster/model/ui-poster';
+export * from './ui-layout/ui-carousel/ui-carousel.module';
+export * from './ui-layout/ui-carousel/model/ui-carousel';

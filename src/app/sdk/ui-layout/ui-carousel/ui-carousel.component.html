@@ -1,0 +1,19 @@
+<div class="ui-carousel-component">
+    <div class="carousel-wrap">
+        <ul class="carousel-list">
+            <li class="carousel-item" *ngFor="let carousel of carousels">
+                <div class="image-wrap">
+                    <img src="" alt="" [src]="carousel.url" [alt]="carousel.title">
+                    <div class="mask">
+                        <div class="title">{{carousel.title}}</div>
+                        <div class="subtitle">{{carousel.subTitle}}</div>
+                        <div class="long-description">{{carousel.longDescription}}</div>
+                        <div class="button-wrap">
+                            <button>{{carousel.buttonText}}</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
