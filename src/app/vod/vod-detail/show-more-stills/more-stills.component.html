@@ -11,7 +11,8 @@
     <div class="stills-container">
         <ul class="stills-ul">
             <li class="still" *ngFor="let images of stillPosterList">
-                <playbill-poster [poster]="images" (onPosterClick)="showPicture($event)"></playbill-poster>
+                <ui-poster [height]="viewPosterWidth" [width]="viewPosterWidth" [isAdaptive]="true" (onPoster)="showPicture($event)"
+                           [uiPoster]="images"></ui-poster>
             </li>
         </ul>
     </div>

@@ -6,7 +6,6 @@ import { MdButtonModule, MdIconModule, MdTooltipModule, MatDialogModule } from '
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SlimScrollModule } from 'ng2-slimscroll';
 import { UiPosterModule, UiTextModule, UiSlidingPosterModule } from '../sdk';
-import { PlaybillPosterComponent } from "./playbill-poster/playbill-poster.component";
 
 // material design 第三插件的模块
 const mdModule = [
@@ -44,11 +43,8 @@ const uiModule = [
         ...otherModule,
         ...mdModule,
         ...uiModule,
-        PlaybillPosterComponent
     ],
-    declarations: [
-        PlaybillPosterComponent
-    ]
+    declarations: []
 })
 export class ShareModule {
 }

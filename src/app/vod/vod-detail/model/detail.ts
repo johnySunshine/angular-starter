@@ -1,6 +1,4 @@
-import { Poster } from '../../../share/playbill-poster';
-import { Slide } from '../../../share/slide-list/model/slide';
-import { Sliding } from '../../../sdk';
+import { Sliding, Poster } from '../../../sdk';
 
 // 可能还需要补充属性
 export interface Detail {
@@ -21,8 +19,8 @@ export interface Detail {
     sourceData?: string;
     bgPicture?: string;
 
-    persons?: Slide;
-    stills?: Slide;
-    recommend?: Slide;
+    persons?: Sliding;
+    stills?: Sliding;
+    recommend?: Sliding;
     casts?: Sliding;
 }

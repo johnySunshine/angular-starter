@@ -7,8 +7,7 @@ import 'rxjs/add/operator/map';
 import { Detail } from './vod-detail/model/detail';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { Poster } from '../share/playbill-poster/model/poster';
-import { Sliding } from '../sdk';
+import { Sliding, Poster } from '../sdk';
 
 /**
  * 用于影片详情的数据封装
@@ -124,9 +123,8 @@ export class VODDetail implements Resolve<any> {
                 let detailOptions: Detail = {
                     poster: {
                         id: basic.movieId,
-                        posterUrl: basic.img,
-                        width: '310px',
-                        height: '445px'
+                        url: basic.img,
+                        defaultPictureName: 'movie'
                     },
                     id: +basic.movieId,
                     title: basic.name,
@@ -159,17 +157,14 @@ export class VODStills implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         let {id} = route.params;
         let detailResolve: Observable<any>;
-        let viewPosterWidth = 1284 - (15 * (7 - 1));
         detailResolve = this.appService.IPTV.getVODPhotosById(id)
             .map((data) => {
                 let {imageTypes, images} = data;
                 images = _.map(images, (item: any) => {
                     let stillPoster: Poster = {
                         id: item.id,
-                        posterUrl: this.appService.setImageSize4MTime(item.image, '170X170'),
-                        width: `${viewPosterWidth / 7}px`,
-                        height: `${viewPosterWidth / 7}px`,
-                        type: item.type
+                        url: this.appService.setImageSize4MTime(item.image, '170X170'),
+                        defaultPictureName: 'image',
                     };
                     return stillPoster;
                 });

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImageType } from '../model/imageType';
-import { Poster } from '../../../share/playbill-poster/model/poster';
 import { AppState } from '../../../app.service';
 import { MenuTypes } from '../../../header/model/menus.enum';
 import { MdDialog, MdDialogRef, MdDialogConfig, MD_DIALOG_DATA } from '@angular/material';
 import * as _ from 'lodash';
 import { ShowImageDialogComponent } from '../show-image-dialog/show-image-dialog';
+import { Poster } from '../../../sdk';
 
 @Component({
     selector: 'more-stills',
@@ -27,6 +27,8 @@ export class MoreStillsComponent implements OnInit {
 
     public stillPosterList: Poster[];
 
+    public viewPosterWidth: number = (1284 - (15 * (7 - 1))) / 7;
+
     public config: MdDialogConfig = {
         disableClose: false,
         hasBackdrop: true,
@@ -42,6 +44,7 @@ export class MoreStillsComponent implements OnInit {
         this.imageTypeValue = -1;
         this.route.data.subscribe((data) => {
             let {VODStills: {imageTypes, images}} = data;
+            console.log(images);
             this.stillPosterList = images;
             this.imagesSource = images;
             this.imageTypes = imageTypes;
@@ -54,6 +57,7 @@ export class MoreStillsComponent implements OnInit {
                 }
             });
         });
+
     }
 
     public chooseType($event) {

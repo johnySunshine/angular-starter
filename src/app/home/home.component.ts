@@ -8,9 +8,9 @@ import { MenusStatus } from '../header/model/menusStatus';
 import { MenuTypes } from '../header/model/menus.enum';
 import { ActivatedRoute, Router } from '@angular/router';
 import { slideInDownAnimation } from '../sdk/animated/routeAnimation.animated';
-import { Poster } from '../sdk/ui-layout/ui-poster/model/ui-poster';
 import { Sliding, SlidingTypes } from '../sdk';
 import * as _ from 'lodash';
+import { Poster } from '../sdk';
 
 @Component({
     /**
@@ -41,8 +41,6 @@ export class HomeComponent implements OnInit {
      */
 
     public posterTypes = SlidingTypes.vertical;
-    public posterTypes1 = SlidingTypes.horizontal;
-    public posterTypes2 = SlidingTypes.square;
 
     public uiPoster: Poster;
 
@@ -65,55 +63,8 @@ export class HomeComponent implements OnInit {
         this.route.data.subscribe((homeData) => {
             let {comeSoon} = homeData;
             console.log(comeSoon);
-            this.uiPoster = {
-                url: comeSoon.playbillPosters[0].posterUrl,
-                id: comeSoon.playbillPosters[0].id,
-                defaultPictureName: 'movie',
-                title: 'lorem lorem以及中文测试以及中文测试 lorem lorem lorem lorem',
-                subTitle: 'lorem lorem以及中文测试以及中文测试 lorem lorem lorem lorem',
-                mask: {
-                    title1: 'title1 title1 title1 title1 title1',
-                    title2: 'title2',
-                    title3: 'title3',
-                    title4: 'title4',
-                    isShowPercent: true,
-                    spinnerPercent: `78%`
-                }
-            };
-            let {playbillPosters} = comeSoon;
-            let posterList = _.map(playbillPosters, (poster: any) => {
-                return {
-                    id: poster.id,
-                    url: poster.posterUrl,
-                    defaultPictureName: 'movie',
-                    title: poster.posterTitle,
-                    subTitle: poster.posterSubtitle,
-                    mask: {
-                        title4: poster.posterMask.rating,
-                        isShowPercent: true,
-                        spinnerPercent: `78%`
-                    }
-                };
-            });
-            this.uiSliding = {
-                topHeader: {
-                    title: 'Lorem ipsum dolor',
-                    count: 123
-                },
-                posterList
-            };
-            this.uiSliding1 = {
-                topHeader: {
-                    title: 'Lorem ipsum dolor',
-                    count: 200
-                },
-                posterList
-            };
-            // let initCount = 1;
-            // setInterval(() => {
-            //     this.uiPoster.mask.spinnerPercent = `${initCount}%`;
-            //     initCount++;
-            // }, 1000);
+            this.uiSliding = comeSoon;
+            this.uiSliding1 = comeSoon;
         });
 
         this.appState.triggerMenusEvent(menusStatus);

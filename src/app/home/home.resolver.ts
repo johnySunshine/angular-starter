@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { AppState } from '../app.service';
 import { Observable } from 'rxjs/Observable';
-import { Slide } from '../share/slide-list/model/slide';
 import * as _ from 'lodash';
+import { Sliding } from '../sdk';
 
 @Injectable()
 export class ComeSoonResolver implements Resolve<any> {
@@ -15,19 +15,20 @@ export class ComeSoonResolver implements Resolve<any> {
         return this.appService.IPTV.getComeSoon()
             .map((cs) => cs.subjects)
             .map((sj: any[]) => {
-                let comeSoon: Slide = {};
-                comeSoon.playbillPosters = _.map(sj, (resp) => {
+                let comeSoon: Sliding = {};
+                comeSoon.posterList = _.map(sj, (resp) => {
                     return {
                         id: resp.id,
-                        posterTitle: resp.title,
-                        posterSubtitle: resp.original_title,
-                        posterUrl: resp.images.large,
-                        posterMask: {
-                            rating: resp.rating.average
+                        title: resp.title,
+                        subTitle: resp.original_title,
+                        defaultPictureName: 'movie',
+                        url: resp.images.large,
+                        mask: {
+                            title4: resp.rating.average
                         }
                     };
                 });
-                comeSoon.slideHeader = {
+                comeSoon.topHeader = {
                     title: '最近上映'
                 };
                 return comeSoon;
