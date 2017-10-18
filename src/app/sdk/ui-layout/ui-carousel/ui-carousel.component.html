@@ -1,8 +1,8 @@
 <div class="ui-carousel-component">
     <div class="carousel-wrap">
         <ul class="carousel-list">
-            <li class="carousel-item" *ngFor="let carousel of carousels">
-                <div class="image-wrap">
+            <li class="carousel-item" *ngFor="let carousel of carousels;let i = index">
+                <div class="image-wrap" [@carouselState]="imageStateForIndex(i)">
                     <img src="" alt="" [src]="carousel.url" [alt]="carousel.title">
                     <div class="mask">
                         <div class="title">{{carousel.title}}</div>
@@ -15,5 +15,9 @@
                 </div>
             </li>
         </ul>
+    </div>
+    <div class="carousel-buttons">
+        <div class="carousel-prev-button" (click)="arrowLeft()"></div>
+        <div class="carousel-next-button" (click)="arrowRight()"></div>
     </div>
 </div>
