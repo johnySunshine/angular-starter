@@ -21,13 +21,12 @@ export class UiCarouselComponent implements OnInit, OnDestroy {
     public delay: number = 3000;
 
     @Input()
-    public keys: boolean;
-
-    @Input()
     public isShowBackground: boolean;
 
     @Input()
     public switchTypes: SwitchType;
+
+    public chosenBgUrl: string;
 
     @Input()
     public isAutoSwitch: boolean = true;
@@ -49,6 +48,9 @@ export class UiCarouselComponent implements OnInit, OnDestroy {
         this.carouselMaxIndex = this.carousels.length - 1;
         if (this.isAutoSwitch) {
             this.checkIsAutoSwitch();
+        }
+        if (this.isShowBackground) {
+            this.chosenBgUrl = this.carousels[0].url;
         }
     }
 
@@ -135,12 +137,21 @@ export class UiCarouselComponent implements OnInit, OnDestroy {
         let carouselLength = this.carousels.length;
         this.curIndex = (this.curIndex + 1) % carouselLength;
         this.stopAutoThenRestore();
+        this.getImageUrlWithArrows();
     }
 
     public arrowLeft(): void {
         let prevIndex = this.curIndex - 1;
         this.curIndex = prevIndex < 0 ? this.carouselMaxIndex : this.curIndex - 1;
         this.stopAutoThenRestore();
+        this.getImageUrlWithArrows();
     }
 
+    public getImageUrlWithArrows(): void {
+        let chosenCarousel: Carousel;
+        if (this.isShowBackground && this.carousels.length > 0) {
+            chosenCarousel = this.carousels[this.curIndex];
+            this.chosenBgUrl = chosenCarousel.url;
+        }
+    }
 }

@@ -1,15 +1,20 @@
 <div class="ui-carousel-component">
+    <div class="background-image-wrap" *ngIf="isShowBackground">
+        <img class="background-image" src="" alt="" [src]="chosenBgUrl">
+    </div>
     <div class="carousel-wrap">
         <ul class="carousel-list">
-            <li class="carousel-item" *ngFor="let carousel of carousels;let i = index">
-                <div class="image-wrap" [@carouselState]="imageStateForIndex(i)">
-                    <img src="" alt="" [src]="carousel.url" [alt]="carousel.title">
+            <li class="carousel-item" *ngFor="let carousel of carousels;let i = index"
+                [@carouselState]="imageStateForIndex(i)">
+                <div class="image-wrap">
+                    <img src="" onerror="this.style.opacity=0"
+                         onload="this.style.opacity=1" [src]="carousel.url" [alt]="carousel.title">
                     <div class="mask">
-                        <div class="title">{{carousel.title}}</div>
-                        <div class="subtitle">{{carousel.subTitle}}</div>
-                        <div class="long-description">{{carousel.longDescription}}</div>
+                        <div class="title mat-display-3">{{carousel.title}}</div>
+                        <div class="subtitle mat-headline">{{carousel.subTitle}}</div>
+                        <div class="long-description mat-body-1">{{carousel.longDescription}}</div>
                         <div class="button-wrap">
-                            <button>{{carousel.buttonText}}</button>
+                            <button md-raised-button [color]="'accent'">{{carousel.buttonText}}</button>
                         </div>
                     </div>
                 </div>
