@@ -6,7 +6,3 @@ export interface Carousel {
     buttonText?: string;
     longDescription?: string;
 }
-
-export enum SwitchType {
-
-}

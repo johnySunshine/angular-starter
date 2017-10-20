@@ -19,7 +19,10 @@
                         <div class="subtitle mat-headline">{{carousel.subTitle}}</div>
                         <div class="long-description mat-body-1">{{carousel.longDescription}}</div>
                         <div class="button-wrap">
-                            <button md-raised-button [color]="'accent'">{{carousel.buttonText}}</button>
+                            <button md-raised-button [color]="'accent'" (click)="showMore(carousel.id)">
+                                <i class="material-icons md-24">theaters</i>
+                                {{carousel.buttonText}}
+                            </button>
                         </div>
                     </div>
                 </div>

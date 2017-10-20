@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Carousel, SwitchType } from './model/ui-carousel';
+import { Carousel } from './model/ui-carousel';
 import { CarouselAnimation } from './ui-carousel.aimation';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
@@ -22,9 +22,6 @@ export class UiCarouselComponent implements OnInit, OnDestroy {
 
     @Input()
     public isShowBackground: boolean;
-
-    @Input()
-    public switchTypes: SwitchType;
 
     public chosenBgUrl: string;
 
@@ -58,6 +55,10 @@ export class UiCarouselComponent implements OnInit, OnDestroy {
         if (this.switchSubscribe) {
             this.switchSubscribe.unsubscribe();
         }
+    }
+
+    public showMore(carouselId: number): void {
+        this.onCarousel.emit(carouselId);
     }
 
     public checkIsAutoSwitch(): void {
