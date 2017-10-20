@@ -29,7 +29,8 @@
     <div class="carousel-dot-wrap">
         <ul class="carousel-dot">
             <li class="dot-item" *ngFor="let carousel of carousels;let i = index">
-                <i class="dot-wrap" (click)="positionIndexForCarousel(i)">{{i+1}}</i>
+                <i class="dot-wrap-border" (click)="positionIndexForCarousel(i)"
+                   [ngClass]="{'dot-wrap':curIndex === i}"></i>
             </li>
         </ul>
     </div>

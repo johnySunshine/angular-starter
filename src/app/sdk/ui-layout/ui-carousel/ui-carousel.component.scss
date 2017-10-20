@@ -12,6 +12,9 @@
         .carousel-buttons {
             opacity: 1;
         }
+        .carousel-dot-wrap {
+            opacity: 1;
+        }
     }
     .background-image-wrap {
         position: fixed;
@@ -22,7 +25,6 @@
         z-index: -1;
         .background-image {
             width: 100%;
-            height: 100%;
             filter: blur(20px) brightness(20%);
             opacity: 0;
             @include animation(opacity, $standard_curve, $ENTERING);
@@ -104,6 +106,8 @@
         top: -36px;
         z-index: 4;
         height: 20px;
+        opacity: 0;
+        @include animation(opacity, $standard_curve, $ENTERING);
         .carousel-dot {
             float: left;
             position: relative;
@@ -112,8 +116,16 @@
             .dot-item {
                 float: left;
                 margin-right: 10px;
+                .dot-wrap-border {
+                    cursor: pointer;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    background-color: map_get($GREY, 700);
+                    border-radius: 50%;
+                }
                 .dot-wrap {
-
+                    background-color: map_get($GREY, 50);
                 }
             }
         }
