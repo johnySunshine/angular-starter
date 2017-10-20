@@ -154,4 +154,8 @@ export class UiCarouselComponent implements OnInit, OnDestroy {
             this.chosenBgUrl = chosenCarousel.url;
         }
     }
+
+    public positionIndexForCarousel(carouselIndex: number): void {
+        this.curIndex = carouselIndex;
+    }
 }
