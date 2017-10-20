@@ -4,13 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import { Options } from './options';
 import { UrlDev, urlOptions } from './requestUrl';
 import { SpinnerService } from '../../spinner/spinner.service';
+import { HttpServiceTool } from './httpServiceTool';
 
 @Injectable()
-export class EPGService {
+export class EPGService extends HttpServiceTool {
     public isDev: boolean = ENV === 'development';
 
     constructor(private http: Http,
                 private spinnerService: SpinnerService) {
+        super();
     }
 
     public sendRequest(requestName: string, options: Options) {
@@ -29,10 +31,7 @@ export class EPGService {
         if (options.Method === RequestMethod.Post) {
             return this.http.post(reqURL, options.Data).map((resp) => resp.json());
         }
-    }
-
-    public _sendRequest(reqName: string) {
-
+        this._sendRequest(requestName, options);
     }
 
     public getMenus(): Observable<any> {

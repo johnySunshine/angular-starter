@@ -2,7 +2,9 @@ export const DEFAULT_APP_CONFIG = {
     // 子菜单的配置
     LOGIN_SUBTITLE: `子菜单`,
     // 服务端地址
-    HTTP_SERVICES_URL: `http://www.lookthings.com`,
+    PRODUCT_SERVICES_URL: `http://www.lookthings.com`,
+
+    DEV_SERVICES_URL: `http://localhost`,
 
     COPYRIGHT_INFO: `©2016-2017 Lookthings 版权所有 苏ICP备16059814号`,
 
@@ -17,6 +19,6 @@ export const DEFAULT_APP_CONFIG = {
      * B 表示功能更新，出现新功能时增加B
      * C 表示小修改，如修复bug，只要有修改就增加C
      */
-    CURRENT_VERSION: `01.01.01`
+    CURRENT_VERSION: `1.1.1`
 
 };
