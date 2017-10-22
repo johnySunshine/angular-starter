@@ -15,6 +15,15 @@ export class EPGService extends HttpServiceTool {
         super();
     }
 
+    public sendRequest4Get(requestUrl: string, ...options): Observable<Response> {
+        let serURL = this.urlJionOptionsForGET(requestUrl, options);
+        return this.http.get(serURL).map((resp) => resp.json());
+    }
+
+    public sendRequest4Post(requestUrl: string, options: any): Observable<Response> {
+        return this.http.post(requestUrl, options).map((resp) => resp.json());
+    }
+
     public sendRequest(requestName: string, options: Options) {
         let reqURL = this.isDev ? UrlDev[requestName] : urlOptions[requestName];
         if (options.Method === RequestMethod.Get) {
@@ -31,15 +40,18 @@ export class EPGService extends HttpServiceTool {
         if (options.Method === RequestMethod.Post) {
             return this.http.post(reqURL, options.Data).map((resp) => resp.json());
         }
-        this._sendRequest(requestName, options);
     }
 
+    /**
+     * 菜单的请求
+     * @returns {Observable<any>}
+     */
     public getMenus(): Observable<any> {
-        const options: Options = {
-            Method: RequestMethod.Get
-        };
-        return this.sendRequest('MenuList', options);
+        return this.sendRequest4Get('/V1/Menus/list');
+    }
 
+    public getCarousel(): Observable<any> {
+        return this.sendRequest4Get('/V1/Menus/list');
     }
 
     public getComeSoon() {
