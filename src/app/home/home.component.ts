@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     constructor(private appService: AppState,
                 private route: ActivatedRoute,
                 private router: Router) {
+        document.documentElement.scrollTop = 0;
     }
 
     public ngOnInit(): void {
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
     }
 
     public posterShowMore(posterId: number) {
-        console.log(posterId);
+        this.router.navigate(['vod', 'fromMtime', posterId]);
     }
 
 }

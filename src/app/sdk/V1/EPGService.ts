@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestMethod, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Options } from './options';
-import { UrlDev, urlOptions } from './requestUrl';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { HttpServiceTool } from './httpServiceTool';
 
@@ -32,24 +30,6 @@ export class EPGService extends HttpServiceTool {
         });
     }
 
-    public sendRequest(requestName: string, options: Options) {
-        let reqURL = this.isDev ? UrlDev[requestName] : urlOptions[requestName];
-        if (options.Method === RequestMethod.Get) {
-            let reqUrl = reqURL;
-            if (!this.isDev && options.Data) {
-                reqUrl = reqURL + `/${options.Data}`;
-            }
-            this.spinnerService.showSpinner();
-            return this.http.get(reqUrl).map((resp) => {
-                this.spinnerService.hideSpinner();
-                return resp.json();
-            });
-        }
-        if (options.Method === RequestMethod.Post) {
-            return this.http.post(reqURL, options.Data).map((resp) => resp.json());
-        }
-    }
-
     /**
      * 菜单的请求
      * @returns {Observable<any>}
@@ -66,31 +46,20 @@ export class EPGService extends HttpServiceTool {
         return this.sendRequest4Get('/FilmNews/MovieListWithOne');
     }
 
-    public getComeSoonWithMtime(locationId: number) {
+    public getComeSoonWithMtime(locationId: number): Observable<any> {
         return this.sendRequest4Get('/MTimes/ComingNew', `/${locationId}`);
     }
 
-    public getComeSoon() {
-        const options: Options = {
-            Method: RequestMethod.Get
-        };
-        return this.sendRequest('ComeSoon', options);
+    public getVodDetailWithMtime(vodId: number, locationId: number) {
+        return this.sendRequest4Get('/MTimes/Movie', `/${vodId}`, `/${locationId}`);
     }
 
-    public getVODDetailById(subjectId: number) {
-        const options: Options = {
-            Method: RequestMethod.Get,
-            Data: subjectId
-        };
-        return this.sendRequest('VODDetail', options);
+    public getVodDetailCastWithMtime(vodId: number) {
+        return this.sendRequest4Get('/MTimes/Cast', `/${vodId}`);
     }
 
-    public getVODPhotosById(subjectId: number) {
-        const options: Options = {
-            Method: RequestMethod.Get,
-            Data: subjectId
-        };
-        return this.sendRequest('VodPhotos', options);
+    public getVodDetailPhoteWithMtime(vodId) {
+        return this.sendRequest4Get('/MTimes/Movie/Images', `/${vodId}`);
     }
 
 }

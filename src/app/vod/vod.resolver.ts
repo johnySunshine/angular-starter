@@ -21,73 +21,15 @@ export class VODDetail implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         let {fromSource, id} = route.params;
         let detailResolve: Observable<any>;
-        if (fromSource === 'vodHome') {
+        if (fromSource === 'fromMtime') {
             detailResolve = this.getVODDetailById4MTime(id);
         }
         return detailResolve;
     }
 
-    /*public getVODDetailById4Douban(subjectsId: string) {
-        return this.appService.IPTV.getVODDetailById(Number.parseInt(subjectsId, 10))
-            .map((subjects) => {
-                let {photos, casts, directors} = subjects;
-                let stills: Slide = {
-                    slideHeader: {
-                        title: '影片剧照'
-                    },
-                    playbillPosters: _.map(photos, (pic: any) => {
-                        return {
-                            id: pic.id,
-                            posterUrl: pic.cover
-                        };
-                    })
-                };
-                let director = _.map(directors, (direc: any) => {
-                    return {
-                        id: direc.id,
-                        posterUrl: direc.avatars.large,
-                        posterTitle: direc.name,
-                        posterSubtitle: '导演'
-                    };
-                });
-                let cast = _.map(casts, (item: any) => {
-                    return {
-                        id: item.id,
-                        posterUrl: item.avatars.large,
-                        posterTitle: item.name,
-                        posterSubtitle: item.name_en
-                    };
-                });
-                let detailOptions: Detail = {
-                    poster: {
-                        id: subjects.id,
-                        posterUrl: subjects.images.large,
-                        width: '310px',
-                        height: '445px'
-                    },
-                    id: +subjects.id,
-                    title: subjects.title,
-                    subTitle: subjects.countries.toString(),
-                    longDescription: subjects.summary,
-                    ratings: subjects.rating.average,
-                    ratingCount: subjects.ratings_count,
-                    genres: subjects.genres.toString(),
-                    durations: subjects.durations.toString(),
-                    year: subjects.year,
-                    originalTitle: subjects.original_title,
-                    languages: subjects.languages.toString(),
-                    land: subjects.countries.toString(),
-                    stills,
-                    sourceData: 'DouBan',
-                    bgPicture: subjects.images.large
-                };
-                return detailOptions;
-            });
-    }*/
-
     public getVODDetailById4MTime(subjectsId: string) {
-        return this.appService.IPTV.getVODDetailById(Number.parseInt(subjectsId, 10))
-            .map((subject) => {
+        return this.appService.IPTV.getVodDetailWithMtime(Number.parseInt(subjectsId, 10), 628)
+            .map((subject: any) => {
                 let {data: {basic}} = subject;
                 let {stageImg: {list, count}} = basic;
                 let casts: Sliding = {
@@ -157,8 +99,8 @@ export class VODStills implements Resolve<any> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         let {id} = route.params;
         let detailResolve: Observable<any>;
-        detailResolve = this.appService.IPTV.getVODPhotosById(id)
-            .map((data) => {
+        detailResolve = this.appService.IPTV.getVodDetailPhoteWithMtime(id)
+            .map((data: any) => {
                 let {imageTypes, images} = data;
                 images = _.map(images, (item: any) => {
                     let stillPoster: Poster = {

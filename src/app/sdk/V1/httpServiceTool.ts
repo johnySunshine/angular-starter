@@ -14,7 +14,7 @@ export class HttpServiceTool {
         if (option.length === 0) {
             return url;
         }
-        _.each(option, (resp) => {
+        _.each(option[0], (resp) => {
             options = options + resp;
         });
         return url + options;

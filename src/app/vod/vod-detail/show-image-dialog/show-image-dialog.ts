@@ -13,7 +13,7 @@ import { Poster } from '../../../sdk';
 export class ShowImageDialogComponent implements OnInit {
     public imageDetail: Poster;
     public chosenImageURL: string;
-    public viewPosterWidth: number = 1284 - (15 * (7 - 1));
+    public viewPosterWidth: number = 500;
 
     constructor(@Inject(MD_DIALOG_DATA) public data: any,
                 public appService: AppState) {
