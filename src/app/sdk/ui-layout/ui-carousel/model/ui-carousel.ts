@@ -5,4 +5,5 @@ export interface Carousel {
     subTitle?: string;
     buttonText?: string;
     longDescription?: string;
+    sourceType?: string;
 }

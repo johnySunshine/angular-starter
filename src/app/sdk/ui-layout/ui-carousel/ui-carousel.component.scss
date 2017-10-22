@@ -81,7 +81,7 @@
                         width: calc(100% - 200px);
                         height: calc(100% - 150px);
                         padding: 100px 100px 50px 100px;
-                        background: linear-gradient(to top, rgba(map_get($GREY, A100), .8), transparent 50%);
+                        background: linear-gradient(to top, rgba(map_get($GREY, A100), .8) 10%, transparent 55%, rgba(map_get($GREY, A100), .8));
                         .title {
                             color: map_get($GREY, 50);
                             margin-top: 70px;

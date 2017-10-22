@@ -17,11 +17,19 @@ export class EPGService extends HttpServiceTool {
 
     public sendRequest4Get(requestUrl: string, ...options): Observable<Response> {
         let serURL = this.urlJionOptionsForGET(requestUrl, options);
-        return this.http.get(serURL).map((resp) => resp.json());
+        this.spinnerService.showSpinner();
+        return this.http.get(serURL).map((resp) => {
+            this.spinnerService.hideSpinner();
+            return resp.json();
+        });
     }
 
     public sendRequest4Post(requestUrl: string, options: any): Observable<Response> {
-        return this.http.post(requestUrl, options).map((resp) => resp.json());
+        this.spinnerService.showSpinner();
+        return this.http.post(requestUrl, options).map((resp) => {
+            this.spinnerService.hideSpinner();
+            return resp.json();
+        });
     }
 
     public sendRequest(requestName: string, options: Options) {
@@ -47,11 +55,19 @@ export class EPGService extends HttpServiceTool {
      * @returns {Observable<any>}
      */
     public getMenus(): Observable<any> {
-        return this.sendRequest4Get('/V1/Menus/list');
+        return this.sendRequest4Get('/Menus/list');
     }
 
-    public getCarousel(): Observable<any> {
-        return this.sendRequest4Get('/V1/Menus/list');
+    public getTrailers(): Observable<any> {
+        return this.sendRequest4Get('/FilmNews/Trailers');
+    }
+
+    public getArticles(): Observable<any> {
+        return this.sendRequest4Get('/FilmNews/MovieListWithOne');
+    }
+
+    public getComeSoonWithMtime(locationId: number) {
+        return this.sendRequest4Get('/MTimes/ComingNew', `/${locationId}`);
     }
 
     public getComeSoon() {

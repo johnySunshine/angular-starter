@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
-import { ComeSoonResolver } from './home.resolver';
+import { CarouselResolver, ComeSoonWithMtimeResolver } from './home.resolver';
 
 @NgModule({
     imports: [
@@ -17,9 +17,8 @@ import { ComeSoonResolver } from './home.resolver';
                 path: 'home',
                 component: HomeComponent,
                 resolve: {
-                comeSoon: ComeSoonResolver,
-                //     filmShowTime: FilmShowTimeResolver,
-                //     theaterMovie: InTheaterMovieResolver
+                    carousels: CarouselResolver,
+                    comeSoonWithMtime: ComeSoonWithMtimeResolver
                 }
             }
         ])],

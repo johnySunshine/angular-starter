@@ -6,6 +6,8 @@ export const DEFAULT_APP_CONFIG = {
 
     DEV_SERVICES_URL: `http://localhost`,
 
+    SERVICE_VERSION: `V1`,
+
     COPYRIGHT_INFO: `©2016-2017 Lookthings 版权所有 苏ICP备16059814号`,
 
     GITHUB_URL: `https://github.com/johnySunshine/angular-starter`,
