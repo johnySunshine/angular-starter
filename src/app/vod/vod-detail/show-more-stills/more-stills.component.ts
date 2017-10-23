@@ -44,7 +44,6 @@ export class MoreStillsComponent implements OnInit {
         this.imageTypeValue = -1;
         this.route.data.subscribe((data) => {
             let {VODStills: {imageTypes, images}} = data;
-            console.log(images);
             this.stillPosterList = images;
             this.imagesSource = images;
             this.imageTypes = imageTypes;

@@ -5,6 +5,8 @@ import {
 import { AppState } from '../app.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Carousel, Sliding } from '../sdk';
+import { MenuTypes } from '../header';
+import { HomeService } from './home.service';
 
 @Component({
     selector: 'home',
@@ -19,8 +21,12 @@ export class HomeComponent implements OnInit {
 
     constructor(private appService: AppState,
                 private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                private homeService: HomeService) {
         document.documentElement.scrollTop = 0;
+        this.appService.triggerMenusEvent({
+            status: MenuTypes.normal
+        });
     }
 
     public ngOnInit(): void {
@@ -36,11 +42,11 @@ export class HomeComponent implements OnInit {
     }
 
     public topHeader(posterId: number) {
-        console.log(posterId);
+        this.router.navigate(['home', 'fromMtime', 'homeMore']);
     }
 
     public posterShowMore(posterId: number) {
-        this.router.navigate(['vod', 'fromMtime', posterId]);
+        this.homeService.gotoVodDetail(posterId);
     }
 
 }

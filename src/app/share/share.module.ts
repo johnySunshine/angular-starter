@@ -5,7 +5,7 @@ import { TranslateModule } from 'ng2-translate';
 import { MdButtonModule, MdIconModule, MdTooltipModule, MatDialogModule } from '@angular/material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SlimScrollModule } from 'ng2-slimscroll';
-import { UiPosterModule, UiTextModule, UiSlidingPosterModule, UiCarouselModule } from '../sdk';
+import { UiPosterModule, UiTextModule, UiSlidingPosterModule, UiCarouselModule, UiPlayerModule } from '../sdk';
 
 // material design 第三插件的模块
 const mdModule = [
@@ -24,7 +24,8 @@ const uiModule = [
     UiPosterModule,
     UiTextModule,
     UiSlidingPosterModule,
-    UiCarouselModule
+    UiCarouselModule,
+    UiPlayerModule
 ];
 
 /**

@@ -10,6 +10,9 @@
     "SHOW_CANCEL": "关闭子菜单",
     "FILM_STILLS": "影片图片"
   },
+  "HOME": {
+    "HOME_MORE_TITLE": "即将上映 COMING SOON"
+  },
   "FOOTER": {
     "MORE_LINK": "其他链接",
     "MORE_DESC_TITLE": "本站介绍",

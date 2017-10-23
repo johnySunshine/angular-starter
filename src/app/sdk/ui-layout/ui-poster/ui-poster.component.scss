@@ -132,6 +132,7 @@
     }
     .poster-title-wrap {
         cursor: pointer;
+        overflow: hidden;
         .poster-title {
             top: 10px;
             color: map_get($GREY, 300);

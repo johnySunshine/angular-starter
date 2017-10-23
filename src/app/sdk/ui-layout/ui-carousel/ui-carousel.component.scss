@@ -25,7 +25,10 @@
         z-index: -1;
         .background-image {
             width: 100%;
-            filter: blur(20px) brightness(20%);
+            filter: blur(20px) brightness(.2);
+            -webkit-filter: blur(10px) brightness(.2); /* Chrome, Opera */
+            -moz-filter: blur(10px) brightness(.2);
+            -ms-filter: blur(10px) brightness(.2);
             opacity: 0;
             @include animation(opacity, $standard_curve, $ENTERING);
         }

@@ -1,5 +1,19 @@
 <div class="home-more-component">
     <div class="home-more-background"></div>
-    <div class="home-more-title">{{homeTitle |translate}}</div>
-    <div class="home-more-poster-wall-wrap"></div>
+    <div class="home-more-poster-wall-wrap">
+        <div class="poster-list"
+             infinite-scroll
+             [infiniteScrollDistance]=".5"
+             [infiniteScrollThrottle]="500"
+             (scrolled)="onScrollByMouse($event)">
+            <ul class="poster-list">
+                <li class="poster-item" *ngFor="let posters of initShowPoster">
+                    <ui-poster [uiPoster]="posters"
+                               [isAdaptive]="false" [width]="width"
+                               [height]="height" (onPoster)="posterShowMore($event)"></ui-poster>
+                </li>
+            </ul>
+
+        </div>
+    </div>
 </div>

@@ -84,3 +84,32 @@ export class CarouselResolver implements Resolve<any> {
             });
     }
 }
+
+@Injectable()
+export class HomeMoreWithMTimeResolver implements Resolve<any> {
+
+    constructor(private appService: AppState) {
+    }
+
+    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+        return this.appService.IPTV.getComeSoonWithMtime(628)
+            .map((comeNewMtime: any) => {
+                let {moviecomings} = comeNewMtime;
+                return this.packagePosterList(moviecomings);
+            });
+    }
+
+    public packagePosterList(uiPoster: any): Poster[] {
+        return _.map(uiPoster, (resp: any) => {
+            return {
+                id: resp.id,
+                url: resp.image,
+                defaultPictureName: 'movie',
+                title: resp.title,
+                mask: {
+                    title3: resp.releaseDate
+                }
+            };
+        });
+    }
+}
