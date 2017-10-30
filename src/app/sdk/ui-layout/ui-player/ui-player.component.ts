@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { UiPlayerService } from './ui-player.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { UiPlayerService } from './ui-player.service';
 })
 
 export class UiPlayerComponent implements OnInit {
+
     @Input()
     public url: string;
 
@@ -16,6 +17,7 @@ export class UiPlayerComponent implements OnInit {
 
     @Input()
     public width: number;
+
 
     public videoRef: any;
 
@@ -29,5 +31,14 @@ export class UiPlayerComponent implements OnInit {
 
     public ngOnInit(): void {
         this.videoRef = this.eleRef.querySelector('.ui-player-video');
+        // 设置处理的video元素
+        this.uiPlayerService.initMediaPlayer(
+            this.videoRef,
+            this.url,
+            this.width,
+            this.height
+        );
     }
+
+
 }

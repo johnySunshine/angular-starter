@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UiPlayerService } from "../ui-player.service";
+import { UiPlayerService } from '../ui-player.service';
 
 @Component({
     selector: 'ui-player-panel',
@@ -10,19 +10,13 @@ import { UiPlayerService } from "../ui-player.service";
 export class UiPlayerPanelComponent implements OnInit {
 
     @Input()
-    public duration: number;
+    public panelDuration: string = '00:00:00';
 
     @Input()
-    public percent: number;
+    public percent: number = 0;
 
     @Input()
-    public currentTime: number;
-
-    @Input()
-    public endTime: number;
-
-    public curTimeStr: string;
-    public endTimeStr: string;
+    public panelStarTime: string = '00:00:00';
 
     public volumeStr: string;
 
@@ -30,8 +24,6 @@ export class UiPlayerPanelComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.curTimeStr = '00:00:00';
-        this.endTimeStr = '00:00:00';
         this.volumeStr = 'volume_mute';
     }
 

@@ -14,12 +14,56 @@ export class UiPlayerService {
     constructor() {
     }
 
-    public onBort(fn): void {
-        this.video.onbort = fn;
+    public initMediaPlayer(video: any, url: string, width: number, height: number): void {
+        video.setAttribute('src', url);
+        video.setAttribute('width', width);
+        video.setAttribute('height', height);
+        this.video = video;
     }
 
-    public onTimeUpdate(fn) {
-        this.video.ontimeupdate = fn;
+    /**
+     * 判断浏览器当前是否处于全屏状态
+     * @returns {boolean}
+     */
+    public isFullScreen(): boolean {
+        return this.invokeFullScreenMethod(document, 'FullScreen') ||
+            this.invokeFullScreenMethod(document, 'IsFullScreen');
+    }
+
+    public getDuration(): number {
+        return this.video.duration;
+    }
+
+    public getCurrentTime(): number {
+        return this.video.currentTime;
+    }
+
+    public play(): void {
+        this.video.play();
+    }
+
+    public pause(): void {
+        this.video.pause();
+    }
+
+    public load(): void {
+        this.video.load();
+    }
+
+    public isPaused(): boolean {
+        return this.video.paused;
+    }
+
+    public isMuted(): boolean {
+        return this.video.muted;
+    }
+
+    public setMuted(): void {
+        this.video.muted;
+    }
+
+    public getVolume(): number {
+        return this.video.volume;
     }
 
     public enterFullScreen(): void {
@@ -59,13 +103,45 @@ export class UiPlayerService {
         return usablePrefixMethod;
     }
 
-    /**
-     * 判断浏览器当前是否处于全屏状态
-     * @returns {boolean}
-     */
-    public isFullScreen(): boolean {
-        return this.invokeFullScreenMethod(document, 'FullScreen') ||
-            this.invokeFullScreenMethod(document, 'IsFullScreen');
+    public getNumberBit(seconds: number): number {
+        return seconds.toString().length;
     }
 
+    public getNumberBitStr(timeNumber: number): string {
+        timeNumber = Math.floor(timeNumber);
+        return this.getNumberBit(timeNumber) === 1 ? `0${timeNumber}` : `${timeNumber}`;
+    }
+
+    public lessThanMinute(timeNumber: number): string {
+        return `00:00:${this.getNumberBitStr(timeNumber)}`;
+    }
+
+    public moreThanMinute(timeNumber: number): string {
+        let remainderTime4Sec = Math.floor(timeNumber % 60);
+        let minute = Math.floor(timeNumber / 60);
+        let secStr = this.getNumberBitStr(remainderTime4Sec);
+        let minuteStr = this.getNumberBitStr(minute);
+        return `00:${minuteStr}:${secStr}`;
+    }
+
+    public moreThanHour(timeNumber: number): string {
+        let hour = Math.floor(timeNumber / 3600);
+        let minutes = Math.floor(((timeNumber - hour * 60) / 60));
+        let seconds = Math.floor(((timeNumber - hour * 60) % 60));
+        return `${this.getNumberBitStr(hour)}:${this.getNumberBitStr(minutes)}:${this.getNumberBitStr(seconds)}`;
+    }
+
+    public converseTime(seconds: number): string {
+        if (seconds < 60) {
+            return this.lessThanMinute(seconds);
+        } else if (seconds > 60 && seconds < 3600) {
+            return this.moreThanMinute(seconds);
+        } else {
+            return this.moreThanHour(seconds);
+        }
+    }
+
+    public getPercen4Player(currentTime: number, durtions: number): number {
+        return (currentTime / durtions) * 100;
+    }
 }

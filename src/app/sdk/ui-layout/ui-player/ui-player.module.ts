@@ -17,9 +17,9 @@ import { FormsModule } from '@angular/forms';
     ],
     exports: [UiPlayerComponent],
     declarations: [
-        UiPlayerComponent,
         UiControlPanelComponent,
-        UiPlayerPanelComponent
+        UiPlayerPanelComponent,
+        UiPlayerComponent,
     ],
     providers: [
         UiPlayerService
