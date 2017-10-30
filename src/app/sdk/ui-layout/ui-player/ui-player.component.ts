@@ -24,6 +24,7 @@ export class UiPlayerComponent implements OnInit {
     constructor(private elementRef: ElementRef,
                 private uiPlayerService: UiPlayerService) {
         this.eleRef = elementRef.nativeElement;
+        this.uiPlayerService.setHostRef = elementRef.nativeElement;
     }
 
     public ngOnInit(): void {

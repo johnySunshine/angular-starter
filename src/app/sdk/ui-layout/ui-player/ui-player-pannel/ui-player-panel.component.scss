@@ -1,0 +1,37 @@
+:host /deep/ .ui-player-panel-component {
+    .control-center {
+        .slide-container-wrap {
+            md-slider {
+                width: 100%;
+            }
+        }
+    }
+    .control-left {
+        md-slider {
+        }
+    }
+}
+
+.ui-player-panel-component {
+    .control-center {
+        float: left;
+        width: 93%;
+        .time-current {
+            display: inline-block;
+        }
+        .slide-container-wrap {
+            display: inline-block;
+            width: calc(100% - 132px);
+        }
+        .time-offset {
+            display: inline-block;
+        }
+    }
+    .control-right {
+        float: left;
+    }
+    .control-left {
+        float: left;
+        position: relative;
+    }
+}

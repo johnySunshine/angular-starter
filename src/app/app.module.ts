@@ -78,8 +78,7 @@ export function createTranslateLoader(http: Http) {
         BrowserAnimationsModule,
         MdProgressSpinnerModule,
         RouterModule.forRoot(ROUTES, {
-            useHash: true,
-            preloadingStrategy: PreloadAllModules
+            useHash: true
         }),
         // 配置语言包
         TranslateModule.forRoot({

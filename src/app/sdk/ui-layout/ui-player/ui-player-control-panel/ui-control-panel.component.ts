@@ -11,6 +11,7 @@ export class UiControlPanelComponent implements OnInit {
     @Input()
     public startTime: number;
 
+
     constructor() {
     }
 
