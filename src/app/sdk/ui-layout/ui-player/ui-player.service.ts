@@ -141,7 +141,7 @@ export class UiPlayerService {
         }
     }
 
-    public getPercen4Player(currentTime: number, durtions: number): number {
-        return (currentTime / durtions) * 100;
+    public getPercent4Player(): number {
+        return (this.getCurrentTime() / this.getDuration()) * 100;
     }
 }
