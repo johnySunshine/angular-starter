@@ -14,15 +14,17 @@
             <div class="menu-title-detail" *ngSwitchCase="2">{{menuDetail}}</div>
             <div class="menu-title-dropDown" *ngSwitchCase="3">menu-title-dropDown</div>
             <div class="menu-title-search" *ngSwitchCase="4">
-                <div class="header-title">{{menuDetail}}</div>
-                <div class="header-counter">( {{counts}} )</div>
+                <div class="header-title mat-title">{{menuDetail | translate}}</div>
+                <div class="header-counter mat-title">( {{counts}} )</div>
             </div>
         </div>
         <div class="menu-subtitle" *ngIf="isRotate" [@fadeMenu]="isRotate">{{appLogoTitle}}</div>
         <div class="header-buttons">
             <div class="header-more-btn">
-                <a class="btn-icon" md-icon-button aria-hidden="true" [class.btn-rotateY]="isRotate" (click)="menuShowMore()">
-                    <i class="material-icons md-30 md-light">{{menuButtonStatus}}</i>
+                <a class="btn-icon" md-icon-button md-icon [class.btn-rotateY]="isRotate" (click)="menuShowMore()">
+                    <i class="material-icons md-30 md-light"
+                       [mdTooltip]="(!isRotate?'HEADER.SHOW_MORE':'HEADER.SHOW_CANCEL')|translate"
+                       [mdTooltipShowDelay]="500">{{menuButtonStatus}}</i>
                 </a>
             </div>
         </div>

@@ -1,0 +1,30 @@
+@import "../../../styles/sdk_pre_custom";
+
+.ui-sliding-header-component {
+    width: 100%;
+    .header-wrap {
+        cursor: pointer;
+        display: inline-block;
+        @include animation(opacity, $standard_curve, $ENTERING);
+        &:hover {
+            opacity: .7;
+        }
+        .header-title {
+            color: map_get($GREY, 300);
+            float: left;
+            margin: 0 0 9px;
+        }
+        .header-counts {
+            float: left;
+            margin-left: 10px;
+        }
+        .header-right-chevron {
+            position: relative;
+            top: 2px;
+            float: left;
+            margin: 0 0 9px;
+            width: 32px;
+            height: 32px;
+        }
+    }
+}

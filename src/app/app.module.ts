@@ -37,6 +37,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { MdProgressSpinnerModule } from '@angular/material';
 import { FooterModule } from './footer';
+import { VodModule } from './vod';
+import { ShowImageDialogComponent } from './dialog/show-images-dialog/show-image-dialog';
 // Application wide providers
 const APP_PROVIDERS = [
     ...APP_RESOLVER_PROVIDERS,
@@ -66,16 +68,17 @@ export function createTranslateLoader(http: Http) {
      * Import Angular's modules.
      */
     imports: [
+        FormsModule,
         HttpModule,
         HeaderModule,
         FooterModule,
         HomeModule,
+        VodModule,
         BrowserModule,
         BrowserAnimationsModule,
         MdProgressSpinnerModule,
         RouterModule.forRoot(ROUTES, {
-            useHash: true,
-            preloadingStrategy: PreloadAllModules
+            useHash: true
         }),
         // 配置语言包
         TranslateModule.forRoot({
@@ -91,6 +94,7 @@ export function createTranslateLoader(http: Http) {
         ENV_PROVIDERS,
         APP_PROVIDERS
     ]
+
 })
 export class AppModule {
 

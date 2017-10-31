@@ -1,0 +1,10 @@
+<div class="ui-text-wrap mat-body-strong">
+    <ng-content></ng-content>
+</div>
+<div class="ui-text-button">
+    <a class="button-a material-icons md-light" md-icon-button
+       (click)="showMore()"
+       [class.button-transform]="!defaultSwitch">
+        <md-icon>expand_more</md-icon>
+    </a>
+</div>

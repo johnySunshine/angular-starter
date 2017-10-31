@@ -1,0 +1,15 @@
+<div class="ui-player-control-component">
+    <div class="current-move-info"></div>
+    <div class="recommend-list"></div>
+    <div class="control-wrap">
+        <div class="control-button-group">
+            <button md-icon-button md-icon (click)="playMedia()">
+                <i class="material-icons  md-light">{{buttonStatus}}</i>
+            </button>
+        </div>
+        <div class="control-bottom-panel">
+            <ui-player-panel [panelDuration]="playerDurations" [panelStarTime]="playerStartTime"
+                             [percent]="playerPercens"></ui-player-panel>
+        </div>
+    </div>
+</div>

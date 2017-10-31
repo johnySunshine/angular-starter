@@ -1,0 +1,21 @@
+<div class="ui-player-panel-component">
+    <div class="control-left">
+        <button md-icon-button md-icon>
+            <i class="material-icons  md-light">{{volumeStr}}</i>
+        </button>
+    </div>
+    <div class="control-center">
+        <span class="time-current">{{panelStarTime}}</span>
+        <span class="slide-container-wrap">
+            <md-slider step="0.1" [value]="percent"></md-slider>
+        </span>
+        <span class="time-offset">{{panelDuration}}</span>
+    </div>
+    <div class="control-right">
+        <button md-icon-button md-icon (click)="toggleFullScreen()">
+            <i class="material-icons  md-light">fullscreen</i>
+        </button>
+    </div>
+</div>
+
+

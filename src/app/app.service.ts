@@ -30,7 +30,7 @@ export class AppState {
      * 触发事件
      * @param {MenusStatus} astronaut
      */
-    public triggerEvent(astronaut: any) {
+    public triggerMenusEvent(astronaut: any) {
         this.triggerSubject.next(astronaut);
     }
 
@@ -38,7 +38,19 @@ export class AppState {
      * 监听事件
      * @returns {Observable<any>}
      */
-    public onEvent() {
+    public onMenusEvent() {
         return this.onChangeMenus;
+    }
+
+    /**
+     * 设置图片的尺寸的URL
+     * @param {string} imgURL
+     * @param {string} imgSize
+     * @returns {string}
+     */
+    public setImageSize4MTime(imgURL: string, imgSize: string): string {
+        let urlList = imgURL.split('_');
+        let Suffix = urlList[1].split('.')[1];
+        return urlList[0] + '_' + imgSize + '.' + Suffix;
     }
 }

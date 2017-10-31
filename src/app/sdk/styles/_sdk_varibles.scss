@@ -35,6 +35,8 @@ $COMPLEX: 375ms;
 $ENTERING: 225ms;
 $EXITING: 195ms;
 
+$normal_screen_width: 1380px;
+
 @mixin animation($selector,$curve,$durations) {
     transition: $selector $curve $durations;
     -moz-transition: $selector $curve $durations;

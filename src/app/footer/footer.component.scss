@@ -1,19 +1,22 @@
-@import "../sdk/styles/sdk_color";
-@import "../sdk/styles/sdk_varibles";
+@import "../sdk/styles/sdk_pre_custom";
 
-.footer-container {
-    min-width: 1284px;
+.footer-component {
     border-top: 1px solid map_get($GREY, 800);
     background: map_get($GREY, A100);
+    height: 364px;
     .footer-wrap {
-
+        position: relative;
+        width: $normal_screen_width;
         margin: 0 auto;
-        height: 250px;
+        height: 100%;
+        background: map_get($GREY, A100);
         .footer-main {
-            margin: 0 auto;
-            border-bottom: 1px solid map_get($GREY, 800);
-            padding: 32px 0;
-            height: 100px;
+            padding: 48px 48px 32px;
+            height: 62%;
+            &:before {
+                content: ' ';
+                display: table;
+            }
             .footerMain-primary {
                 width: 66%;
                 float: left;
@@ -31,7 +34,6 @@
             .footerMain-secondary {
                 width: 32%;
                 float: left;
-                height: 100%;
                 padding-left: 16px;
                 .footerMain-title {
                     color: map_get($YELLOW, 500);
@@ -67,20 +69,32 @@
             }
         }
         .footer-utility {
-            max-width: 1360px;
-            margin: 0 auto;
+            padding: 0 48px 0 48px;
             .footer-utility-list {
+                height: 50px;
                 position: relative;
                 top: 5px;
+                border-top: 1px solid map_get($GREY, 800);
                 color: rgba(map_get($GREY, 50), .32);
+                float: left;
+                width: 100%;
                 .footerUtility-listItem {
                     float: left;
-                    padding-left: 10px;
+                    height: 100%;
+                    margin-right: 20px;
+                    .item {
+                        display: inline-block;
+                        line-height: 50px;
+                        margin: 0;
+                    }
+                    &:nth-child(2) {
+                        float: right;
+                        margin-right: 0;
+                    }
                     &:nth-child(3) {
                         float: right;
-                        padding-right: 10px;
                     }
-                    &:nth-child(4) {
+                    &:last-child {
                         float: right;
 
                     }

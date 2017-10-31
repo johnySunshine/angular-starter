@@ -1,0 +1,18 @@
+<div class="ui-sliding-poster-component">
+    <ui-sliding-header *ngIf="sliding.topHeader" [topHeader]="sliding.topHeader"
+                       (onHeader)="topHeaderMore($event)"></ui-sliding-header>
+    <div class="sliding-wrap">
+        <ul class="sliding-views smooth" [ngStyle]="{transform: 'translateX('+locationX+'px)'}"
+            [style.width.px]="viewStyleWidth"
+            (mousedown)="onMouseDown($event)"
+            (mousemove)="onMouseMove($event)"
+            (mouseup)="onMouseUp()"
+            (mouseout)="onMouseOut()">
+            <li class="sliding-item" *ngFor="let poster of sliding.posterList">
+                <ui-poster [uiPoster]="poster" [height]="height" [width]="width" [isAdaptive]="isAdaptive"
+                           (onPoster)="posterShowMore($event)"></ui-poster>
+            </li>
+        </ul>
+    </div>
+    <ui-sliding-arrows (onMove)="moveViewByArrows($event)"></ui-sliding-arrows>
+</div>

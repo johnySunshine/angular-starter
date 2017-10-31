@@ -1,0 +1,52 @@
+<div class="vod-detail-component">
+    <div class="vod-bg-wrap">
+        <div class="vod-bg-main">
+            <img src="" alt="" [attr.src]="detailInfo.bgPicture" class="vod-bg-wrap-img">
+            <div class="vod-bg-mask"></div>
+        </div>
+    </div>
+    <div class="detail-top-content">
+        <div class="top-left">
+            <div class="poster-wrap">
+                <ui-poster [uiPoster]="detailInfo.poster" [height]="445" [width]="310" [isAdaptive]="true"></ui-poster>
+            </div>
+        </div>
+        <div class="top-middle-information">
+            <rating [ScoringNumber]="10" [ratingNumber]="detailInfo.ratings"
+                    [ratingSourceNumber]="detailInfo.ratingCount" [isFromMtime]="isFromMtime"></rating>
+            <button md-fab color="" [mdTooltip]="'VOD-DETAIL.ADD-FAVORITE'|translate"
+                    [mdTooltipShowDelay]="500">
+                <md-icon class="md-24" aria-label="Example icon-button with a heart icon">favorite_border</md-icon>
+            </button>
+            <!--<button md-fab color="'#001100'">-->
+            <!--<md-icon class="md-24" aria-label="Example icon-button with a heart icon">favorite</md-icon>-->
+            <!--</button>-->
+            <!--<button md-fab color="'#001100'">-->
+            <!--<md-icon class="md-24" aria-label="Example icon-button with a heart icon">view_list</md-icon>-->
+            <!--</button>-->
+            <!--<button md-fab color="'#001100'" [mdTooltip]="'VOD-DETAIL.PLAY_VIDEO'|translate"-->
+            <!--[mdTooltipShowDelay]="500">-->
+            <!--<md-icon class="md-24" aria-label="Example icon-button with a heart icon">play_arrow</md-icon>-->
+            <!--</button>-->
+            <short-info [shortInfos]="shortInfo"></short-info>
+        </div>
+        <div class="top-right">
+            <div class="detail-title mat-display-1" [attr.title]="detailInfo.title">{{detailInfo.title}}</div>
+            <div class="detail-subtitle mat-subheading-2">{{detailInfo.subTitle}} {{detailInfo.year}}</div>
+
+            <div class="long-description">
+                <ui-text [lineHeight]="26" [showLine]="3">
+                    {{detailInfo.longDescription}}
+                </ui-text>
+            </div>
+
+        </div>
+    </div>
+    <div class="detail-bottom-content">
+        <ui-sliding-poster [isAdaptive]="true" [slidingType]="personTypes"
+                           [sliding]="detailInfo.casts"></ui-sliding-poster>
+        <ui-sliding-poster [isAdaptive]="true" [slidingType]="7" [sliding]="stillsPhoto" (onTopHeader)="showAllStills()"
+                           (onSliding)="showImage($event)"></ui-sliding-poster>
+    </div>
+
+</div>

@@ -1,4 +1,5 @@
-<div class="footer-container">
+<div class="footer-component">
+    <top-button></top-button>
     <div class="footer-wrap">
         <div class="footer-main">
             <div class="footerMain-primary">
@@ -21,8 +22,9 @@
         </div>
         <div class="footer-utility">
             <ul class="footer-utility-list">
-                <li class="footerUtility-listItem" *ngFor="let listItem of UtilityList">
-                    <span class="mat-h5">{{listItem}}</span>
+                <li class="footerUtility-listItem" *ngFor="let item of footerUtilityList"
+                    (click)="footerLinkMore(item.linkId)">
+                    <span class="mat-h5 item">{{item.linkText | translate}}</span>
                 </li>
             </ul>
         </div>

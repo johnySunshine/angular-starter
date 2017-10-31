@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routes';
 import { ShareModule } from '../share/share.module';
-import { ComeSoonResolver } from './home.resolver';
+import { CarouselResolver, ComeSoonWithMtimeResolver, HomeMoreWithMTimeResolver } from './home.resolver';
+import { HomeMoreComponent } from './home-more';
+import { HomeService } from './home.service';
 
 @NgModule({
     imports: [
@@ -11,8 +13,14 @@ import { ComeSoonResolver } from './home.resolver';
     ],
     declarations: [
         HomeComponent,
+        HomeMoreComponent
     ],
-    providers: [ComeSoonResolver]
+    providers: [
+        ComeSoonWithMtimeResolver,
+        CarouselResolver,
+        HomeMoreWithMTimeResolver,
+        HomeService
+    ]
 })
 export class HomeModule {
 }

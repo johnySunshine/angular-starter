@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+
+.home-more-component {
+    .home-more-background {
+
+    }
+    .home-more-poster-wall-wrap {
+        margin-top: 120px;
+        .poster-list {
+            .poster-item {
+                display: inline-block;
+                margin: 0 15px 60px 0;
+                &:nth-child(6n) {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

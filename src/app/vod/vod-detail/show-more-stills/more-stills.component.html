@@ -1,0 +1,19 @@
+<div class="stills-component">
+    <h1>{{'VOD-DETAIL.PICTURE_NAME'| translate}}</h1>
+    <section class="stills-navigation-section">
+        <md-button-toggle-group name="pies" (change)="chooseType($event)" [vertical]="isVertical"
+                                [value]="imageTypeValue">
+            <md-button-toggle *ngFor="let imageType of imageTypes" [value]="imageType.type">
+                {{imageType.typeName}}
+            </md-button-toggle>
+        </md-button-toggle-group>
+    </section>
+    <div class="stills-container">
+        <ul class="stills-ul">
+            <li class="still" *ngFor="let images of stillPosterList">
+                <ui-poster [height]="viewPosterWidth" [width]="viewPosterWidth" [isAdaptive]="true" (onPoster)="showPicture($event)"
+                           [uiPoster]="images"></ui-poster>
+            </li>
+        </ul>
+    </div>
+</div>

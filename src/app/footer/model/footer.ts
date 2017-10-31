@@ -3,3 +3,9 @@ export interface MoreLink {
     linkUrl: string;
     linkText: string;
 }
+
+export interface FooterLink {
+    linkId: string;
+    linkUrl: string;
+    linkText: string;
+}

@@ -1,0 +1,19 @@
+.ui-text-wrap {
+    margin-top: 20px;
+    color: white;
+    transition: all 1s;
+    will-change: transition;
+}
+
+.ui-text-button {
+    display: none;
+    width: 100%;
+    .button-a {
+        cursor: pointer;
+        float: right;
+        transition: transform 0.35s;
+    }
+    .button-transform {
+        transform: rotate(180deg);
+    }
+}

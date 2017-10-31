@@ -1,0 +1,160 @@
+@import "../../styles/sdk_pre_custom";
+
+:host {
+    display: block;
+    margin-bottom: 60px;
+}
+
+.ui-carousel-component {
+    width: 100%;
+    height: 478px;
+    &:hover {
+        .carousel-buttons {
+            opacity: 1;
+        }
+        .carousel-dot-wrap {
+            opacity: 1;
+        }
+    }
+    .background-image-wrap {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        .background-image {
+            width: 100%;
+            filter: blur(20px) brightness(.2);
+            -webkit-filter: blur(10px) brightness(.2); /* Chrome, Opera */
+            -moz-filter: blur(10px) brightness(.2);
+            -ms-filter: blur(10px) brightness(.2);
+            opacity: 0;
+            @include animation(opacity, $standard_curve, $ENTERING);
+        }
+        .background-image-mask {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: -128px;
+        }
+    }
+    .carousel-wrap {
+        width: 100%;
+        height: 478px;
+        overflow: hidden;
+        border-radius: 4px;
+        .carousel-list {
+            position: relative;
+            .carousel-item {
+                position: absolute;
+                width: 100%;
+                height: 478px;
+                will-change: transform;
+                .image-wrap {
+                    width: 100%;
+                    height: 100%;
+                    .carousel-default-image {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        z-index: -1;
+                        position: absolute;
+                        background-color: map_get($GREY, A100);
+                        .carousel-icons {
+                            top: 50%;
+                            position: relative;
+                            left: 50%;
+                            transform: translateX(-50%) translateY(-50%);
+                            z-index: -1;
+                            font-size: 100px;
+                        }
+                    }
+                    img {
+                        width: 1284px;
+                        opacity: 0;
+                        @include animation(opacity, $standard_curve, $ENTERING);
+                    }
+                    .mask {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                        width: calc(100% - 200px);
+                        height: calc(100% - 150px);
+                        padding: 100px 100px 50px 100px;
+                        background: linear-gradient(to top, rgba(map_get($GREY, A100), .8) 10%, transparent 55%, rgba(map_get($GREY, A100), .8));
+                        .title {
+                            color: map_get($GREY, 50);
+                            margin-top: 70px;
+                            margin-bottom: 35px;
+                        }
+                        .subtitle {
+                            color: map_get($GREY, 50);
+                        }
+                        .long-description {
+                            color: map_get($GREY, 50);
+                            width: 739px;
+                        }
+                        .button-wrap {
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .carousel-dot-wrap {
+        position: relative;
+        top: -36px;
+        z-index: 4;
+        height: 20px;
+        opacity: 0;
+        @include animation(opacity, $standard_curve, $ENTERING);
+        .carousel-dot {
+            float: left;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            .dot-item {
+                float: left;
+                margin-right: 10px;
+                .dot-wrap-border {
+                    cursor: pointer;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    background-color: map_get($GREY, 700);
+                    border-radius: 50%;
+                }
+                .dot-wrap {
+                    background-color: map_get($GREY, 50);
+                }
+            }
+        }
+    }
+    .carousel-buttons {
+        position: relative;
+        height: 36px;
+        left: 0;
+        width: 100%;
+        top: -278px;
+        opacity: 0;
+        @include animation(opacity, $standard_curve, $ENTERING);
+        .carousel-prev-button {
+            position: relative;
+            cursor: pointer;
+            opacity: .6;
+            left: -45px;
+            float: left;
+        }
+        .carousel-next-button {
+            position: relative;
+            cursor: pointer;
+            opacity: .6;
+            float: right;
+            right: -45px;
+        }
+    }
+}

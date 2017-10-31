@@ -1,0 +1,48 @@
+<div class="ui-carousel-component">
+    <div class="background-image-wrap" *ngIf="isShowBackground">
+        <img class="background-image" src="" alt="" [src]="chosenBgUrl" onerror="this.style.opacity=0"
+             onload="this.style.opacity=1">
+        <div class="background-image-mask"></div>
+    </div>
+    <div class="carousel-wrap">
+        <ul class="carousel-list">
+            <li class="carousel-item" *ngFor="let carousel of carousels;let i = index"
+                [@carouselState]="imageStateForIndex(i)">
+                <div class="image-wrap">
+                    <div class="carousel-default-image">
+                        <i class="carousel-icons material-icons">movie</i>
+                    </div>
+                    <img src="" onerror="this.style.opacity=0"
+                         onload="this.style.opacity=1" [src]="carousel.url" [alt]="carousel.title">
+                    <div class="mask">
+                        <div class="title mat-display-3">{{carousel.title}}</div>
+                        <div class="subtitle mat-headline">{{carousel.subTitle}}</div>
+                        <div class="long-description mat-body-1">{{carousel.longDescription}}</div>
+                        <div class="button-wrap">
+                            <button md-raised-button [color]="'accent'" (click)="showMore(carousel.id)">
+                                <i class="material-icons md-24">theaters</i>
+                                {{carousel.buttonText}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="carousel-dot-wrap">
+        <ul class="carousel-dot">
+            <li class="dot-item" *ngFor="let carousel of carousels;let i = index">
+                <i class="dot-wrap-border" (click)="positionIndexForCarousel(i)"
+                   [ngClass]="{'dot-wrap':curIndex === i}"></i>
+            </li>
+        </ul>
+    </div>
+    <div class="carousel-buttons">
+        <a md-icon-button class="carousel-prev-button" (click)="arrowLeft()">
+            <i class="material-icons md-36 md-light">chevron_left</i>
+        </a>
+        <a md-icon-button class="carousel-next-button" (click)="arrowRight()">
+            <i class="material-icons md-36 md-light">chevron_right</i>
+        </a>
+    </div>
+</div>

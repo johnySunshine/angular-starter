@@ -1,0 +1,14 @@
+<div class="rating-component">
+    <div class="rating-number-wrap">
+        <ul class="rating-list">
+            <li *ngFor="let i  of statusPool" class="rating-item">
+                <i class="material-icons start-icons">{{i}}</i>
+            </li>
+        </ul>
+    </div>
+    <div class="rating-sources">
+        <div class="rating-number mat-dialog-title">{{ratingNumber}}</div>
+        <div class="rating-count mat-dialog-title">({{ratingSourceNumber}})</div>
+        <i class="rating-icons" [class.for-mTime-icons]="isFromMtime"></i>
+    </div>
+</div>
